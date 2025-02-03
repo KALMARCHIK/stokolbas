@@ -75,6 +75,9 @@ class RegionsDetailView(DetailView):
 
 class ContactsView(TemplateView):
     template_name = 'contacts.html'
+    
+class MainPageView(TemplateView):
+    template_name = 'main-page.html'
 
 class BaseView(TemplateView):
     template_name = 'base.html'

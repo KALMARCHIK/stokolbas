@@ -6,15 +6,15 @@ from products.views import (
     ProductDetailView,
     RegionsDetailView,
     ContactsView,
-    BaseView,
     SupplierListView,
+    MainPageView
 )
 
 urlpatterns = [
     path('', 
-        BaseView.as_view(),
-        name='base-page'),
-    
+        MainPageView.as_view(),
+        name='main-page'),
+        
     path('suppliers/', 
         SupplierListView.as_view(), 
         name='supplier-list',
