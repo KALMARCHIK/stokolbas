@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Категория: {{ category.name }}{% endblock %}
+
+{% block content %}
+    <h1>{{ category.name }}</h1>
+    <h2>Продукты в этой категории:</h2>
+    <ul>
+        {% for product in category.products.all %}
+            <li>
+                <a href="{% url 'product-detail' product.slug %}">
+                    {{ product.name }} - {{ product.price }} руб.
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

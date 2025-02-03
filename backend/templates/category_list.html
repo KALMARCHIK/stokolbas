@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Список категорий{% endblock %}
+
+{% block content %}
+    <h1>Список категорий</h1>
+    <ul>
+        {% for category in categories %}
+            <li>
+                <a href="{% url 'product-list' category.supplier.slug category.slug %}">
+                    {{ category.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

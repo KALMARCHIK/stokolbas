@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Список поставщиков{% endblock %}
+
+{% block content %}
+    <h1>Список поставщиков</h1>
+    <ul>
+        {% for supplier in suppliers %}
+            <li>
+                <a href="{% url 'category-list' supplier.slug %}">
+                    {{ supplier.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
