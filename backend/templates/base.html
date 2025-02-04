@@ -1,7 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ru">
-<head>>
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,8 +64,8 @@
 <div class="mobile-menu scroll-sm d-lg-none d-block">
     <button type="button" class="close-button"> <i class="ph ph-x"></i> </button>
     <div class="mobile-menu__inner">
-        <a href="index.html" class="mobile-menu__logo">
-            <img src="assets/images/logo/logo.png" alt="Logo">
+        <a href="{% url 'main-page' %}" class="mobile-menu__logo">
+            <img src="{% static 'images/logo/logo.png' %}" alt="Logo">
         </a>
         <div class="mobile-menu__menu">
             <!-- Nav Menu Start -->
@@ -165,37 +165,37 @@
                     <ul class="selectable-text-list on-hover-dropdown common-dropdown common-dropdown--sm max-h-200 scroll-sm px-0 py-8">
                         <li>
                             <a href="javascript:void(0)" class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <img src="assets/images/thumbs/flag1.png" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
+                                <img src="{% static 'images/thumbs/flag1.png' %}" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
                                 English
                             </a>
                         </li>
                         <li>
                             <a href="javascript:void(0)" class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <img src="assets/images/thumbs/flag2.png" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
+                                <img src="{% static 'images/thumbs/flag2.png' %}" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
                                 Japan
                             </a>
                         </li>
                         <li>
                             <a href="javascript:void(0)" class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <img src="assets/images/thumbs/flag3.png" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
+                                <img src="{% static 'images/thumbs/flag3.png' %}" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
                                 French
                             </a>
                         </li>
                         <li>
                             <a href="javascript:void(0)" class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <img src="assets/images/thumbs/flag4.png" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
+                                <img src="{% static 'images/thumbs/flag4.png' %}" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
                                 Germany
                             </a>
                         </li>
                         <li>
                             <a href="javascript:void(0)" class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <img src="assets/images/thumbs/flag6.png" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
+                                <img src="{% static 'images/thumbs/flag6.png' %}" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
                                 Bangladesh
                             </a>
                         </li>
                         <li>
                             <a href="javascript:void(0)" class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <img src="assets/images/thumbs/flag5.png" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
+                                <img src="{% static 'images/thumbs/flag5.png' %}" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
                                 South Korea
                             </a>
                         </li>
@@ -206,37 +206,37 @@
                    <ul class="selectable-text-list on-hover-dropdown common-dropdown common-dropdown--sm max-h-200 scroll-sm px-0 py-8">
                         <li>
                             <a href="javascript:void(0)" class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <img src="assets/images/thumbs/flag1.png" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
+                                <img src="{% static 'images/thumbs/flag1.png' %}" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
                                 USD
                             </a>
                         </li>
                         <li>
                             <a href="javascript:void(0)" class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <img src="assets/images/thumbs/flag2.png" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
+                                <img src="{% static 'images/thumbs/flag2.png' %}" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
                                 Yen
                             </a>
                         </li>
                         <li>
                             <a href="javascript:void(0)" class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <img src="assets/images/thumbs/flag3.png" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
+                                <img src="{% static 'images/thumbs/flag3.png' %}" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
                                 Franc 
                             </a>
                         </li>
                         <li>
                             <a href="javascript:void(0)" class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <img src="assets/images/thumbs/flag4.png" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
+                                <img src="{% static 'images/thumbs/flag4.png' %}" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
                                 EURO
                             </a>
                         </li>
                         <li>
                             <a href="javascript:void(0)" class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <img src="assets/images/thumbs/flag6.png" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
+                                <img src="{% static 'images/thumbs/flag6.png' %}" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
                                 BDT
                             </a>
                         </li>
                         <li>
                             <a href="javascript:void(0)" class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <img src="assets/images/thumbs/flag5.png" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
+                                <img src="{% static 'images/thumbs/flag5.png' %}" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
                                 WON
                             </a>
                         </li>
@@ -260,8 +260,8 @@
         <nav class="header-inner flex-between">
             <!-- Logo Start -->
             <div class="logo">
-                <a href="index.html" class="link">
-                    <img src="assets/images/logo/logo.png" alt="Logo">
+                <a href="{% url 'main-page' %}" class="link">
+                    <img src="{% static 'images/logo/logo.png' %}" alt="Logo">
                 </a>
             </div>
             <!-- Logo End  -->
@@ -344,7 +344,6 @@
     </div>
 </header>
 <!-- ======================= Middle Header End ========================= -->
-
     <!-- ==================== Header Start Here ==================== -->
 <header class="header bg-white border-bottom border-gray-100">
     <div class="container container-lg">
@@ -355,7 +354,7 @@
                 <div class="category on-hover-item">
                     <button type="button" class="category__button flex-align gap-8 fw-medium p-16 border-end border-start border-gray-100 text-heading">
                         <span class="icon text-2xl d-xs-flex d-none"><i class="ph ph-dots-nine"></i></span>
-                        <span class="d-sm-flex d-none">All</span>  Categories
+                        <span class="d-sm-flex d-none">Все</span>  категорий
                         <span class="arrow-icon text-xl d-flex"><i class="ph ph-caret-down"></i></span>
                     </button>
 
@@ -365,221 +364,34 @@
 
                         <!-- Logo Start -->
                         <div class="logo px-16 d-lg-none d-block">
-                            <a href="index.html" class="link">
-                                <img src="assets/images/logo/logo.png" alt="Logo">
+                            <a href="{% url 'main-page' %}" class="link">
+                                <img src="{% static 'images/logo/logo.png' %}" alt="Logo">
                             </a>
                         </div>
                         <!-- Logo End -->
 
                         <ul class="scroll-sm p-0 py-8 w-300 max-h-400 overflow-y-auto">
-                            <li class="has-submenus-submenu">
-                                <a href="javascript:void(0)" class="text-gray-500 text-15 py-12 px-16 flex-align gap-8 rounded-0">
-                                    <span class="text-xl d-flex"><i class="ph ph-carrot"></i></span>
-                                    <span>Vegetables &amp; Fruit</span>
-                                    <span class="icon text-md d-flex ms-auto"><i class="ph ph-caret-right"></i></span>
-                                </a>
-    
-                                <div class="submenus-submenu py-16">
-                                    <h6 class="text-lg px-16 submenus-submenu__title">Vegetables &amp; Fruit</h6>
-                                    <ul class="submenus-submenu__list max-h-300 overflow-y-auto scroll-sm">
-                                        <li>
-                                            <a href="shop.html">Potato &amp; Tomato</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html">Cucumber &amp; Capsicum</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html">Leafy Vegetables</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html">Root Vegetables</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html">Beans &amp; Okra</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html">Cabbage &amp; Cauliflower</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html">Gourd &amp; Drumstick</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html">Specialty</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="has-submenus-submenu">
-                                <a href="javascript:void(0)" class="text-gray-500 text-15 py-12 px-16 flex-align gap-8 rounded-0">
-                                    <span class="text-xl d-flex"><i class="ph ph-brandy"></i></span>
-                                    <span>Beverages</span>
-                                    <span class="icon text-md d-flex ms-auto"><i class="ph ph-caret-right"></i></span>
-                                </a>
-                                <div class="submenus-submenu py-16">
-                                    <h6 class="text-lg px-16 submenus-submenu__title">Beverages</h6>
-                                    <ul class="submenus-submenu__list max-h-300 overflow-y-auto scroll-sm">
-                                        <li>
-                                            <a href="shop.html">Soda & Cocktail Mix </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Sports & Energy Drinks</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Non Alcoholic Drinks</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Packaged Water </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Spring Water</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Flavoured Water    </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="has-submenus-submenu">
-                                <a href="javascript:void(0)" class="text-gray-500 text-15 py-12 px-16 flex-align gap-8 rounded-0">
-                                    <span class="text-xl d-flex"><i class="ph ph-brandy"></i></span>
-                                    <span>Meats & Seafood</span>
-                                    <span class="icon text-md d-flex ms-auto"><i class="ph ph-caret-right"></i></span>
-                                </a>
-                                <div class="submenus-submenu py-16">
-                                    <h6 class="text-lg px-16 submenus-submenu__title">Meats & Seafood</h6>
-                                    <ul class="submenus-submenu__list max-h-300 overflow-y-auto scroll-sm">
-                                        <li>
-                                            <a href="shop.html"> Fresh Meat </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Frozen Meat</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Marinated Meat</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Fresh & Frozen Meat</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="has-submenus-submenu">
-                                <a href="javascript:void(0)" class="text-gray-500 text-15 py-12 px-16 flex-align gap-8 rounded-0">
-                                    <span class="text-xl d-flex"><i class="ph ph-brandy"></i></span>
-                                    <span>Breakfast & Dairy</span>
-                                    <span class="icon text-md d-flex ms-auto"><i class="ph ph-caret-right"></i></span>
-                                </a>
-                                <div class="submenus-submenu py-16">
-                                    <h6 class="text-lg px-16 submenus-submenu__title">Breakfast & Dairy</h6>
-                                    <ul class="submenus-submenu__list max-h-300 overflow-y-auto scroll-sm">
-                                        <li>
-                                            <a href="shop.html"> Oats & Porridge</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Kids Cereal</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Muesli</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Flakes</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Granola & Cereal Bars</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Instant Noodles</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="has-submenus-submenu">
-                                <a href="javascript:void(0)" class="text-gray-500 text-15 py-12 px-16 flex-align gap-8 rounded-0">
-                                    <span class="text-xl d-flex"><i class="ph ph-brandy"></i></span>
-                                    <span>Frozen Foods</span>
-                                    <span class="icon text-md d-flex ms-auto"><i class="ph ph-caret-right"></i></span>
-                                </a>
-                                <div class="submenus-submenu py-16">
-                                    <h6 class="text-lg px-16 submenus-submenu__title">Frozen Foods</h6>
-                                    <ul class="submenus-submenu__list max-h-300 overflow-y-auto scroll-sm">
-                                        <li>
-                                            <a href="shop.html"> Instant Noodles </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Hakka Noodles</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Cup Noodles</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Vermicelli</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Instant Pasta</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="has-submenus-submenu">
-                                <a href="javascript:void(0)" class="text-gray-500 text-15 py-12 px-16 flex-align gap-8 rounded-0">
-                                    <span class="text-xl d-flex"><i class="ph ph-brandy"></i></span>
-                                    <span>Biscuits & Snacks</span>
-                                    <span class="icon text-md d-flex ms-auto"><i class="ph ph-caret-right"></i></span>
-                                </a>
-                                <div class="submenus-submenu py-16">
-                                    <h6 class="text-lg px-16 submenus-submenu__title">Biscuits & Snacks</h6>
-                                    <ul class="submenus-submenu__list max-h-300 overflow-y-auto scroll-sm">
-                                        <li>
-                                            <a href="shop.html"> Salted Biscuits </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Marie, Health, Digestive</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Cream Biscuits & Wafers </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Glucose & Milk biscuits</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Cookies</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="has-submenus-submenu">
-                                <a href="javascript:void(0)" class="text-gray-500 text-15 py-12 px-16 flex-align gap-8 rounded-0">
-                                    <span class="text-xl d-flex"><i class="ph ph-brandy"></i></span>
-                                    <span>Grocery & Staples</span>
-                                    <span class="icon text-md d-flex ms-auto"><i class="ph ph-caret-right"></i></span>
-                                </a>
-                                <div class="submenus-submenu py-16">
-                                    <h6 class="text-lg px-16 submenus-submenu__title">Grocery & Staples</h6>
-                                    <ul class="submenus-submenu__list max-h-300 overflow-y-auto scroll-sm">
-                                        <li>
-                                            <a href="shop.html"> Lemon, Ginger & Garlic </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Indian & Exotic Herbs</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Orangic Vegetables</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html">Orangic Fruits </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Orangic Dry Fruits</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Orangic Dals & pulses</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html"> Orangic Millet & Flours</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
+                            {% for category in categories %}
+                                <li class="has-submenus-submenu">
+                                    <a href="{% url 'product-list' category.supplier.slug category.slug %}" class="text-gray-500 text-15 py-12 px-16 flex-align gap-8 rounded-0">
+                                        <span class="text-xl d-flex"><i class="ph ph-carrot"></i></span>
+                                        <span>{{category.name}}</span>
+                                        <span class="icon text-md d-flex ms-auto"><i class="ph ph-caret-right"></i></span>
+                                    </a>
+        
+                                    <div class="submenus-submenu py-16">
+                                        <h6 class="text-lg px-16 submenus-submenu__title">{{category.name}}</h6>
+                                        <ul class="submenus-submenu__list max-h-300 overflow-y-auto scroll-sm">
+                                            {% for product in category.products.all %}
+                                                <li>
+                                                    <a href="{% url 'product-detail' product.supplier.slug product.category.slug product.slug %}">{{ product.name }}</a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                            
                         </ul>
                     </div>
                 </div> 
@@ -700,9 +512,182 @@
         {% block content %}{% endblock %}
     </main>
 
-    <footer>
-        <p>&copy; 2025 Сто колбас</p>
-    </footer>
+    <!-- ==================== Footer Start Here ==================== -->
+<footer class="footer py-120">
+    <img src="{% static 'images/bg/body-bottom-bg.png' %}" alt="BG" class="body-bottom-bg">
+    <div class="container container-lg">
+        <div class="footer-item-wrapper d-flex align-items-start flex-wrap">
+            <div class="footer-item">
+                <div class="footer-item__logo">
+                    <a href="{% url 'main-page' %}"> <img src="{% static 'images/logo/logo.png' %}" alt=""></a>
+                </div>
+                <p class="mb-24">We're Grocery Shop, an innovative team of food supliers.</p>
+                <div class="flex-align gap-16 mb-16">
+                    <span class="w-32 h-32 flex-center rounded-circle bg-main-600 text-white text-md flex-shrink-0"><i class="ph-fill ph-map-pin"></i></span>
+                    <span class="text-md text-gray-900 ">789 Inner Lane, Biyes park, California, USA</span>
+                </div>
+                <div class="flex-align gap-16 mb-16">
+                    <span class="w-32 h-32 flex-center rounded-circle bg-main-600 text-white text-md flex-shrink-0"><i class="ph-fill ph-phone-call"></i></span>
+                    <div class="flex-align gap-16 flex-wrap">
+                        <a href="tel:+00123456789" class="text-md text-gray-900 hover-text-main-600">+00 123 456 789</a>
+                        <span class="text-md text-main-600 ">or</span>
+                        <a href="tel:+00987654012" class="text-md text-gray-900 hover-text-main-600">+00 987 654 012</a>
+                    </div>
+                </div>
+                <div class="flex-align gap-16 mb-16">
+                    <span class="w-32 h-32 flex-center rounded-circle bg-main-600 text-white text-md flex-shrink-0"><i class="ph-fill ph-envelope"></i></span>
+                    <a href="mailto:support24@marketpro.com" class="text-md text-gray-900 hover-text-main-600">support24@marketpro.com</a>
+                </div>
+            </div>
+            
+            <div class="footer-item">
+                <h6 class="footer-item__title">Information</h6>
+                <ul class="footer-menu">
+                    <li class="mb-16">
+                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Become a Vendor</a>
+                    </li>
+                    <li class="mb-16">
+                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Affiliate Program</a>
+                    </li>
+                    <li class="mb-16">
+                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Privacy Policy</a>
+                    </li>
+                    <li class="mb-16">
+                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Our Suppliers</a>
+                    </li>
+                    <li class="mb-16">
+                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Extended Plan</a>
+                    </li>
+                    <li class="">
+                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Community</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-item">
+                <h6 class="footer-item__title">Customer Support</h6>
+                <ul class="footer-menu">
+                    <li class="mb-16">
+                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Help Center</a>
+                    </li>
+                    <li class="mb-16">
+                        <a href="contact.html" class="text-gray-600 hover-text-main-600">Contact Us</a>
+                    </li>
+                    <li class="mb-16">
+                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Report Abuse</a>
+                    </li>
+                    <li class="mb-16">
+                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Submit and Dispute</a>
+                    </li>
+                    <li class="mb-16">
+                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Policies & Rules</a>
+                    </li>
+                    <li class="">
+                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Online Shopping</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-item">
+                <h6 class="footer-item__title">My Account</h6>
+                <ul class="footer-menu">
+                    <li class="mb-16">
+                        <a href="shop.html" class="text-gray-600 hover-text-main-600">My Account</a>
+                    </li>
+                    <li class="mb-16">
+                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Order History</a>
+                    </li>
+                    <li class="mb-16">
+                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Shoping Cart</a>
+                    </li>
+                    <li class="mb-16">
+                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Compare</a>
+                    </li>
+                    <li class="mb-16">
+                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Help Ticket</a>
+                    </li>
+                    <li class="">
+                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Wishlist</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-item">
+                <h6 class="footer-item__title">Daily Groceries</h6>
+                <ul class="footer-menu">
+                    <li class="mb-16">
+                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Dairy & Eggs</a>
+                    </li>
+                    <li class="mb-16">
+                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Meat & Seafood</a>
+                    </li>
+                    <li class="mb-16">
+                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Breakfast Food</a>
+                    </li>
+                    <li class="mb-16">
+                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Household Supplies</a>
+                    </li>
+                    <li class="mb-16">
+                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Bread & Bakery</a>
+                    </li>
+                    <li class="">
+                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Pantry Staples</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="footer-item">
+                <h6 class="">Shop on The Go</h6>
+                <p class="mb-16">Marketpro App is available.  Get it now</p>
+                <div class="flex-align gap-8 my-32">
+                    <a href="https://www.apple.com/store" class="">
+                        <img src="{% static 'images/thumbs/store-img1.png' %}" alt="">
+                    </a>
+                    <a href="https://play.google.com/store/apps?hl=en" class="">
+                        <img src="{% static 'images/thumbs/store-img2.png' %}" alt="">
+                    </a>
+                </div>
+
+                <ul class="flex-align gap-16">
+    <li>
+        <a href="https://www.facebook.com" class="w-44 h-44 flex-center bg-main-100 text-main-600 text-xl rounded-circle hover-bg-main-600 hover-text-white">
+            <i class="ph-fill ph-facebook-logo"></i>
+        </a>
+    </li>
+    <li>
+        <a href="https://www.twitter.com" class="w-44 h-44 flex-center bg-main-100 text-main-600 text-xl rounded-circle hover-bg-main-600 hover-text-white">
+            <i class="ph-fill ph-twitter-logo"></i>
+        </a>
+    </li>
+    <li>
+        <a href="https://www.linkedin.com" class="w-44 h-44 flex-center bg-main-100 text-main-600 text-xl rounded-circle hover-bg-main-600 hover-text-white">
+            <i class="ph-fill ph-instagram-logo"></i>
+        </a>
+    </li>
+    <li>
+        <a href="https://www.pinterest.com" class="w-44 h-44 flex-center bg-main-100 text-main-600 text-xl rounded-circle hover-bg-main-600 hover-text-white">
+            <i class="ph-fill ph-linkedin-logo"></i>
+        </a>
+    </li>
+</ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- bottom Footer -->
+<div class="bottom-footer bg-color-one py-8">
+    <div class="container container-lg">
+        <div class="bottom-footer__inner flex-between flex-wrap gap-16 py-16">
+            <p class="bottom-footer__text ">Marketpro eCommerce &copy; 2024. All Rights Reserved </p>
+            <div class="flex-align gap-8 flex-wrap">
+                <span class="text-heading text-sm">We Are Acepting</span>
+                <img src="{% static 'images/thumbs/payment-method.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ==================== Footer End Here ==================== -->
 
     <!-- Jquery js -->
     <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>

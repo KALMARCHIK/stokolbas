@@ -9,6 +9,7 @@
             <li>
                 <a href="{% url 'product-list' category.supplier.slug category.slug %}">
                     {{ category.name }}
+                    {{ category }}
                 </a>
             </li>
         {% endfor %}

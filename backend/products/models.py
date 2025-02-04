@@ -45,7 +45,7 @@ class Product(models.Model):
     name = models.CharField(verbose_name='Наименование товара', max_length=255)
     price = models.IntegerField(verbose_name='Цена')
     bulk_price = models.IntegerField(verbose_name='Цена от 1000 кг')
-    category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.CASCADE, related_name='category')
+    category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.CASCADE, related_name='products')
     implementation_period = models.CharField(verbose_name='Срок реализации', max_length=100)
     weight_unit = models.CharField(verbose_name='Мера измерения', max_length=10)
     is_new = models.BooleanField(verbose_name='Новинка', default=False)

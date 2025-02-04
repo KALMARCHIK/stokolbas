@@ -76,8 +76,22 @@ class RegionsDetailView(DetailView):
 class ContactsView(TemplateView):
     template_name = 'contacts.html'
     
-class MainPageView(TemplateView):
+class MainPageView(ListView):
     template_name = 'main-page.html'
+    model = Supplier
 
-class BaseView(TemplateView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] =  Category.objects.prefetch_related('products').all() 
+        context['suppliers'] = Supplier.objects.all()
+        return context
+
+class BaseView(ListView):
     template_name = 'base.html'
+    model = Supplier
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] =  Category.objects.prefetch_related('products').all() 
+        context['suppliers'] = Supplier.objects.all()
+        return context
