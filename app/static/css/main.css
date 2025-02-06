@@ -368,13 +368,13 @@
 }
 
 .btn-main {
-    background-color: hsl(var(--main)) !important;
-    border-color: hsl(var(--main)) !important;
+    background: #ff5656;
+    border-color: hsl(var(#ff5656)) !important;
 }
 
 .btn-main:hover {
-    background-color: var(--main-800) !important;
-    border-color: var(--main-800) !important;
+    background: #ff5656;
+    border-color: hsl(var(#ff5656)) !important;
 }
 
 .btn-outline-main {
@@ -4086,7 +4086,7 @@ input:focus-visible {
 /* ================================= Classes Css Start =========================== */
 /* Section Background */
 .bg-color-one {
-    background-color: var(--bg-color-one) !important;
+    background-color: #fff9f9 !important;
 }
 
 .bg-color-two {
@@ -8749,7 +8749,7 @@ input:focus-visible {
     mask-image: url(../images/bg/banner-bg2.png);
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
-    background: #D3EBC0;
+    background: #FFD4D4;
     mask-position: top;
     mask-size: 100% 100%;
     gap: clamp(1.5rem, -2.151rem + 7.607vw, 4.5rem);
@@ -8819,6 +8819,7 @@ input:focus-visible {
     position: relative;
     margin-bottom: 24px;
     z-index: 2;
+    background: #FF5656 !important;
 }
 
 @media screen and (max-width: 1399px) {
@@ -8974,7 +8975,7 @@ input:focus-visible {
 }
 
 .promotional-banner-item__content {
-    max-width: 200px;
+    /* max-width: 200px; */
 }
 
 @media screen and (max-width: 1399px) {
@@ -9098,6 +9099,13 @@ input:focus-visible {
     aspect-ratio: 1;
     width: 100%;
     height: 100%;
+}
+
+.vendor-card__item img {
+    width: 100% !important;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .vendor-card .vendor-card__list.style-two .vendor-card__item {

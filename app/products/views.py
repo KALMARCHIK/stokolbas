@@ -83,7 +83,7 @@ class MainPageView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['categories'] =  Category.objects.prefetch_related('products').all() 
-        context['suppliers'] = Supplier.objects.all()
+        context['suppliers'] = Supplier.objects.prefetch_related('category').all() 
         return context
 
 class BaseView(ListView):
@@ -93,5 +93,5 @@ class BaseView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['categories'] =  Category.objects.prefetch_related('products').all() 
-        context['suppliers'] = Supplier.objects.all()
+        context['suppliers'] = Supplier.objects.prefetch_related('category').all() 
         return context

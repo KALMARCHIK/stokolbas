@@ -9,7 +9,7 @@
                     <span class="icon line-height-0"><i class="ph ph-caret-double-down"></i></span> 
                 </a>
                 
-                <img src="{% static 'images/bg/banner-bg.png' %}" alt="" class="banner-img position-absolute inset-block-start-0 inset-inline-start-0 w-100 h-100 z-n1 object-fit-cover rounded-24">
+                <img src="{% static 'images/bg/banner-bg.svg' %}" alt="" class="banner-img position-absolute inset-block-start-0 inset-inline-start-0 w-100 h-100 z-n1 object-fit-cover rounded-24">
     
                 <div class="flex-align">
                     <button type="button" id="banner-prev" class="slick-prev slick-arrow flex-center rounded-circle bg-white text-xl hover-bg-main-600 hover-text-white transition-1">
@@ -27,7 +27,7 @@
                                 <div class="banner-item__content">
                                     <h1 class="banner-item__title bounce">{{ supplier.name }}</h1>
                                     <a href="{% url 'category-list' supplier.slug %}" class="btn btn-main d-inline-flex align-items-center rounded-pill gap-8">
-                                        Explore Shop <span class="icon text-xl d-flex"><i class="ph ph-shopping-cart-simple"></i>   </span> 
+                                        Перейти к комбинату <span class="icon text-xl d-flex"><i class="ph ph-shopping-cart-simple"></i>   </span> 
                                     </a>
                                 </div>
                                 <div class="banner-item__thumb">
@@ -41,6 +41,40 @@
         </div>
     </div>
     <!-- ============================ Banner Section End =============================== -->
+    <section class="top-vendors py-80">
+        <div class="container container-lg">
+            <div class="section-heading">
+                <div class="flex-between flex-wrap gap-8">
+                    <h5 class="mb-0">Мясокомбинаты</h5>
+                </div>
+            </div>
+    
+            <div class="row gy-4 vendor-card-wrapper">
+                {% for supplier in suppliers %}
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="vendor-card text-center px-16 pb-24">
+                                <div class="">
+                                    <img src="assets/images/thumbs/vendor-logo1.png" alt="" class="vendor-card__logo m-12">
+                                    <h6 class="title mt-32">{{ supplier.name }}</h6>
+                                    <a href="{% url 'category-list' supplier.slug %}" class="btn btn-main-two rounded-pill py-6 px-16 text-12 mt-8">Перейти</a>
+                                </div>
+                                <div class="vendor-card__list mt-22 flex-center flex-wrap gap-8">
+                                    {% for category in supplier.category.all %}
+                                    <div class="vendor-card__item bg-white rounded-circle flex-center">
+                                        {% if category.image %}
+                                            <img src="{{ category.image.url }}" alt="{{ product.name }}" class="w-auto">
+                                        {% else %}
+                                            <img src="{% static 'images/thumbs/vendor-img1.png' %}" alt="">
+                                        {% endif %}
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                {% endfor %}
+            </div>
+        </div>
+     </section>
     
         <!-- ============================ Feature Section start =============================== -->
     <div class="feature" id="featureSection">

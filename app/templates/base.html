@@ -65,39 +65,19 @@
     <button type="button" class="close-button"> <i class="ph ph-x"></i> </button>
     <div class="mobile-menu__inner">
         <a href="{% url 'main-page' %}" class="mobile-menu__logo">
-            <img src="{% static 'images/logo/logo.png' %}" alt="Logo">
+            <img src="{% static 'images/logo/logo.svg' %}" alt="Logo">
         </a>
         <div class="mobile-menu__menu">
             <!-- Nav Menu Start -->
 <ul class="nav-menu flex-align nav-menu--mobile">
     <li class="on-hover-item nav-menu__item has-submenu">
-        <a href="javascript:void(0)" class="nav-menu__link">Home</a>
-        <ul class="on-hover-dropdown common-dropdown nav-submenu scroll-sm">
-            <li class="common-dropdown__item nav-submenu__item">
-                <a href="index.html" class="common-dropdown__link nav-submenu__link hover-bg-neutral-100"> Home One</a>
-            </li>
-            <li class="common-dropdown__item nav-submenu__item">
-                <a href="index-two.html" class="common-dropdown__link nav-submenu__link hover-bg-neutral-100"> Home Two</a>
-            </li>
-        </ul>
+        <a href="javascript:void(0)" class="nav-menu__link">Главная</a>
+    </li>
+    <li class="on-hover-item nav-menu__item">
+        <a href="javascript:void(0)" class="nav-menu__link">О нас</a>
     </li>
     <li class="on-hover-item nav-menu__item has-submenu">
-        <a href="javascript:void(0)" class="nav-menu__link">Shop</a>
-         <ul class="on-hover-dropdown common-dropdown nav-submenu scroll-sm">
-            <li class="common-dropdown__item nav-submenu__item">
-                <a href="shop.html" class="common-dropdown__link nav-submenu__link hover-bg-neutral-100"> Shop</a>
-            </li>
-            <li class="common-dropdown__item nav-submenu__item">
-                <a href="product-details.html" class="common-dropdown__link nav-submenu__link hover-bg-neutral-100"> Shop Details</a>
-            </li>
-            <li class="common-dropdown__item nav-submenu__item">
-                <a href="product-details-two.html" class="common-dropdown__link nav-submenu__link hover-bg-neutral-100"> Shop Details Two</a>
-            </li>
-        </ul>
-    </li>
-    <li class="on-hover-item nav-menu__item has-submenu">
-        <span class="badge-notification bg-warning-600 text-white text-sm py-2 px-8 rounded-4">New</span>
-        <a href="javascript:void(0)" class="nav-menu__link">Pages</a>
+        <a href="javascript:void(0)" class="nav-menu__link">Регионы</a>
          <ul class="on-hover-dropdown common-dropdown nav-submenu scroll-sm">
             <li class="common-dropdown__item nav-submenu__item">
                 <a href="cart.html" class="common-dropdown__link nav-submenu__link hover-bg-neutral-100"> Cart</a>
@@ -110,19 +90,8 @@
             </li>
         </ul>
     </li>
-    <li class="on-hover-item nav-menu__item has-submenu">
-        <a href="javascript:void(0)" class="nav-menu__link">Blog</a>
-         <ul class="on-hover-dropdown common-dropdown nav-submenu scroll-sm">
-            <li class="common-dropdown__item nav-submenu__item">
-                <a href="blog.html" class="common-dropdown__link nav-submenu__link hover-bg-neutral-100"> Blog</a>
-            </li>
-            <li class="common-dropdown__item nav-submenu__item">
-                <a href="blog-details.html" class="common-dropdown__link nav-submenu__link hover-bg-neutral-100"> Blog Details</a>
-            </li>
-        </ul>
-    </li>
     <li class="nav-menu__item">
-        <a href="contact.html" class="nav-menu__link">Contact Us</a>
+        <a href="contact.html" class="nav-menu__link">Контакты</a>
     </li>
 </ul>
 <!-- Nav Menu End -->
@@ -261,33 +230,25 @@
             <!-- Logo Start -->
             <div class="logo">
                 <a href="{% url 'main-page' %}" class="link">
-                    <img src="{% static 'images/logo/logo.png' %}" alt="Logo">
+                    <img src="{% static 'images/logo/logo.svg' %}" alt="Logo">
                 </a>
             </div>
             <!-- Logo End  -->
+            <div class="search-category d-flex h-48 select-border-end-0 radius-end-0 search-form d-sm-flex d-none">
+                <select class="js-example-basic-single border border-gray-200 border-end-0" name="state">
+                    <option value="1" selected disabled>Все категории</option>
+                    {% for category in categories %}
+                    <option value="1">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
 
+                <div class="search-form__wrapper position-relative">
+                    <input type="text" class="search-form__input common-input py-13 ps-16 pe-18 rounded-end-pill pe-44" placeholder="Search for a product or brand">
+                    <button type="submit" class="w-32 h-32 bg-main-600 rounded-circle flex-center text-xl text-white position-absolute top-50 translate-middle-y inset-inline-end-0 me-8"><i class="ph ph-magnifying-glass"></i></button>
+                </div>
+            </div>
             <!-- form location Start -->
             <form action="#" class="flex-align flex-wrap form-location-wrapper">
-                <div class="search-category d-flex h-48 select-border-end-0 radius-end-0 search-form d-sm-flex d-none">
-                    <select class="js-example-basic-single border border-gray-200 border-end-0" name="state">
-                        <option value="1" selected disabled>All Categories</option>
-                        <option value="1">Grocery</option>
-                        <option value="1">Breakfast & Dairy</option>
-                        <option value="1">Vegetables</option>
-                        <option value="1">Milks and Dairies</option>
-                        <option value="1">Pet Foods & Toy</option>
-                        <option value="1">Breads & Bakery</option>
-                        <option value="1">Fresh Seafood</option>
-                        <option value="1">Fronzen Foods</option>
-                        <option value="1">Noodles & Rice</option>
-                        <option value="1">Ice Cream</option>
-                    </select>
-    
-                    <div class="search-form__wrapper position-relative">
-                        <input type="text" class="search-form__input common-input py-13 ps-16 pe-18 rounded-end-pill pe-44" placeholder="Search for a product or brand">
-                        <button type="submit" class="w-32 h-32 bg-main-600 rounded-circle flex-center text-xl text-white position-absolute top-50 translate-middle-y inset-inline-end-0 me-8"><i class="ph ph-magnifying-glass"></i></button>
-                    </div>
-                </div>
 
                 <div class="location-box bg-white flex-align gap-8 py-6 px-16 rounded-pill border border-gray-100">
                     <span class="text-gray-900 text-xl d-xs-flex d-none"><i class="ph ph-map-pin"></i></span>
@@ -316,29 +277,7 @@
             <!-- form location start -->
              
             <!-- Header Middle Right start -->
-            <div class="header-right flex-align d-lg-block d-none">
-                <div class="flex-align flex-wrap gap-12">
-    <button type="button" class="search-icon flex-align d-lg-none d-flex gap-4 item-hover">
-        <span class="text-2xl text-gray-700 d-flex position-relative item-hover__text">
-            <i class="ph ph-magnifying-glass"></i>
-        </span>
-    </button>
-    <a href="cart.html" class="flex-align gap-4 item-hover">
-        <span class="text-2xl text-gray-700 d-flex position-relative me-6 mt-6 item-hover__text">
-            <i class="ph ph-heart"></i>
-            <span class="w-16 h-16 flex-center rounded-circle bg-main-600 text-white text-xs position-absolute top-n6 end-n4">2</span>
-        </span>
-        <span class="text-md text-gray-500 item-hover__text d-none d-lg-flex">Wishlist</span>
-    </a>
-    <a href="cart.html" class="flex-align gap-4 item-hover">
-        <span class="text-2xl text-gray-700 d-flex position-relative me-6 mt-6 item-hover__text">
-            <i class="ph ph-shopping-cart-simple"></i>
-            <span class="w-16 h-16 flex-center rounded-circle bg-main-600 text-white text-xs position-absolute top-n6 end-n4">2</span>
-        </span>
-        <span class="text-md text-gray-500 item-hover__text d-none d-lg-flex">Cart</span>
-    </a>
-</div>
-            </div>
+            
             <!-- Header Middle Right End  -->
         </nav>
     </div>
@@ -354,8 +293,8 @@
                 <div class="category on-hover-item">
                     <button type="button" class="category__button flex-align gap-8 fw-medium p-16 border-end border-start border-gray-100 text-heading">
                         <span class="icon text-2xl d-xs-flex d-none"><i class="ph ph-dots-nine"></i></span>
-                        <span class="d-sm-flex d-none">Все</span>  категорий
-                        <span class="arrow-icon text-xl d-flex"><i class="ph ph-caret-down"></i></span>
+                        <span class="d-sm-flex d-none">Мясокомбинаты
+                        <span class="arrow-icon text-xl d-flex align-items-center ms-1"><i class="ph ph-caret-down"></i></span>
                     </button>
 
                     <div class="responsive-dropdown on-hover-dropdown common-dropdown nav-submenu p-0 submenus-submenu-wrapper">
@@ -365,26 +304,26 @@
                         <!-- Logo Start -->
                         <div class="logo px-16 d-lg-none d-block">
                             <a href="{% url 'main-page' %}" class="link">
-                                <img src="{% static 'images/logo/logo.png' %}" alt="Logo">
+                                <img src="{% static 'images/logo/logo.svg' %}" alt="Logo">
                             </a>
                         </div>
                         <!-- Logo End -->
 
                         <ul class="scroll-sm p-0 py-8 w-300 max-h-400 overflow-y-auto">
-                            {% for category in categories %}
+                            {% for supplier in suppliers %}
                                 <li class="has-submenus-submenu">
-                                    <a href="{% url 'product-list' category.supplier.slug category.slug %}" class="text-gray-500 text-15 py-12 px-16 flex-align gap-8 rounded-0">
+                                    <a href="{% url 'category-list' supplier.slug %}" class="text-gray-500 text-15 py-12 px-16 flex-align gap-8 rounded-0">
                                         <span class="text-xl d-flex"><i class="ph ph-carrot"></i></span>
-                                        <span>{{category.name}}</span>
+                                        <span>{{supplier.name}}</span>
                                         <span class="icon text-md d-flex ms-auto"><i class="ph ph-caret-right"></i></span>
                                     </a>
         
                                     <div class="submenus-submenu py-16">
-                                        <h6 class="text-lg px-16 submenus-submenu__title">{{category.name}}</h6>
+                                        <h6 class="text-lg px-16 submenus-submenu__title">{{supplier.name}}</h6>
                                         <ul class="submenus-submenu__list max-h-300 overflow-y-auto scroll-sm">
-                                            {% for product in category.products.all %}
+                                            {% for category in supplier.category.all %}
                                                 <li>
-                                                    <a href="{% url 'product-detail' product.supplier.slug product.category.slug product.slug %}">{{ product.name }}</a>
+                                                    <a href="{% url 'product-list' category.supplier.slug category.slug %}">{{ category.name }}</a>
                                                 </li>
                                             {% endfor %}
                                         </ul>
@@ -401,34 +340,14 @@
                 <div class="header-menu d-lg-block d-none">
                     <!-- Nav Menu Start -->
 <ul class="nav-menu flex-align ">
-    <li class="on-hover-item nav-menu__item has-submenu">
-        <a href="javascript:void(0)" class="nav-menu__link">Home</a>
-        <ul class="on-hover-dropdown common-dropdown nav-submenu scroll-sm">
-            <li class="common-dropdown__item nav-submenu__item">
-                <a href="index.html" class="common-dropdown__link nav-submenu__link hover-bg-neutral-100"> Home One</a>
-            </li>
-            <li class="common-dropdown__item nav-submenu__item">
-                <a href="index-two.html" class="common-dropdown__link nav-submenu__link hover-bg-neutral-100"> Home Two</a>
-            </li>
-        </ul>
+    <li class="on-hover-item nav-menu__item">
+        <a href="javascript:void(0)" class="nav-menu__link">Главная</a>
+    </li>
+    <li class="on-hover-item nav-menu__item">
+        <a href="javascript:void(0)" class="nav-menu__link">О нас</a>
     </li>
     <li class="on-hover-item nav-menu__item has-submenu">
-        <a href="javascript:void(0)" class="nav-menu__link">Shop</a>
-         <ul class="on-hover-dropdown common-dropdown nav-submenu scroll-sm">
-            <li class="common-dropdown__item nav-submenu__item">
-                <a href="shop.html" class="common-dropdown__link nav-submenu__link hover-bg-neutral-100"> Shop</a>
-            </li>
-            <li class="common-dropdown__item nav-submenu__item">
-                <a href="product-details.html" class="common-dropdown__link nav-submenu__link hover-bg-neutral-100"> Shop Details</a>
-            </li>
-            <li class="common-dropdown__item nav-submenu__item">
-                <a href="product-details-two.html" class="common-dropdown__link nav-submenu__link hover-bg-neutral-100"> Shop Details Two</a>
-            </li>
-        </ul>
-    </li>
-    <li class="on-hover-item nav-menu__item has-submenu">
-        <span class="badge-notification bg-warning-600 text-white text-sm py-2 px-8 rounded-4">New</span>
-        <a href="javascript:void(0)" class="nav-menu__link">Pages</a>
+        <a href="javascript:void(0)" class="nav-menu__link">Регионы</a>
          <ul class="on-hover-dropdown common-dropdown nav-submenu scroll-sm">
             <li class="common-dropdown__item nav-submenu__item">
                 <a href="cart.html" class="common-dropdown__link nav-submenu__link hover-bg-neutral-100"> Cart</a>
@@ -441,19 +360,8 @@
             </li>
         </ul>
     </li>
-    <li class="on-hover-item nav-menu__item has-submenu">
-        <a href="javascript:void(0)" class="nav-menu__link">Blog</a>
-         <ul class="on-hover-dropdown common-dropdown nav-submenu scroll-sm">
-            <li class="common-dropdown__item nav-submenu__item">
-                <a href="blog.html" class="common-dropdown__link nav-submenu__link hover-bg-neutral-100"> Blog</a>
-            </li>
-            <li class="common-dropdown__item nav-submenu__item">
-                <a href="blog-details.html" class="common-dropdown__link nav-submenu__link hover-bg-neutral-100"> Blog Details</a>
-            </li>
-        </ul>
-    </li>
     <li class="nav-menu__item">
-        <a href="contact.html" class="nav-menu__link">Contact Us</a>
+        <a href="contact.html" class="nav-menu__link">Контакты</a>
     </li>
 </ul>
 <!-- Nav Menu End -->
@@ -474,20 +382,6 @@
             <i class="ph ph-magnifying-glass"></i>
         </span>
     </button>
-    <a href="cart.html" class="flex-align gap-4 item-hover">
-        <span class="text-2xl text-gray-700 d-flex position-relative me-6 mt-6 item-hover__text">
-            <i class="ph ph-heart"></i>
-            <span class="w-16 h-16 flex-center rounded-circle bg-main-600 text-white text-xs position-absolute top-n6 end-n4">2</span>
-        </span>
-        <span class="text-md text-gray-500 item-hover__text d-none d-lg-flex">Wishlist</span>
-    </a>
-    <a href="cart.html" class="flex-align gap-4 item-hover">
-        <span class="text-2xl text-gray-700 d-flex position-relative me-6 mt-6 item-hover__text">
-            <i class="ph ph-shopping-cart-simple"></i>
-            <span class="w-16 h-16 flex-center rounded-circle bg-main-600 text-white text-xs position-absolute top-n6 end-n4">2</span>
-        </span>
-        <span class="text-md text-gray-500 item-hover__text d-none d-lg-flex">Cart</span>
-    </a>
 </div>
                 </div>
                 <button type="button" class="toggle-mobileMenu d-lg-none ms-3n text-gray-800 text-4xl d-flex"> <i class="ph ph-list"></i> </button>
@@ -519,7 +413,7 @@
         <div class="footer-item-wrapper d-flex align-items-start flex-wrap">
             <div class="footer-item">
                 <div class="footer-item__logo">
-                    <a href="{% url 'main-page' %}"> <img src="{% static 'images/logo/logo.png' %}" alt=""></a>
+                    <a href="{% url 'main-page' %}"> <img src="{% static 'images/logo/logo.svg' %}" alt=""></a>
                 </div>
                 <p class="mb-24">We're Grocery Shop, an innovative team of food supliers.</p>
                 <div class="flex-align gap-16 mb-16">
