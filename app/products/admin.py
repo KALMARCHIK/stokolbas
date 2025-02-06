@@ -31,7 +31,7 @@ class ProductAdmin(admin.ModelAdmin):
         pinski = []
         borisovski = []
 
-        from parsers.kalinko_parser import kalinko_parser
+        from parsers.kalinko_parser import kalinko_parser, save_image
         from parsers.bereza_parser import bereza_parser
         for i in queryset:
             if i.supplier == 'Березовский мясоконсервный комбинат':
@@ -43,7 +43,7 @@ class ProductAdmin(admin.ModelAdmin):
             elif i.supplier == 'Борисовский мясоконсервный комбинат':
                 borisovski.append(i)
         
-        kalinko_parser(kalinko)
+        save_image()
         bereza_parser(berez)
 
 
