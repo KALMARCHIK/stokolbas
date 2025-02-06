@@ -90,7 +90,7 @@ docker-compose down -v
 
 ---
 
-- Пароль Admin для продакшена:
+- Пароль Admin для локальной разработки:
 
 ```
 Login: developer
