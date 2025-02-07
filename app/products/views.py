@@ -1,7 +1,48 @@
 from django.shortcuts import get_object_or_404
-from django.views.generic import DetailView, ListView, TemplateView
-from products.models import Supplier, Product, Category, Regions
+from django.views.generic import DetailView, ListView, TemplateView, CreateView
+from products.models import Supplier, Product, Category, Regions, Feedback
+from products.forms import FeedbackForm
+from django.urls import reverse_lazy
+# from django.core.mail import send_mail
+import requests
+import logging 
+import os
 
+logger = logging.getLogger(__name__)
+
+
+# WHATSAPP_API_URL = "https://api.whatsapp.com/send?phone=89959069468&text="
+
+class FeedbackCreateView(CreateView):
+    model = Feedback
+    form_class = FeedbackForm
+    template_name = "feedback.html"
+    success_url = reverse_lazy("feedback_success")  # Перенаправление после успешной отправки
+
+    def form_valid(self, form):
+        feedback = form.save()
+
+        # Отправка email
+        # send_mail(
+        #     subject="Новая заявка на обратную связь",
+        #     message=f"Имя: {feedback.name}\nТелефон: {feedback.phone}\nГород: {feedback.city}\nСообщение: {feedback.message}",
+        #     from_email="jora.tzvetkov@gmail.com",
+        #     recipient_list=["dasaspic46@gmail.com"]
+        # )
+
+        # Отправка в Telegram
+        try:
+            text = f"📩 Новая заявка!\n\n👤 Имя: {feedback.name}\n📞 Телефон: {feedback.phone}\n🏙 Город: {feedback.city}\n✉ Сообщение: {feedback.message}"
+            url = f"https://api.telegram.org/bot{os.getenv('TELEGRAM_BOT_TOKEN')}/sendMessage"
+            data = {"chat_id": os.getenv('TELEGRAM_CHAT_ID'), "text": text}
+            response = requests.post(url, data=data)
+            response_data = response.json()
+            if not response_data.get("ok"):  # Если Telegram API вернул ошибку
+                logger.error(f"Ошибка Telegram API: {response_data}")
+        except Exception as e:
+            logger.error(f"Ошибка отправки в Telegram: {e}")
+
+        return super().form_valid(form)
 
 class SupplierListView(ListView):
     model = Supplier

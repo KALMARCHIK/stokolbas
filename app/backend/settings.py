@@ -97,7 +97,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 if ENV == "development":
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'static'),
-        os.path.join(BASE_DIR, 'test_templates/assets'),
+        # os.path.join(BASE_DIR, 'test_templates/assets'),
     ]
 
 # HTTPS и безопасность для продакшена

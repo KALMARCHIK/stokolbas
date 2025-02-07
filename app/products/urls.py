@@ -9,14 +9,22 @@ from products.views import (
     RegionsDetailView,
     ContactsView,
     SupplierListView,
-    MainPageView
+    MainPageView,
+    FeedbackCreateView,
 )
 
 urlpatterns = [
     path('',  
         MainPageView.as_view(), 
         name='main-page'),
-        
+
+    path("feedback/", 
+        FeedbackCreateView.as_view(), 
+        name="feedback",
+        ),
+
+    path('', MainPageView.as_view(), name='feedback_success'),
+    
     path('suppliers/', 
         SupplierListView.as_view(), 
         name='supplier-list',
