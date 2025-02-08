@@ -3,31 +3,32 @@ services:
     image: postgres:15
     restart: always
     env_file:
-      - .env
+      - .env_dev
     expose:
       - "5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
-      interval: 10s
-      retries: 5
+    # healthcheck:
+    #   test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"]
+    #   interval: 10s
+    #   retries: 5
 
   web:
     build:
       context: .
-      dockerfile: Dockerfile.dev  # Используем Dockerfile.dev
+      dockerfile: Dockerfile.dev
     restart: always
     depends_on:
       - db
     ports:
       - "8000:8000"
     env_file:
-      - .env
+      - .env_dev
+      # Добавляем запуск entrypoint
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
     volumes:
       - .:/app  # Синхронизируем код с контейнером
-    command: >
-      sh -c "python manage.py runserver 0.0.0.0:8000"
+
 
 volumes:
   pgdata:
