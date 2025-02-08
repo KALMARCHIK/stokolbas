@@ -1,17 +1,41 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Список категорий{% endblock %}
 
 {% block content %}
-    <h1>Список категорий</h1>
-    <ul>
-        {% for category in categories %}
-            <li>
-                <a href="{% url 'product-list' category.supplier.slug category.slug %}">
-                    {{ category.name }}
-                    {{ category }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
+    <!--================= Newsletter Section Start Here =================-->
+    <div class="rts-best-catagory-section2 section-gap">
+        <div class="container">
+            <div class="row justify-content-center">
+                {% for category in categories %}
+                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                        <div class="catagory-card">
+                            <div class="contents">
+                                <h3 class="catagory-title">{{ category.name }}</h3>
+                                <ul class="catagory-lists">
+                                    <li><a href="category.html">iPhone <i class="fal fa-angle-right"></i></a></li>
+                                    <li><a href="category.html">Phone Accessories <i class="fal fa-angle-right"></i></a>
+                                    </li>
+                                    <li><a href="category.html">Phone Cases <i class="fal fa-angle-right"></i></a></li>
+                                    <li><a href="category.html">Postpaid Phones <i class="fal fa-angle-right"></i></a></li>
+                                </ul>
+                                <a href="{% url 'product-list' category.supplier.slug category.slug %}" class="all-btn">Перейти <i
+                                        class="fal fa-long-arrow-right ml--5"></i></a>
+                            </div>
+                            <div class="category-thumb">
+                                {% if category.image %}
+                                        <img src="{{ category.image.url }}" alt="{{ product.name }}">
+                                    {% else %}
+                                        <img src="{% static 'images/products/home4/catagory/1.png' %}"
+                                        alt="category-thumb">
+                                    {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!--================= Newsletter Section End Here =================-->
 {% endblock %}

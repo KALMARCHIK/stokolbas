@@ -1,983 +1,1479 @@
 (function ($) {
   "use strict";
-  
-  // ==========================================
-  //      Start Document Ready function
-  // ==========================================
-  $(document).ready(function () {
-    
-  // ============== Mobile Menu Sidebar & Offcanvas Js Start ========
-  $('.toggle-mobileMenu').on('click', function () {
-    $('.mobile-menu').addClass('active');
-    $('.side-overlay').addClass('show');
-    $('body').addClass('scroll-hide-sm');
-  }); 
 
-  $('.close-button, .side-overlay').on('click', function () {
-    $('.mobile-menu').removeClass('active');
-    $('.side-overlay').removeClass('show');
-    $('body').removeClass('scroll-hide-sm');
-  }); 
-  // ============== Mobile Menu Sidebar & Offcanvas Js End ========
-  
-  // ============== Mobile Nav Menu Dropdown Js Start =======================
-  var windowWidth = $(window).width(); 
-  
-  $('.has-submenu').on('click', function () {
-    var thisItem = $(this); 
-    
-    if(windowWidth < 992) {
-      if(thisItem.hasClass('active')) {
-        thisItem.removeClass('active')
-      } else {
-        $('.has-submenu').removeClass('active')
-        $(thisItem).addClass('active')
-      }
-      
-      var submenu = thisItem.find('.nav-submenu');
-      
-      $('.nav-submenu').not(submenu).slideUp(300);
-      submenu.slideToggle(300);
-    }
-    
-  });
-  // ============== Mobile Nav Menu Dropdown Js End =======================
-    
-  // ===================== Scroll Back to Top Js Start ======================
-  var progressPath = document.querySelector('.progress-wrap path');
-  var pathLength = progressPath.getTotalLength();
-  progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
-  progressPath.style.strokeDasharray = pathLength + ' ' + pathLength;
-  progressPath.style.strokeDashoffset = pathLength;
-  progressPath.getBoundingClientRect();
-  progressPath.style.transition = progressPath.style.WebkitTransition = 'stroke-dashoffset 10ms linear';
-  var updateProgress = function () {
-    var scroll = $(window).scrollTop();
-    var height = $(document).height() - $(window).height();
-    var progress = pathLength - (scroll * pathLength / height);
-    progressPath.style.strokeDashoffset = progress;
-  }
-  updateProgress();
-  $(window).scroll(updateProgress);
-  var offset = 50;
-  var duration = 550;
-  jQuery(window).on('scroll', function() {
-    if (jQuery(this).scrollTop() > offset) {
-      jQuery('.progress-wrap').addClass('active-progress');
-    } else {
-      jQuery('.progress-wrap').removeClass('active-progress');
-    }
-  });
-  jQuery('.progress-wrap').on('click', function(event) {
-    event.preventDefault();
-    jQuery('html, body').animate({scrollTop: 0}, duration);
-    return false;
+  //preloader
+  $(window).on('load', function () {
+    $("#rts__preloader").delay(0).fadeOut(1000);
   })
-  // ===================== Scroll Back to Top Js End ======================
+  $(window).on('load', function () {
+    $("#weiboo-load").delay(0).fadeOut(1000);
+  })
 
-  // ========================== add active class to ul>li top Active current page Js Start =====================
-  function dynamicActiveMenuClass(selector) {
-    let FileName = window.location.pathname.split("/").reverse()[0];
-
-    selector.find("li").each(function () {
-      let anchor = $(this).find("a");
-      if ($(anchor).attr("href") == FileName) {
-        $(this).addClass("activePage");
+  // Common-slider
+  var swiper = new Swiper(".rts-cmmnSlider", {
+    slidesPerView: 4,
+    spaceBetween: 30,
+    slidesPerGroup: 1,
+    speed: 1500,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    centeredSlides: false,
+    breakpoints: {
+      1200: {
+        slidesPerView: 4,
+      },
+      900: {
+        slidesPerView: 3,
+      },
+      768: {
+        slidesPerView: 3,
+      },
+      580: {
+        slidesPerView: 2,
+      },
+      0: {
+        slidesPerView: 1,
       }
-    });
-    // if any li has activePage element add class
-    selector.children("li").each(function () {
-      if ($(this).find(".activePage").length) {
-        $(this).addClass("activePage");
-      }
-    });
-    // if no file name return
-    if ("" == FileName) {
-      selector.find("li").eq(0).addClass("activePage");
+    },
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pag",
+      clickable: true,
     }
+  });
+  // Common-slider-over
+  var swiper = new Swiper(".rts-cmmnSlider-over", {
+    slidesPerView: 4,
+    spaceBetween: 30,
+    slidesPerGroup: 2,
+    speed: 1500,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    centeredSlides: false,
+    breakpoints: {
+      1600: {
+        slidesPerView: 4,
+      },
+      1300: {
+        slidesPerView: 4,
+      },
+      1220: {
+        slidesPerView: 4,
+      },
+      1200: {
+        slidesPerView: 3,
+      },
+      900: {
+        slidesPerView: 3,
+      },
+      768: {
+        slidesPerView: 2,
+      },
+      633: {
+        slidesPerView: 2,
+      },
+      500: {
+        slidesPerView: 1,
+      },
+      0: {
+        slidesPerView: 1,
+      }
+    },
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: true
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pag",
+      clickable: true,
+    }
+  });
+  // Common-slider-over
+  var swiper = new Swiper(".rts-cmmnSlider-over2", {
+    slidesPerView: 4,
+    spaceBetween: 30,
+    slidesPerGroup: 1,
+    speed: 1500,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    centeredSlides: false,
+    breakpoints: {
+      1600: {
+        slidesPerView: 5,
+      },
+      1300: {
+        slidesPerView: 5.6,
+      },
+      1220: {
+        slidesPerView: 5,
+      },
+      1200: {
+        slidesPerView: 4.5,
+      },
+      900: {
+        slidesPerView: 3,
+      },
+      768: {
+        slidesPerView: 2,
+      },
+      633: {
+        slidesPerView: 2,
+      },
+      500: {
+        slidesPerView: 1,
+      },
+      0: {
+        slidesPerView: 1,
+      }
+    },
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: true
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pag",
+      clickable: true,
+    }
+  });
+  // Common-slider-over
+  var swiper = new Swiper(".rts-cmmnSlider-over3", {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    slidesPerGroup: 1,
+    speed: 1500,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    centeredSlides: false,
+    breakpoints: {
+      1600: {
+        slidesPerView: 3,
+      },
+      1300: {
+        slidesPerView: 3,
+      },
+      1220: {
+        slidesPerView: 3,
+      },
+      1200: {
+        slidesPerView: 3,
+      },
+      900: {
+        slidesPerView: 2,
+      },
+      576: {
+        slidesPerView: 2,
+      },
+      0: {
+        slidesPerView: 1,
+      }
+    },
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: true
+    },
+    navigation: {
+      prevEl: ".swiper-button-prev",
+      nextEl: ".swiper-button-next",
+    },
+    pagination: {
+      el: ".swiper-pag",
+      clickable: true,
+    }
+  });
+  // Common-slider-over
+  var swiper = new Swiper(".rts-fiveSlide", {
+    slidesPerView: 5,
+    spaceBetween: 10,
+    slidesPerGroup: 1,
+    speed: 1500,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    centeredSlides: false,
+    breakpoints: {
+      1600: {
+        slidesPerView: 5,
+      },
+      1300: {
+        slidesPerView: 5,
+      },
+      1220: {
+        slidesPerView: 5,
+      },
+      1200: {
+        slidesPerView: 4,
+      },
+      900: {
+        slidesPerView: 3,
+      },
+      768: {
+        slidesPerView: 3,
+      },
+      633: {
+        slidesPerView: 3,
+      },
+      500: {
+        slidesPerView: 2,
+      },
+      0: {
+        slidesPerView: 1,
+      }
+    },
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: true
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pag",
+      clickable: true,
+    }
+  });
+  // Common-slider-over
+  var swiper = new Swiper(".rts-sixSlide-over", {
+    slidesPerView: 4,
+    spaceBetween: 30,
+    slidesPerGroup: 1,
+    speed: 1500,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    centeredSlides: false,
+    breakpoints: {
+      1600: {
+        slidesPerView: 5,
+      },
+      1300: {
+        slidesPerView: 5.6,
+      },
+      1220: {
+        slidesPerView: 5,
+      },
+      1200: {
+        slidesPerView: 4.5,
+      },
+      900: {
+        slidesPerView: 3,
+      },
+      768: {
+        slidesPerView: 3,
+      },
+      633: {
+        slidesPerView: 3,
+      },
+      500: {
+        slidesPerView: 2,
+      },
+      0: {
+        slidesPerView: 1,
+      }
+    },
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: true
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pag",
+      clickable: true,
+    }
+  });
+  // Common-slider-over
+  var swiper = new Swiper(".rts-brandSlide1", {
+    slidesPerView: 4,
+    spaceBetween: 30,
+    slidesPerGroup: 1,
+    speed: 1500,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    centeredSlides: false,
+    breakpoints: {
+      1600: {
+        slidesPerView: 6,
+      },
+      1300: {
+        slidesPerView: 6,
+      },
+      1220: {
+        slidesPerView: 5,
+      },
+      1200: {
+        slidesPerView: 5,
+      },
+      900: {
+        slidesPerView: 4,
+      },
+      768: {
+        slidesPerView: 3,
+      },
+      633: {
+        slidesPerView: 3,
+      },
+      500: {
+        slidesPerView: 2,
+      },
+      0: {
+        slidesPerView: 1,
+      }
+    },
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: true
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pag",
+      clickable: true,
+    }
+  });
+  // Common-slider-over
+  var swiper = new Swiper(".rts-topSlide1", {
+    slidesPerView: 3,
+    spaceBetween: 0,
+    slidesPerGroup: 1,
+    speed: 700,   
+    loop: false,
+    loopFillGroupWithBlank: false,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: true
+    },
+    centeredSlides: false,
+    breakpoints: {
+      1500: {
+        slidesPerView: 1,
+      },
+      991: {
+        slidesPerView: 1,
+      },
+      767: {
+        slidesPerView: 1,
+      },
+      575: {
+        slidesPerView: 1,
+      },
+      0: {
+        slidesPerView: 1,
+      }
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    }
+  });
+  var swiper = new Swiper(".rts-topSlide2", {
+    slidesPerView: 4,
+    spaceBetween: 30,
+    slidesPerGroup: 1,
+    speed: 1500,
+    loop: false,
+    autoplay: false,
+    loopFillGroupWithBlank: true,
+    centeredSlides: false,
+    breakpoints: {
+      1600: {
+        slidesPerView: 1,
+      },
+      1300: {
+        slidesPerView: 1,
+      },
+      1220: {
+        slidesPerView: 1,
+      },
+      1200: {
+        slidesPerView: 1,
+      },
+      900: {
+        slidesPerView: 1,
+      },
+      768: {
+        slidesPerView: 1,
+      },
+      633: {
+        slidesPerView: 1,
+      },
+      500: {
+        slidesPerView: 1,
+      },
+      0: {
+        slidesPerView: 1,
+      }
+    },
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: true
+    },
+    pagination: {
+      el: ".swiper-pag",
+      clickable: true,
+    }
+  });
+
+
+  // feature-slider
+  var swiper = new Swiper(".rts-featureSlider", {
+    slidesPerView: 4,
+    spaceBetween: 30,
+    slidesPerGroup: 1,
+    speed: 1500,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    centeredSlides: false,
+    breakpoints: {
+      1200: {
+        slidesPerView: 4,
+      },
+      1093: {
+        slidesPerView: 4,
+        spaceBetween: 0,
+      },
+      991: {
+        slidesPerView: 4,
+        spaceBetween: 10,
+      },
+      800: {
+        slidesPerView: 3,
+      },
+      575: {
+        slidesPerView: 2,
+        spaceBetween: 0,
+
+      },
+      520: {
+        slidesPerView: 2,
+        spaceBetween: 10,
+
+      },
+      0: {
+        slidesPerView: 1,
+        spaceBetween: 0,
+      }
+    },
+    autoplay: {
+      delay: 25000,
+      disableOnInteraction: false
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pag",
+      clickable: true,
+    }
+  });
+  // three-slider
+  var swiper = new Swiper(".rts-threeSlider", {
+    slidesPerView: 3,
+    spaceBetween: 0,
+    slidesPerGroup: 1,
+    speed: 1500,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    centeredSlides: false,
+
+    breakpoints: {
+      1500: {
+        slidesPerView: 3,
+      },
+      1200: {
+        slidesPerView: 3,
+      },
+      991: {
+        slidesPerView: 2,
+      },
+      880: {
+        slidesPerView: 2,
+      },
+      575: {
+        slidesPerView: 1,
+      },
+      0: {
+        slidesPerView: 1,
+      }
+    },
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pag",
+      clickable: true,
+    }
+  });
+
+  /* magnificPopup video view */
+  $('.popup-videos').magnificPopup({
+    type: 'iframe'
+  });
+
+  // One Group slider
+  var swiper = new Swiper(".rts-oneGroupSlider", {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    slidesPerGroup: 1,
+    speed: 1500,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    centeredSlides: false,
+    breakpoints: {
+      1500: {
+        slidesPerView: 1,
+      },
+      991: {
+        slidesPerView: 1,
+      },
+      767: {
+        slidesPerView: 1,
+      },
+      575: {
+        slidesPerView: 1,
+      },
+      0: {
+        slidesPerView: 1,
+      }
+    },
+    pagination: {
+      el: ".swiper-pag",
+      clickable: true,
+    }
+  });
+
+  // banner slider
+  var swiper = new Swiper(".bannerSlide", {
+    slidesPerView: 3,
+    spaceBetween: 0,
+    slidesPerGroup: 1,
+    speed: 700,
+    effect: 'fade',
+    loop: false,
+    loopFillGroupWithBlank: false,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false
+    },
+    centeredSlides: false,
+    breakpoints: {
+      1500: {
+        slidesPerView: 1,
+      },
+      991: {
+        slidesPerView: 1,
+      },
+      767: {
+        slidesPerView: 1,
+      },
+      575: {
+        slidesPerView: 1,
+      },
+      0: {
+        slidesPerView: 1,
+      }
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    }
+  });
+  // banner slider
+  var swiper = new Swiper(".bannerSlide2", {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    slidesPerGroup: 1,
+    speed: 700,
+    effect: 'fade',
+    loop: false,
+    loopFillGroupWithBlank: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false
+    },
+    centeredSlides: false,
+    breakpoints: {
+      1500: {
+        slidesPerView: 1,
+      },
+      991: {
+        slidesPerView: 1,
+      },
+      767: {
+        slidesPerView: 1,
+      },
+      575: {
+        slidesPerView: 1,
+      },
+      0: {
+        slidesPerView: 1,
+      }
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    }
+  });
+
+
+  var swiper = new Swiper(".oneSlide", {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    slidesPerGroup: 1,
+    speed: 700,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    centeredSlides: false,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pag",
+      clickable: true
+    }
+  });
+
+
+  // Testimonial slide
+  var menu = ['', '', '', '']
+  var swiper = new Swiper(".testimonialSlide", {
+    slidesPerView: 5,
+    spaceBetween: 10,
+    slidesPerGroup: 1,
+    speed: 1500,
+    loop: true,
+    autoplay: true,
+    loopFillGroupWithBlank: true,
+    centeredSlides: false,
+    breakpoints: {
+      1500: {
+        slidesPerView: 1,
+      },
+      992: {
+        slidesPerView: 1,
+      },
+      991: {
+        slidesPerView: 1,
+      },
+      600: {
+        slidesPerView: 1,
+      },
+      450: {
+        slidesPerView: 1,
+      },
+      0: {
+        slidesPerView: 1,
+      }
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+      renderBullet: function (index, className) {
+        return '<span class="' + className + '">' + (menu[index]) + '</span>';
+      },
+    },
+  });
+
+  // No gap slide
+  var swiper = new Swiper(".noGapSlide", {
+    slidesPerView: 5,
+    spaceBetween: 10,
+    slidesPerGroup: 1,
+    speed: 1500,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    centeredSlides: false,
+    breakpoints: {
+      1500: {
+        slidesPerView: 5,
+      },
+      992: {
+        slidesPerView: 4,
+      },
+      991: {
+        slidesPerView: 3,
+      },
+      600: {
+        slidesPerView: 3,
+      },
+      450: {
+        slidesPerView: 2,
+      },
+      0: {
+        slidesPerView: 2,
+      }
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    }
+  });
+
+  // productSlide
+  var swiper = new Swiper(".productSlide", {
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    speed: 500,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    centeredSlides: false,
+    navigation: {
+      nextEl: ".button-next",
+      prevEl: ".button-prev",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    }
+  });
+  // productSlide2
+  var swiper2 = new Swiper(".productSlide2", {
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    speed: 500,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    centeredSlides: false,
+    navigation: {
+      nextEl: ".button-next2",
+      prevEl: ".button-prev2",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    }
+  });
+  // productSlide3
+  var swiper3 = new Swiper(".productSlide3", {
+    slidesPerView: 1,
+    slidesPerGroup: 1,
+    speed: 500,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    centeredSlides: false,
+    navigation: {
+      nextEl: ".button-next3",
+      prevEl: ".button-prev3",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    }
+  });
+
+
+  var swiperthumb = new Swiper(".productGallerySlideThumb", {
+    spaceBetween: 10,
+    slidesPerView: 4,
+    freeMode: true,
+    watchSlidesProgress: true,
+  });
+
+  var swiper = new Swiper(".productGallerySlide", {
+    spaceBetween: 10,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    thumbs: {
+      swiper: swiperthumb,
+    },
+  });
+
+  var swiperthumb2 = new Swiper(".productGallerySlideThumb2", {
+    spaceBetween: 10,
+    slidesPerView: 4,
+    freeMode: true,
+    watchSlidesProgress: true,
+  });
+
+  var swiper2 = new Swiper(".productGallerySlide2", {
+    spaceBetween: 10,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    thumbs: {
+      swiper: swiperthumb2,
+    },
+  });
+
+  //nice-select
+  $(document).ready(function () {
+    $('.filters-select').niceSelect();
+  });
+
+  // Video Popup
+  if ($(".play-video").length) {
+    $('.play-video').magnificPopup({
+      delegate: 'a',
+      type: 'iframe',
+      removalDelay: 0,
+      callbacks: {
+        beforeOpen: function () {
+          this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-with-anim');
+          this.st.mainClass = this.st.el.attr('data-effect');
+        }
+      },
+      closeOnContentClick: true,
+      midClick: true
+    });
   }
-  if ($('ul').length) {
-    dynamicActiveMenuClass($('ul'));
-  }
-  // ========================== add active class to ul>li top Active current page Js End =====================
 
-  
-  // ========================== Select2 Js Start =================================
-  $(document).ready(function() {
-    $('.js-example-basic-single').select2();
-});
-  // ========================== Select2 Js End =================================
 
-  
-  // ========================== Select2 Js End =================================
-  $('.search-icon').on('click', function () {
-    $('.search-box').addClass('active'); 
-  }); 
-  $('.search-box__close').on('click', function () {
-    $('.search-box').removeClass('active'); 
-  }); 
-  // ========================== Select2 Js End =================================
+  // Search Bar show & hide
+  $(document).on('click', '.search-icon', function () {
+    $(".search-input-area").addClass("show");
+  });
+  $(document).on('click', '.search-input-area input', function () {
+    $(".search-input-area").addClass("show");
+  });
+  $(document).on('click', '.search-input-inner before', function () {
+    $(".search-input-area").addClass("show");
+  });
+  $('html').click(function (e) {
+    if (!$(e.target).hasClass('show')) {
+      $(".search-input-area").removeClass("show");
+    }
+    $(document).on('click', '.search-close-icon', function () {
+      $(".search-input-area").removeClass("show");
+    });
+  });
 
-  
-  // ========================== Category Dropdown Responsive Js Start =================================
-  $('.responsive-dropdown .has-submenus-submenu').on('click', function () {
 
-    var windowWidth = $(window).width(); 
-    if(windowWidth < 992) { 
-      if ($(this).hasClass('active')) {
-        $(this).removeClass('active');
-        $(this).children('.submenus-submenu').slideUp();
+  // Cart Bar show & hide
+  $(document).on('click', '.cart-icon', function () {
+    $(".cart-bar").addClass("show");
+    $(".anywere").addClass("bgshow");
+  });
+  $(document).on('click', '.close-cart', function () {
+    $(".cart-bar").removeClass("show");
+    $(".anywere").removeClass("bgshow");
+  });
+  $(document).on('click', '.anywere', function () {
+    $(".cart-bar").removeClass("show");
+    $(".anywere").removeClass("bgshow");
+  });
+
+
+  $(function () {
+    var header = $(".start-style");
+    $(window).scroll(function () {
+      var scroll = $(window).scrollTop();
+
+      if (scroll >= 10) {
+        header.removeClass('start-style').addClass("scroll-on");
       } else {
-        $('.responsive-dropdown .has-submenus-submenu').removeClass('active');
-        $('.responsive-dropdown .has-submenus-submenu').children('.submenus-submenu').slideUp();
-  
-        $(this).addClass('active');
-        $(this).children('.submenus-submenu').slideDown();
+        header.removeClass("scroll-on").addClass('start-style');
       }
-    }
-  });
-  // ========================== Category Dropdown Responsive Js End =================================
-
-  // ========================== On Click Category menu show Js Start =================================
-  $('.category__button').on('click', function () {    
-    $('.responsive-dropdown').addClass('active'); 
-    $('.side-overlay').addClass('show');
-    $('body').addClass('scroll-hide-sm');
-  }); 
-  $('.side-overlay, .close-responsive-dropdown').on('click', function () {    
-    $('.responsive-dropdown').removeClass('active'); 
-    $('.side-overlay').removeClass('show');
-    $('body').removeClass('scroll-hide-sm');
-  }); 
-  // ========================== On Click Category menu show Js End =================================
-
-  
-  // ========================== Set Language in dropdown Js Start =================================
-  $('.selectable-text-list li').each(function () {
-    var thisItem = $(this); 
-
-    thisItem.on('click', function () {
-      const listText = thisItem.text(); 
-      var item = thisItem.parent().parent().find('.selected-text').text(listText); 
-    }); 
-  }); 
-  // ========================== Set Language in dropdown Js End =================================
-
-  
-  // ========================= Banner Slider Js Start ==============
-  $('.banner-slider').slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: false,
-    autoplaySpeed: 2000,
-    speed: 1500,
-    dots: false,
-    pauseOnHover: true,
-    arrows: true,
-    draggable: true,
-    rtl: $('html').attr('dir') === 'rtl' ? true : false,
-    speed: 900,
-    infinite: true,
-    nextArrow: '#banner-next',
-    prevArrow: '#banner-prev',
-    responsive: [
-      {
-        breakpoint: 767,
-        settings: {
-          slidesToShow: 1,
-        }
-      }
-    ]
-  });  
-  // ========================= Banner Slider Js End ===================
-
-
-   // ========================= hot deals Slider Js Start ==============
-   $('.feature-item-wrapper').slick({
-    slidesToShow: 10,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    speed: 1500,
-    dots: false,
-    pauseOnHover: true,
-    arrows: true,
-    draggable: true,
-    rtl: $('html').attr('dir') === 'rtl' ? true : false,
-    speed: 900,
-    infinite: true,
-    nextArrow: '#feature-item-wrapper-next',
-    prevArrow: '#feature-item-wrapper-prev',
-    responsive: [
-      {
-        breakpoint: 1699,
-        settings: {
-          slidesToShow: 9,
-        }
-      },
-      {
-        breakpoint: 1599,
-        settings: {
-          slidesToShow: 8,
-        }
-      },
-      {
-        breakpoint: 1399,
-        settings: {
-          slidesToShow: 6,
-        }
-      },
-      {
-        breakpoint: 992,
-        settings: {
-          slidesToShow: 5,
-        }
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 4,
-        }
-      },
-      {
-        breakpoint: 575,
-        settings: {
-          slidesToShow: 3,
-        }
-      },
-      {
-        breakpoint: 424,
-        settings: {
-          slidesToShow: 2,
-        }
-      },
-      {
-        breakpoint: 359,
-        settings: {
-          slidesToShow: 1,
-        }
-      },
-    ]
-  });  
-  // ========================= hot deals Slider Js End ===================
-
-  
-  // ========================= Banner Slider Js Start ==============
-  $('.banner-item-two__slider').slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: false,
-    autoplaySpeed: 2000,
-    speed: 1500,
-    dots: true,
-    pauseOnHover: true,
-    arrows: true,
-    draggable: true,
-    rtl: $('html').attr('dir') === 'rtl' ? true : false,
-    speed: 900,
-    infinite: true,
-    nextArrow: '#banner-next',
-    prevArrow: '#banner-prev',
-    responsive: [
-      {
-        breakpoint: 767,
-        settings: {
-          slidesToShow: 1,
-        }
-      }
-    ]
-  });  
-  // ========================= Banner Slider Js End ===================
-
-  
-  // ========================= flash Sale Four Slider Js Start ==============
-  $('.flash-sales__slider').slick({
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    speed: 1500,
-    dots: false,
-    pauseOnHover: true,
-    arrows: true,
-    draggable: true,
-    rtl: $('html').attr('dir') === 'rtl' ? true : false,
-    speed: 900,
-    infinite: true,
-    nextArrow: '#flash-next',
-    prevArrow: '#flash-prev',
-    responsive: [
-      {
-        breakpoint: 991,
-        settings: {
-          slidesToShow: 1,
-          arrows: false,
-        }
-      }
-    ]
-  });  
-  // ========================= flash Sale Four Slider Js End ==================
-    
-  // ========================= hot deals Slider Js Start ==============
-  $('.hot-deals-slider').slick({
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    speed: 1500,
-    dots: false,
-    pauseOnHover: true,
-    arrows: true,
-    draggable: true,
-    rtl: $('html').attr('dir') === 'rtl' ? true : false,
-    speed: 900,
-    infinite: true,
-    nextArrow: '#deals-next',
-    prevArrow: '#deals-prev',
-    responsive: [
-      {
-        breakpoint: 1399,
-        settings: {
-          slidesToShow: 3,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 1199,
-        settings: {
-          slidesToShow: 2,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 575,
-        settings: {
-          slidesToShow: 1,
-          arrows: false,
-        }
-      },
-    ]
-  });  
-  // ========================= hot deals Slider Js End ===================
-    
-    
-  // ========================= hot deals Slider Js Start ==============
-  $('.deals-week-slider').slick({
-    slidesToShow: 6,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    speed: 1500,
-    dots: false,
-    pauseOnHover: true,
-    arrows: true,
-    draggable: true,
-    rtl: $('html').attr('dir') === 'rtl' ? true : false,
-    speed: 900,
-    infinite: true,
-    nextArrow: '#deal-week-next',
-    prevArrow: '#deal-week-prev',
-    responsive: [
-      {
-        breakpoint: 1599,
-        settings: {
-          slidesToShow: 5,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 1399,
-        settings: {
-          slidesToShow: 3,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 1199,
-        settings: {
-          slidesToShow: 2,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 575,
-        settings: {
-          slidesToShow: 1,
-          arrows: false,
-        }
-      },
-    ]
-  });  
-  // ========================= hot deals Slider Js End ===================
-    
-
-  // ========================= hot deals Slider Js Start ==============
-  $('.top-selling-product-slider').slick({
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    speed: 1500,
-    dots: false,
-    pauseOnHover: true,
-    arrows: true,
-    draggable: true,
-    rtl: $('html').attr('dir') === 'rtl' ? true : false,
-    speed: 900,
-    infinite: true,
-    nextArrow: '#top-selling-next',
-    prevArrow: '#top-selling-prev',
-    responsive: [
-      {
-        breakpoint: 1399,
-        settings: {
-          slidesToShow: 3,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 1199,
-        settings: {
-          slidesToShow: 2,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 575,
-        settings: {
-          slidesToShow: 1,
-          arrows: false,
-        }
-      },
-    ]
-  });  
-  // ========================= hot deals Slider Js End ===================
-
-  
-  // ========================= hot deals Slider Js Start ==============
-  $('.organic-food__slider').slick({
-    slidesToShow: 6,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    speed: 1500,
-    dots: false,
-    pauseOnHover: true,
-    arrows: true,
-    draggable: true,
-    rtl: $('html').attr('dir') === 'rtl' ? true : false,
-    speed: 900,
-    infinite: true,
-    nextArrow: '#organic-next',
-    prevArrow: '#organic-prev',
-    responsive: [
-      {
-        breakpoint: 1599,
-        settings: {
-          slidesToShow: 6,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 1399,
-        settings: {
-          slidesToShow: 4,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 992,
-        settings: {
-          slidesToShow: 3,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 575,
-        settings: {
-          slidesToShow: 2,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 424,
-        settings: {
-          slidesToShow: 1,
-          arrows: false,
-        }
-      },
-    ]
-  });  
-  // ========================= hot deals Slider Js End ===================
-
-  
-  // ========================= New arrival Slider Js Start ==============
-  $('.new-arrival__slider').slick({
-    slidesToShow: 6,
-    slidesToScroll: 1,
-    autoplay: false,
-    autoplaySpeed: 2000,
-    speed: 1500,
-    dots: false,
-    pauseOnHover: true,
-    arrows: true,
-    draggable: true,
-    rtl: $('html').attr('dir') === 'rtl' ? true : false,
-    speed: 900,
-    infinite: true,
-    nextArrow: '#new-arrival-next',
-    prevArrow: '#new-arrival-prev',
-    responsive: [
-      {
-        breakpoint: 1599,
-        settings: {
-          slidesToShow: 6,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 1399,
-        settings: {
-          slidesToShow: 4,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 992,
-        settings: {
-          slidesToShow: 3,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 575,
-        settings: {
-          slidesToShow: 2,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 424,
-        settings: {
-          slidesToShow: 1,
-          arrows: false,
-        }
-      },
-    ]
-  });  
-  // ========================= New arrival Slider Js End ===================
-
-  
-  // ========================= hot deals Slider Js Start ==============
-  $('.short-product-list').slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    speed: 1500,
-    dots: false,
-    pauseOnHover: true,
-    arrows: true,
-    draggable: true,
-    rtl: $('html').attr('dir') === 'rtl' ? true : false,
-    speed: 900,
-    infinite: true,
-    prevArrow: '<button type="button" class="slick-prev border border-gray-100 w-30 h-30 bg-transparent rounded-pill position-absolute hover-bg-main-600 hover-text-white hover-border-main-600 transition-1"><i class="ph ph-caret-left"></i></button>',
-    nextArrow: '<button type="button" class="slick-next border border-gray-100 w-30 h-30 bg-transparent rounded-pill position-absolute hover-bg-main-600 hover-text-white hover-border-main-600 transition-1"><i class="ph ph-caret-right"></i></button>',
-  });  
-  
-// ========================= hot deals Slider Js End ===================
-
-  
-  // ========================= hot deals Slider Js Start ==============
-  $('.brand-slider').slick({
-    slidesToShow: 8,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    speed: 1500,
-    dots: false,
-    pauseOnHover: true,
-    arrows: true,
-    draggable: true,
-    rtl: $('html').attr('dir') === 'rtl' ? true : false,
-    speed: 900,
-    infinite: true,
-    nextArrow: '#brand-next',
-    prevArrow: '#brand-prev',
-    responsive: [
-      {
-        breakpoint: 1599,
-        settings: {
-          slidesToShow: 7,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 1399,
-        settings: {
-          slidesToShow: 6,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 992,
-        settings: {
-          slidesToShow: 5,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 575,
-        settings: {
-          slidesToShow: 4,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 424,
-        settings: {
-          slidesToShow: 3,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 359,
-        settings: {
-          slidesToShow: 2,
-          arrows: false,
-        }
-      },
-    ]
-  });  
-  // ========================= hot deals Slider Js End ===================
-
-  
-  // ========================= Category Dropdown Two Js Start ===============================
-  $('.category-two .category__button').on('click', function () {
-    $('.category-two .category__button').toggleClass('active')
-    $('.responsive-dropdown.style-two').addClass('active').slideToggle(400); 
-  }); 
-  // ========================= Category Dropdown Two Js End ===============================
-  
-  
-  // ========================= Featured Products Slider Js Start ==============
-  $('.featured-product-slider').slick({
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    speed: 1500,
-    dots: false,
-    pauseOnHover: true,
-    arrows: true,
-    draggable: true,
-    rtl: $('html').attr('dir') === 'rtl' ? true : false,
-    speed: 900,
-    infinite: true,
-    nextArrow: '#featured-products-next',
-    prevArrow: '#featured-products-prev',
-    responsive: [
-      {
-        breakpoint: 991,
-        settings: {
-          slidesToShow: 1,
-          arrows: false,
-        }
-      }
-    ]
-  });  
-  // ========================= Featured Products Slider Js End ==================
-
-  
-  // ========================= hot deals Slider Js Start ==============
-  $('.recommended-slider').slick({
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    speed: 1500,
-    dots: false,
-    pauseOnHover: true,
-    arrows: true,
-    draggable: true,
-    rtl: $('html').attr('dir') === 'rtl' ? true : false,
-    speed: 900,
-    infinite: true,
-    nextArrow: '#recommended-next',
-    prevArrow: '#recommended-prev',
-    responsive: [
-      {
-        breakpoint: 1399,
-        settings: {
-          slidesToShow: 3,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 1199,
-        settings: {
-          slidesToShow: 2,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 575,
-        settings: {
-          slidesToShow: 1,
-          arrows: false,
-        }
-      },
-    ]
-  });  
-  // ========================= hot deals Slider Js End ===================
-  
-  // ========================= hot deals Slider Js Start ==============
-  $('.vendor-card__list.style-two').slick({
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    speed: 1500,
-    dots: false,
-    pauseOnHover: true,
-    arrows: true,
-    draggable: true,
-    rtl: $('html').attr('dir') === 'rtl' ? true : false,
-    speed: 900,
-    infinite: true,
-    nextArrow: '#vendor-next',
-    prevArrow: '#vendor-prev',
-  });  
-  // ========================= hot deals Slider Js End ===================
-  
-  
-  // ========================= hot deals Slider Js Start ==============
-  $('.top-brand__slider').slick({
-    slidesToShow: 8,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    speed: 1500,
-    dots: false,
-    pauseOnHover: true,
-    arrows: true,
-    draggable: true,
-    rtl: $('html').attr('dir') === 'rtl' ? true : false,
-    speed: 900,
-    infinite: true,
-    nextArrow: '#topBrand-next',
-    prevArrow: '#topBrand-prev',
-    responsive: [
-      {
-        breakpoint: 1599,
-        settings: {
-          slidesToShow: 7,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 1399,
-        settings: {
-          slidesToShow: 6,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 992,
-        settings: {
-          slidesToShow: 5,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 575,
-        settings: {
-          slidesToShow: 4,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 424,
-        settings: {
-          slidesToShow: 3,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 359,
-        settings: {
-          slidesToShow: 2,
-          arrows: false,
-        }
-      },
-    ]
-  });  
-  // ========================= hot deals Slider Js End ===================
-
-  
-  // ========================= Product Details Thumbs Slider Js Start ===================
-  $('.product-details__thumb-slider').slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    fade: true,
-    asNavFor: '.product-details__images-slider'
-  });
-
-  $('.product-details__images-slider').slick({
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    asNavFor: '.product-details__thumb-slider',
-    dots: false,
-    arrows: false,
-    focusOnSelect: true
-  });
-  // ========================= Product Details Thumbs Slider Js End ===================
-
-  
-  // ========================= Increment & Decrement Js Start ===================
-  var minus = $('.quantity__minus');
-  var plus = $('.quantity__plus');
-
-  $(plus).on('click', function () {
-    var input = $(this).siblings('.quantity__input');
-    var value = input.val(); 
-    value++;
-    input.val(value); 
-  }); 
-
-  $(minus).on('click', function () {
-    var input = $(this).siblings('.quantity__input');
-    var value = input.val(); 
-    if(value > 1) {
-      value--;
-    }
-    input.val(value); 
-  }); 
-  // ========================= Increment & Decrement Js End ===================
-
-  
-  // ========================= Color List Js Start ===================
-  $('.color-list__button').on('click', function () {
-    $('.color-list__button').removeClass('border-gray-900'); 
-
-    if(!$(this).hasClass('border-gray-900')) {
-      $(this).addClass('border-gray-900');
-      $(this).removeClass('border-gray-50');
-    } else {
-      $(this).removeClass('border-gray-900');
-      $(this).addClass('border-gray-50');
-    };
-  }); 
-  // ========================= Color List Js End ===================
-
-  // ========================== Range Slider Js Start =====================
-  $(function() {
-    $( "#slider-range" ).slider({
-        range: true,
-        min: 0,
-        max: 25,
-        values: [ 0, 25 ],
-        slide: function( event, ui ) {
-            $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-        }
     });
-    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-    " - $" + $( "#slider-range" ).slider( "values", 1 ) );
   });
-  // ========================== Range Slider Js End =====================
 
-  
-  // ========================== List Grid Js Start ================================
-  $('.list-btn').on('click', function () {
-    $('.grid-btn').addClass('border-gray-100'); 
-    $('.grid-btn').removeClass('border-main-600 text-white bg-main-600'); 
-    $('.list-grid-wrapper').removeClass('list-view'); 
-    
-    $(this).removeClass('border-gray-100'); 
-    $(this).addClass('border-main-600 text-white bg-main-600'); 
-    $('.list-grid-wrapper').addClass('list-view'); 
-  }); 
-
-  $('.grid-btn').on('click', function () {
-    $('.list-btn').addClass('border-gray-100'); 
-    $('.list-btn').removeClass('border-main-600 text-white bg-main-600'); 
-    $('.list-grid-wrapper').removeClass('list-view'); 
-
-    $(this).removeClass('border-gray-100'); 
-    $(this).addClass('border-main-600 text-white bg-main-600'); 
-  }); 
-  // ========================== List Grid Js End ================================
-
-  
-  // ========================== Shop Sidebar Js Start ================================
-  $('.sidebar-btn').on('click', function () {
-    $(this).addClass('bg-main-600 text-white');
-    $('.shop-sidebar').addClass('active');
-    $('.side-overlay').addClass('show');
-    $('body').addClass('scroll-hide-sm'); 
-  }); 
-
-  $('.side-overlay, .shop-sidebar__close').on('click', function () {
-    $('.sidebar-btn').removeClass('bg-main-600 text-white');
-    $('.shop-sidebar').removeClass('active');
-    $('.side-overlay').removeClass('show');
-    $('body').removeClass('scroll-hide-sm');
-  }); 
-  // ========================== Shop Sidebar Js End ================================
-
-  
-  // ========================== Remove Tr Js Start ================================
-  $('.remove-tr-btn').on('click', function () {
-    $(this).closest('tr').addClass('d-none')
-  }); 
-  // ========================== Remove Tr Js End ================================
-
-  
-  // ========================== Checkout Payment Method Js Start ================================
-  $('.payment-item .form-check-input:checked').closest('.payment-item').find('.payment-item__content').show();
-
-  $('.payment-item .form-check-input').on('change', function () {
-      $('.payment-item__content').hide();
-      $(this).closest('.payment-item').find('.payment-item__content').show();
+  //Animation
+  $(document).ready(function () {
+    $('body.hero-anime').removeClass('hero-anime');
   });
-  // ========================== Checkout Payment Method Js End ================================
 
-  
-  // ================== Password Show Hide Js Start ==========
-  $(".toggle-password").on('click', function() {
-    $(this).toggleClass("active");
-    var input = $($(this).attr("id"));
-    if (input.attr("type") == "password") {
-      input.attr("type", "text");
-    } else {
-      input.attr("type", "password");
+  //Menu On Hover
+  $('body').on('mouseenter mouseleave', '.nav-item', function (e) {
+    if ($(window).width() > 750) {
+      var _d = $(e.target).closest('.nav-item');
+      _d.addClass('show');
+      setTimeout(function () {
+        _d[_d.is(':hover') ? 'addClass' : 'removeClass']('show');
+      }, 1);
     }
   });
-  // ========================= Password Show Hide Js End ===========================
-  
+  //Switch light/dark
+
+  $("#switch").on('click', function () {
+    if ($("body").hasClass("dark")) {
+      $("body").removeClass("dark");
+      $("#switch").removeClass("switched");
+    } else {
+      $("body").addClass("dark");
+      $("#switch").addClass("switched");
+    }
+  });
+
+
+  // Image popup
+  $(document).ready(function () {
+    $('.image-popup-vertical-fit').magnificPopup({
+      type: 'image',
+      mainClass: 'mfp-with-zoom',
+      gallery: {
+        enabled: true
+      },
+
+      zoom: {
+        enabled: true,
+
+        duration: 300,
+        easing: 'ease-in-out',
+
+        opener: function (openerElement) {
+
+          return openerElement.is('img') ? openerElement : openerElement.find('img');
+        }
+      }
+    });
+  });
+
+
+  // Sidebar open & close
+  $('.hamburger').on('click', function () {
+    $(".hamburger").toggleClass("active");
+  });
+
+  $('.hamburger').on('click', function () {
+    $(".slide-bar").toggleClass("show");
+    $(".anywere").addClass("bgshow");
+    $(".hamburger").addClass("move");
+  });
+
+  $('.mobile-hamburger').click('click', function () {
+    $(".slide-bar").removeClass("show");
+    $(".anywere").removeClass("bgshow");
+    $(".hamburger").addClass("move");
+  });
+
+  $('.anywere').on('click', function () {
+    $(".slide-bar").removeClass("show");
+    $(".anywere").removeClass("bgshow");
+    $(".hamburger").removeClass("active");
+  });
+
+  $('.action-item').on('click', function () {
+    $(".slide-bar").removeClass("show");
+    $(".anywere").removeClass("bgshow");
+    $(".hamburger").removeClass("active");
+  });
+
+  $(function () {
+    $('.toggle-menu').on('focus', function () {
+      $('.rts-menu').toggleClass('display');
+    });
+  });
+  $('.hamburger-1').on('click', function () {
+    $(".hamburger-1").toggleClass("active");
+  });
+
+  $('.hamburger-1').on('click', function () {
+    $(".slide-bar").toggleClass("show");
+    $(".anywere").addClass("bgshow");
+    $(".hamburger-1").addClass("move");
+  });
+
+  $('.mobile-hamburger-1').click('click', function () {
+    $(".slide-bar").removeClass("show");
+    $(".anywere").removeClass("bgshow");
+    $(".hamburger-1").addClass("move");
+  });
+
+  $('.anywere').on('click', function () {
+    $(".slide-bar").removeClass("show");
+    $(".anywere").removeClass("bgshow");
+    $(".hamburger-1").removeClass("active");
+  });
+
+  $('.action-item').on('click', function () {
+    $(".slide-bar").removeClass("show");
+    $(".anywere").removeClass("bgshow");
+    $(".hamburger-1").removeClass("active");
+  });
+
+  $(function () {
+    $('.toggle-menu').on('focus', function () {
+      $('.rts-menu').toggleClass('display');
+    });
+  });
+
+
+  /*------------------------------------
+		Mobile Menu
+	--------------------------------------*/
+
+  $('#mobile-menu-active').metisMenu();
+
+  $('#mobile-menu-active .has-dropdown > a').on('click', function (e) {
+    e.preventDefault();
+  });
+
+
+  $(".hamburger-menu > a").on("click", function (e) {
+    e.preventDefault();
+    $(".slide-bar").toggleClass("show");
+    $("body").addClass("on-side");
+    $('.body-overlay').addClass('active');
+    $(this).addClass('active');
+  });
+
+  /* Search
+  	-------------------------------------------------------*/
+  var $searchWrap = $('.search-wrap');
+  var $navSearch = $('.nav-search');
+  var $searchClose = $('#search-close');
+
+  $('.search-trigger').on('click', function (e) {
+    e.preventDefault();
+    $searchWrap.animate({
+      opacity: 'toggle'
+    }, 500);
+    $navSearch.add($searchClose).addClass("open");
+  });
+
+  $('.search-close').on('click', function (e) {
+    e.preventDefault();
+    $searchWrap.animate({
+      opacity: 'toggle'
+    }, 500);
+    $navSearch.add($searchClose).removeClass("open");
+  });
+
+  function closeSearch() {
+    $searchWrap.fadeOut(200);
+    $navSearch.add($searchClose).removeClass("open");
+  }
+
+  $(document.body).on('click', function (e) {
+    closeSearch();
+  });
+
+  $(".search-trigger, .main-search-input").on('click', function (e) {
+    e.stopPropagation();
+  });
+
+
+  //sticky-menu
+  $(window).on('scroll', function () {
+    var scroll = $(window).scrollTop();
+    if (scroll < 200) {
+      $(".navbar-sticky").removeClass("sticky-menu");
+      $(".navbar-sticky-mobile").removeClass("sticky-menu-mobile");
+    } else {
+      $(".navbar-sticky").addClass("sticky-menu");
+      $(".navbar-sticky-mobile").addClass("sticky-menu-mobile");
+    }
+  });
+
+  // Scroll to top
+  var btn = $('.scroll-top-btn');
+  $(window).scroll(function () {
+    if ($(window).scrollTop() > 300) {
+      btn.addClass('jumpTop');
+    } else {
+      btn.removeClass('jumpTop');
+    }
+  });
+
+  btn.on('click', function (e) {
+    e.preventDefault();
+    $('html, body').animate({
+      scrollTop: 0
+    }, '300');
+  });
+
+  $("#nav ul li a[href^='#']").on('click', function (e) {
+    e.preventDefault();
+    var hash = this.hash;
+
+    $('html, body').animate({
+      scrollTop: $(hash).offset().top
+    }, 1000, function () {
+      window.location.hash = hash;
+    });
+  });
+
+  $("#nav div div a[href^='#']").on('click', function (e) {
+    e.preventDefault();
+    var hash = this.hash;
+    $('html, body').animate({
+      scrollTop: $(hash).offset().top
+    }, 1000, function () {
+      window.location.hash = hash;
+    });
 
   });
-  // ==========================================
-  //      End Document Ready function
-  // ==========================================
 
-  // ========================= Preloader Js Start =====================
-    $(window).on("load", function(){
-      $('.preloader').fadeOut(); 
-    })
-    // ========================= Preloader Js End=====================
+  $("#nav ul li a[href^='#']").on('click', function (e) {
+    e.preventDefault();
 
-    // ========================= Header Sticky Js Start ==============
-    $(window).on('scroll', function() {
-      if ($(window).scrollTop() >= 260) {
-        $('.header').addClass('fixed-header');
+    // store hash
+    var hash = this.hash;
+
+    // animate
+    $('html, body').animate({
+      scrollTop: $(hash).offset().top
+    }, 1000, function () {
+      window.location.hash = hash;
+    });
+
+  });
+
+  $("#nav div div a[href^='#']").on('click', function (e) {
+    e.preventDefault();
+    var hash = this.hash;
+    $('html, body').animate({
+      scrollTop: $(hash).offset().top
+    }, 1000, function () {
+      window.location.hash = hash;
+    });
+  });
+
+  // Filter item
+  $(document).on('click', '.filter-btn', function () {
+    var show = $(this).data('show');
+    $(show).removeClass("hide").siblings().addClass("hide");
+  });
+
+  $(document).on('click', '.filter-btn', function () {
+    $(this).addClass('active').siblings().removeClass('active')
+  })
+
+
+
+  // Isotope Filter
+  var $grid = $('.grid').isotope({
+    itemSelector: '.element-item',
+    layoutMode: 'fitRows'
+  });
+  // filter functions
+  var filterFns = {
+    // show if number is greater than 50
+    numberGreaterThan50: function () {
+      var number = $(this).find('.number').text();
+      return parseInt(number, 10) > 50;
+    },
+    // show if name ends with -ium
+    ium: function () {
+      var name = $(this).find('.name').text();
+      return name.match(/ium$/);
+    }
+  };
+  // bind filter button click
+  $('.filter-buttons-group').on('click', 'button', function () {
+    var filterValue = $(this).attr('data-filter');
+    // use filterFn if matches value
+    filterValue = filterFns[filterValue] || filterValue;
+    $grid.isotope({
+      filter: filterValue
+    });
+  });
+  // change is-checked class on buttons
+  $('.button-group').each(function (i, buttonGroup) {
+    var $buttonGroup = $(buttonGroup);
+    $buttonGroup.on('click', 'button', function () {
+      $buttonGroup.find('.checked').removeClass('checked');
+      $(this).addClass('checked');
+    });
+  });
+
+  $(function () {
+    $(".button").on("click", function () {
+      var $button = $(this);
+      var $parent = $button.parent();
+      var oldValue = $parent.find('.input').val();
+
+      if ($button.text() == "+") {
+        var newVal = parseFloat(oldValue) + 1;
+      } else {
+        // Don't allow decrementing below zero
+        if (oldValue > 1) {
+          var newVal = parseFloat(oldValue) - 1;
+        } else {
+          newVal = 1;
+        }
       }
-      else {
-          $('.header').removeClass('fixed-header');
+      $parent.find('a.add-to-cart').attr('data-quantity', newVal);
+      $parent.find('.input').val(newVal);
+    });
+  });
+  var countdown = $('.countdown');
+
+  if (countdown.length) {
+
+    $(function () {
+      const second = 1000,
+        minute = second * 60,
+        hour = minute * 60,
+        day = hour * 24;
+      let today = new Date(),
+        dd = String(today.getDate()).padStart(2, "0"),
+        mm = String(today.getMonth() + 1).padStart(2, "0"),
+        yyyy = today.getFullYear(),
+        nextYear = yyyy + 1,
+        dayMonth = "09/30/",
+        counterday = dayMonth + yyyy;
+
+      today = mm + "/" + dd + "/" + yyyy;
+      if (today > counterday) {
+        counterday = dayMonth + nextYear;
       }
-    }); 
-    // ========================= Header Sticky Js End===================
+      //end
+
+      const countDown = new Date(counterday).getTime(),
+        x = setInterval(function () {
+
+          const now = new Date().getTime(),
+            distance = countDown - now;
+
+          document.getElementById("days").innerText = Math.floor(distance / (day)),
+            document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+            document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+            document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+
+        }, 0)
+    }());
+  }
+
+
+  // init Isotope
+  var $grid = $('.fill').isotope({
+    itemSelector: '.element-item',
+    layoutMode: 'fitRows'
+  });
+  // filter functions
+  var filterFns = {
+    // show if number is greater than 50
+    numberGreaterThan50: function () {
+      var number = $(this).find('.number').text();
+      return parseInt(number, 10) > 50;
+    },
+    // show if name ends with -ium
+    ium: function () {
+      var name = $(this).find('.name').text();
+      return name.match(/ium$/);
+    }
+  };
+  // bind filter on select change
+  $('.filters-select').on('change', function () {
+    // get filter value from option value
+    var filterValue = this.value;
+    // use filterFn if matches value
+    filterValue = filterFns[filterValue] || filterValue;
+    $grid.isotope({
+      filter: filterValue
+    });
+  });
+
+  $('.custom-select').each(function () {
+    var $this = $(this),
+      numberOfOptions = $(this).children('option').length;
+
+    $this.addClass('select-hidden');
+    $this.wrap('<div class="select"></div>');
+    $this.after('<div class="select-styled"></div>');
+
+    var $styledSelect = $this.next('div.select-styled');
+    $styledSelect.text($this.children('option').eq(0).text());
+
+    var $list = $('<ul />', {
+      'class': 'select-options'
+    }).insertAfter($styledSelect);
+
+    for (var i = 0; i < numberOfOptions; i++) {
+      $('<li />', {
+        text: $this.children('option').eq(i).text(),
+        rel: $this.children('option').eq(i).val()
+      }).appendTo($list);
+    }
+
+    var $listItems = $list.children('li');
+
+
+    $styledSelect.on('click', function (e) {
+      e.stopPropagation();
+      $('div.select-styled.active').not(this).each(function () {
+        $(this).removeClass('active').next('ul.select-options').hide();
+      });
+      $(this).toggleClass('active').next('ul.select-options').toggle();
+    });
+
+    $listItems.on('click', function (e) {
+      e.stopPropagation();
+      $styledSelect.text($(this).text()).removeClass('active');
+      $this.val($(this).attr('rel'));
+      $list.hide();
+    });
+
+    $(document).click(function () {
+      $styledSelect.removeClass('active');
+      $list.hide();
+    });
+
+  });
+  $('.custom-select2').each(function () {
+    var $this = $(this),
+      numberOfOptions = $(this).children('option').length;
+
+    $this.addClass('select-hidden');
+    $this.wrap('<div class="select2"></div>');
+    $this.after('<div class="select-styled"></div>');
+
+    var $styledSelect = $this.next('div.select-styled');
+    $styledSelect.text($this.children('option').eq(0).text());
+
+    var $list = $('<ul />', {
+      'class': 'select-options'
+    }).insertAfter($styledSelect);
+
+    for (var i = 0; i < numberOfOptions; i++) {
+      $('<li />', {
+        text: $this.children('option').eq(i).text(),
+        rel: $this.children('option').eq(i).val()
+      }).appendTo($list);
+    }
+
+    var $listItems = $list.children('li');
+
+
+    $styledSelect.on('click', function (e) {
+      e.stopPropagation();
+      $('div.select-styled.active').not(this).each(function () {
+        $(this).removeClass('active').next('ul.select-options').hide();
+      });
+      $(this).toggleClass('active').next('ul.select-options').toggle();
+    });
+
+    $listItems.on('click', function (e) {
+      e.stopPropagation();
+      $styledSelect.text($(this).text()).removeClass('active');
+      $this.val($(this).attr('rel'));
+      $list.hide();
+    });
+
+    $(document).click(function () {
+      $styledSelect.removeClass('active');
+      $list.hide();
+    });
+
+  });
+
+  var cookies = document.cookie.split(';')
+    .reduce((res, c) => {
+      const [key, val] = c.trim().split('=').map(decodeURIComponent)
+      return Object.assign(res, {
+        [key]: val
+      })
+    }, {});
+
+
+  $(".header-topbar5").on('click', function () {
+    $(".header-topbar5").addClass("close");
+  });
+
+  $(".category-item-inner").on('click', function () {
+    var cateItem = $(this).parent(".category-item")
+    cateItem.toggleClass('show');
+    cateItem.siblings(".category-item").removeClass('show');
+  });
+
+
+  $(".color-item").one('click', function () {
+    $(this).toggleClass('selected');
+
+  });
+
+
+  $(".coupon-click").on('click', function () {
+    $(".coupon-input-area").toggleClass('show');
+  });
+
+
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+
+
+  // Newsletter popup
+  $(document).ready(function () {
+    function showpanel() {
+      $(".anywere-home").addClass("bgshow");
+      $(".rts-newsletter-popup").addClass("popup");
+    }
+    setTimeout(showpanel, 4000)
+  });
+
+  $(".anywere-home").on('click', function () {
+    $(".rts-newsletter-popup").removeClass("popup")
+    $(".anywere-home").removeClass("bgshow")
+  });
+  $(".newsletter-close-btn").on('click', function () {
+    $(".rts-newsletter-popup").removeClass("popup")
+    $(".anywere-home").removeClass("bgshow")
+  });
+
+  // Product details popup
+  $(".product-details-popup-btn").on('click', function () {
+    $(".product-details-popup-wrapper").addClass("popup")
+    $(".anywere").addClass("bgshow")
+  });
+  $(".product-bottom-action .view-btn").on('click', function () {
+    $(".product-details-popup-wrapper").addClass("popup")
+    $(".anywere").addClass("bgshow")
+  });
+  $(".product-details-popup-wrapper .cart-edit").on('click', function () {
+    $(".product-details-popup-wrapper").addClass("popup")
+    $(".anywere-home").addClass("bgshow")
+  });
+
+  $(".product-details-close-btn").on('click', function () {
+    $(".product-details-popup-wrapper").removeClass("popup")
+    $(".anywere").removeClass("bgshow")
+  });
+  $(".anywere").on('click', function () {
+    $(".product-details-popup-wrapper").removeClass("popup")
+    $(".anywere").removeClass("bgshow")
+  });
+
 
 })(jQuery);
+
+function zoom(e) {
+  var zoomer = e.currentTarget;
+  e.offsetX ? offsetX = e.offsetX : offsetX = e.touches[0].pageX
+  e.offsetY ? offsetY = e.offsetY : offsetX = e.touches[0].pageX
+  x = offsetX / zoomer.offsetWidth * 100
+  y = offsetY / zoomer.offsetHeight * 100
+  zoomer.style.backgroundPosition = x + '% ' + y + '%';
+}
+
+var nstSlider = $('.nstSlider');
+
+if (nstSlider.length) {
+  $('.nstSlider').nstSlider({
+    "left_grip_selector": ".leftGrip",
+    "right_grip_selector": ".rightGrip",
+    "value_bar_selector": ".bar",
+    "value_changed_callback": function (cause, leftValue, rightValue) {
+      $(this).parent().find('.leftLabel').text(leftValue);
+      $(this).parent().find('.rightLabel').text(rightValue);
+    }
+  });
+}

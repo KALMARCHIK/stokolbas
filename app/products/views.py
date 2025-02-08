@@ -40,12 +40,15 @@ class ProductListView(ListView):
     template_name = 'product_list.html'
     context_object_name = 'products'
 
-    def get_queryset(self):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         # Получаем поставщика по slug
         supplier = get_object_or_404(Supplier, slug=self.kwargs['supplier_slug'])
         # Получаем категорию по slug
         category = get_object_or_404(Category, slug=self.kwargs['category_slug'], supplier=supplier)
-        return Product.objects.filter(category=category)
+        context['category'] = category
+        context['products'] = Product.objects.filter(category=category)
+        return context
     
 
 class ProductDetailView(DetailView):
