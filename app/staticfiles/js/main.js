@@ -57,7 +57,9 @@
     var scroll = $(window).scrollTop();
     var height = $(document).height() - $(window).height();
     var progress = pathLength - (scroll * pathLength / height);
-    progressPath.style.strokeDashoffset = progress;
+    if (progressPath) {
+      progressPath.style.strokeDashoffset = progress;
+    }
   }
   updateProgress();
   $(window).scroll(updateProgress);
