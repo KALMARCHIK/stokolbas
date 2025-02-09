@@ -87,14 +87,11 @@
                     <div class="navbar-search-area">
                         <div class="search-input-inner">
                             <select class="custom-select">
-                                <option value="hide">All Catagory</option>
-                                <option value="all">All</option>
-                                <option value="men">Men</option>
-                                <option value="women">Women</option>
-                                <option value="shoes">Shoes</option>
-                                <option value="shoes">Glasses</option>
-                                <option value="shoes">Bags</option>
-                                <option value="shoes">Assesories</option>
+                                <option value="hide">Все мясокомбинаты</option>
+                                <option value="all">Все</option>
+                                {% for supplier in suppliers %}
+                                    <option value="{{supplier.slug}}">{{supplier.name}}</option>
+                                {% endfor %}
                             </select>
                             <div class="input-div">
                                 <div class="search-input-icon"><i class="rt-search mr--10"></i>Search</div>
@@ -102,44 +99,13 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="navbar-select-area">
                         <select class="topbar-select custom-select">
-                            <option value="eng">Eng</option>
-                            <option value="esp">esp</option>
-                            <option value="ban">Ban</option>
+                            <option value="eng">Москва</option>
+                            <option value="esp">Тула</option>
+                            <option value="ban">Санкт-Петербург</option>
                         </select>
-                        <select class="topbar-select custom-select last-child">
-                            <option value="usd">USD</option>
-                            <option value="eur">Euro</option>
-                            <option value="tk">Taka</option>
-                        </select>
-                    </div>
-                    <div class="header-action-items header-action-items1">
-                        <div class="search-part">
-                            <div class="search-icon action-item icon"><i class="rt-search"></i></div>
-                            <div class="search-input-area">
-                                <div class="container">
-                                    <div class="search-input-inner inner-2">
-                                        <div class="input-div">
-                                            <input class="search-input input4" type="text"
-                                                placeholder="Search by keyword or #">
-                                        </div>
-                                        <div class="search-close-icon"><i class="rt-xmark"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cart action-item">
-                            <div class="cart-nav">
-                                <div class="cart-icon icon"><i class="rt-cart"></i><span
-                                        class="wishlist-dot icon-dot">3</span></div>
-                            </div>
-                        </div>
-                        <div class="wishlist action-item">
-                            <div class="favourite-icon icon"><a href="wishlist.html"><i class="rt-heart"></i></a>
-                            </div>
-                        </div>
-                        <a href="login.html" class="account"><i class="rt-user-2"></i></a>
                     </div>
                     <div class="hamburger"><span></span></div>
                 </div>
@@ -153,136 +119,32 @@
                     <a href="index.html" class="logo"><img src="{% static 'images/logo3.svg' %}" alt="umart-logo"></a>
                     <div class="catagory-select-area">
                         <select class="custom-select">
-                            <option value="hide">Все Категории</option>
+                            <option value="hide">Все мясокомбинаты</option>
                             <option value="all">Все</option>
-                            {% for category in categories %}
-                                <option value="{{category.slug}}">{{category.name}}</option>
+                            {% for supplier in suppliers %}
+                                <option value="{{supplier.slug}}">{{supplier.name}}</option>
                             {% endfor %}
                         </select>
                     </div>
                     <div class="rts-menu">
                         <nav class="menus menu-toggle">
                             <ul class="nav__menu">
-                                <li class="has-dropdown"><a class="menu-item active1" href="#">Home <i
-                                    class="rt-plus"></i></i></a>
-                                    <ul class="dropdown-ul">
-                                        <li class="dropdown-li"><a class="dropdown-link" href="index.html">Main
-                                            Home</a>
-                                        </li>
-                                        <li class="dropdown-li"><a class="dropdown-link"
-                                                href="index-two.html">Fashion
-                                                Home</a>
-                                        </li>
-                                        <li class="dropdown-li"><a class="dropdown-link"
-                                                href="index-nine.html">Fashion
-                                                Home Two</a>
-                                        </li>
-                                        <li class="dropdown-li"><a class="dropdown-link"
-                                                href="index-three.html">Furniture
-                                                Home</a>
-                                        </li>
-                                        <li class="dropdown-li"><a class="dropdown-link active"
-                                                href="index-four.html">Decor
-                                                Home</a>
-                                        </li>
-                                        <li class="dropdown-li"><a class="dropdown-link"
-                                                href="index-five.html">Electronics
-                                                Home</a>
-                                        </li>
-                                        <li class="dropdown-li"><a class="dropdown-link"
-                                                href="index-six.html">Grocery
-                                                Home</a>
-                                        </li>
-                                        <li class="dropdown-li"><a class="dropdown-link"
-                                                href="index-seven.html">Footwear
-                                                Home</a>
-                                        </li>
-                                        <li class="dropdown-li"><a class="dropdown-link"
-                                            href="index-eight.html">Gaming
-                                            Home</a>
-                                        </li>
-                                        <li class="dropdown-li"><a class="dropdown-link"
-                                            href="index-ten.html">Sunglass
-                                            Home</a>
-                                        </li>
-                                    </ul>
+                                <li class="has-dropdown"><a class="menu-item active1" href="#">Главная</a>
                                 </li>
-                                <li class="has-dropdown"><a class="menu-item" href="#">Shop <i
-                                    class="rt-plus"></i></a>
-                                    <ul class="dropdown-ul mega-dropdown">
-                                        <li class="mega-dropdown-li">
-                                            <ul class="mega-dropdown-ul">
-                                                <li class="dropdown-li"><a class="dropdown-link"
-                                                        href="shop.html">Shop</a>
-                                                </li>
-                                                <li class="dropdown-li"><a class="dropdown-link"
-                                                        href="slidebar-left.html">Left Sidebar Shop</a>
-                                                </li>
-                                                <li class="dropdown-li"><a class="dropdown-link"
-                                                        href="slidebar-right.html">Right Sidebar Shop</a>
-                                                </li>
-                                                <li class="dropdown-li"><a class="dropdown-link"
-                                                        href="full-width-shop.html">Full Width Shop</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="mega-dropdown-li">
-                                            <ul class="mega-dropdown-ul">
-                                                <li class="dropdown-li"><a class="dropdown-link"
-                                                        href="product-details.html">Single Product Layout
-                                                        One</a>
-                                                </li>
-                                                <li class="dropdown-li"><a class="dropdown-link"
-                                                        href="product-details2.html">Single Product Layout
-                                                        Two</a>
-                                                </li>
-                                                <li class="dropdown-li"><a class="dropdown-link"
-                                                        href="variable-products.html">Variable Product</a>
-                                                </li>
-                                                <li class="dropdown-li"><a class="dropdown-link"
-                                                        href="grouped-products.html">Grouped Product</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="mega-dropdown-li last-child">
-                                            <ul class="mega-dropdown-ul">
-                                                <li class="dropdown-li"><a class="dropdown-link"
-                                                        href="cart.html">Cart</a>
-                                                </li>
-                                                <li class="dropdown-li"><a class="dropdown-link"
-                                                        href="checkout.html">Checkout</a>
-                                                </li>
-                                                <li class="dropdown-li"><a class="dropdown-link"
-                                                        href="account.html">My Account</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
+                                <li class="has-dropdown"><a class="menu-item" href="#">О нас</a>
                                 </li>
-                                <li class="has-dropdown"><a class="menu-item" href="#">Pages <i
+                                <li class="has-dropdown"><a class="menu-item" href="#">Регионы <i
                                     class="rt-plus"></i></a>
                                     <ul class="dropdown-ul">
-                                        <li class="dropdown-li"><a class="dropdown-link" href="about.html">About</a>
+                                        <li class="dropdown-li"><a class="dropdown-link" href="about.html">Москва</a>
                                         </li>
                                         <li class="dropdown-li"><a class="dropdown-link"
-                                                href="faq.html">FAQ's</a></li>
+                                                href="faq.html">Тула</a></li>
                                         <li class="dropdown-li"><a class="dropdown-link"
-                                                href="error.html">Error 404</a></li>
+                                                href="error.html">Санкт-Петербург</a></li>
                                     </ul>
                                 </li>
-
-                                <li class="has-dropdown"><a class="menu-item" href="#">Blog <i
-                                    class="rt-plus"></i></a>
-                                    <ul class="dropdown-ul">
-                                        <li class="dropdown-li"><a class="dropdown-link"
-                                                href="news.html">Blog</a></li>
-                                        <li class="dropdown-li"><a class="dropdown-link"
-                                                href="news-grid.html">Blog Grid</a></li>
-                                        <li class="dropdown-li"><a class="dropdown-link"
-                                                href="news-details.html">Blog Details</a></li>
-                                    </ul>
-                                </li>
-                                <li><a class="menu-item" href="contact.html">Contact</a></li>
+                                <li><a class="menu-item" href="contact.html">Контакты</a></li>
                             </ul>
                         </nav>
                     </div>

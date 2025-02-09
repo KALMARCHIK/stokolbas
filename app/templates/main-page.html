@@ -51,58 +51,21 @@
     <div class="rts-box-catagory-section">
         <div class="box-catagory-inner">
             <div class="row">
+                {% for supplier in suppliers %}
                 <div class="col-xl-3 col-md-6 col-sm-6">
                     <div class="catagory-box box1">
-                        <a href="category.html" class="picture"><img src="{% static 'images/post/cata1.png' %}"
+                        <a href="{% url 'category-list' supplier.slug %}" class="picture"><img src="{% static 'images/post/cata1.png' %}"
                                 alt="box-picture"></a>
-                        <a href="category.html" class="view-collection-btn">View Collection</a>
+                        <a href="{% url 'category-list' supplier.slug %}" class="view-collection-btn">Перейти</a>
                         <div class="contents">
                             <div class="icon"><img src="{% static 'images/icons/bell.png' %}" alt=""></div>
-                            <h2 class="box-heading">Stationary &
-                                Gift Card</h2>
+                            <h2 class="box-heading">{{ supplier.name }}</h2>
                         </div>
-                        <span class="item-update">100 New Added</span>
+                        <span class="item-update">{{supplier.product.all|length}}</span>
+                        {{suppliers.category}}
                     </div>
                 </div>
-                <div class="col-xl-3 col-md-6 col-sm-6">
-                    <div class="catagory-box box2">
-                        <a href="category.html" class="picture"><img src="{% static 'images/post/cata2.png' %}"
-                                alt="box-picture"></a>
-                        <a href="category.html" class="view-collection-btn">View Collection</a>
-                        <div class="contents">
-                            <div class="icon"><img src="{% static 'images/icons/pins.png' %}" alt=""></div>
-                            <h2 class="box-heading">Handmade
-                                Teapots & Mugs</h2>
-                        </div>
-                        <span class="item-update">100 New Added</span>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6 col-sm-6">
-                    <div class="catagory-box box3">
-                        <a href="category.html" class="picture"><img src="{% static 'images/post/cata3.png' %}"
-                                alt="box-picture"></a>
-                        <a href="category.html" class="view-collection-btn">View Collection</a>
-                        <div class="contents">
-                            <div class="icon"><img src="{% static 'images/icons/tape.png' %}" alt=""></div>
-                            <h2 class="box-heading">Furniture Decor
-                                Objects</h2>
-                        </div>
-                        <span class="item-update">100 New Added</span>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6 col-sm-6">
-                    <div class="catagory-box box4 last-child">
-                        <a href="category.html" class="picture"><img src="{% static 'images/post/cata4.png' %}"
-                                alt="box-picture"></a>
-                        <a href="category.html" class="view-collection-btn">View Collection</a>
-                        <div class="contents">
-                            <div class="icon"><img src="{% static 'images/icons/tub.png' %}" alt=""></div>
-                            <h2 class="box-heading">Vases & <br>
-                                Plant Pots</h2>
-                        </div>
-                        <span class="item-update">100 New Added</span>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
