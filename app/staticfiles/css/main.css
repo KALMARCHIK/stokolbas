@@ -6799,9 +6799,7 @@ tr:first-child {
 }
 .navbar-part3 .navbar-inner {
   padding: 25px 0;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
+  justify-content: space-between;
 }
 .navbar-part3 .navbar-inner .header-action-items {
   margin-left: auto;
@@ -6872,7 +6870,6 @@ tr:first-child {
 .lower-navbar .navbar-inner .select-styled {
   max-width: unset;
   height: 113%;
-  padding: 10px 40px;
   padding-top: 19px;
   border-radius: 0;
   text-align: center;
@@ -7780,6 +7777,13 @@ tr:first-child {
 .navbar-search-area.navbar-search-area9 .search-input-inner .input-div input {
   width: 540px;
 }
+.search-input-inner .select {
+  flex-shrink: 0;
+}
+
+.search-input-inner .select-styled {
+  max-width: 100%;
+}
 @media (max-width: 1350px) {
   .navbar-search-area.navbar-search-area9 .search-input-inner .input-div input {
     width: 450px;
@@ -7872,10 +7876,11 @@ tr:first-child {
   display: -ms-flexbox;
   display: flex;
 }
-.navbar-select-area .select {
-  width: 80px;
+
+.navbar-select-area .select:first-child {
   margin-right: 10px;
 }
+
 .navbar-select-area .select .select-styled {
   border-radius: 5px;
   background: none;
@@ -7885,10 +7890,10 @@ tr:first-child {
   color: #040404;
 }
 .navbar-select-area .select .select-styled::after {
-  position: relative;
+  position: absolute;
   left: unset;
-  right: unset;
-  top: 12px;
+  right: 15px;
+  top: calc(50% - 3px);
   margin-left: 5px;
   margin-bottom: -20px;
 }
@@ -9850,7 +9855,7 @@ tr:first-child {
 }
 .banner.banner-3 .banner-single .contents .banner-pretitle-box {
   background: #fff;
-  color: #72a398;
+  color: #FF5656;
   padding: 2px 20px;
   border-radius: 6px;
   font-size: 14px;
@@ -11961,13 +11966,13 @@ tr:first-child {
   margin-right: 10px;
 }
 .rts-box-catagory-section .catagory-box.box1::before {
-  background: #f1f6f5;
+  background: #FFD4D4;
 }
 .rts-box-catagory-section .catagory-box.box1 .view-collection-btn {
-  color: #72a398;
+  color: #040404;
 }
 .rts-box-catagory-section .catagory-box.box1 .item-update {
-  color: #72a398;
+  color: #040404;
 }
 .rts-box-catagory-section .catagory-box.box2::before {
   background: #eeede9;
