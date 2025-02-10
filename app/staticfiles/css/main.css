@@ -185,6 +185,7 @@ i {
 }
 .anywere.bgshow,
 .anywere-home.bgshow {
+  display: none;
   background: #0E1013;
   opacity: 70%;
   visibility: visible;
