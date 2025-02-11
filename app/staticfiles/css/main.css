@@ -9844,9 +9844,25 @@ tr:first-child {
   }
 }
 .banner.banner-3 .banner-single .banner-product-thumb {
-  position: relative;
-  right: -16%;
-  max-width: 90%;
+  right: 0;
+    height: 100%;
+    max-width: 90%;
+    position: absolute;
+    width: 51.5%;
+}
+.banner.banner-3 .banner-single .banner-product-thumb img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+.banner-product-thumb-logo {
+  position: absolute;
+  width: 400px !important;
+  height: auto !important;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
 }
 @media (max-width: 1640px) {
   .banner.banner-3 .banner-single .banner-product-thumb {
@@ -10307,7 +10323,7 @@ tr:first-child {
   background-image: url("../images/background/banner-slide-bg2.png");
 }
 .banner .banner-single.bg-image-3 {
-  background-image: url("../images/banner/craftbg.jpg");
+  background: #FFF5F5;
   background-position-y: 0;
   background-size: cover;
 }
@@ -10397,10 +10413,20 @@ tr:first-child {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  position: relative;
 }
 .banner .banner-single .single-inner .contents .banner-heading {
   max-width: unset;
+  width: 1px;
+}
+.banner-product-thumb-blur {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: #000;
+  opacity: 50%;
 }
 .banner .banner-single .single-inner .banner-image {
   max-width: 877px;
@@ -10565,7 +10591,7 @@ tr:first-child {
 }
 
 .rts-wood-products-section {
-  background: #432e1f;
+  background: #683030;
 }
 
 .rts-offer-section .container .rts-offer-inner {
@@ -11407,7 +11433,7 @@ tr:first-child {
 }
 .rts-brands-section .brands-section-inner .brand-item {
   width: 100%;
-  height: 100px;
+  height: 288px;
   margin-bottom: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -11430,7 +11456,6 @@ tr:first-child {
   opacity: 1;
 }
 .rts-brands-section .brands-section-inner .brand-item img {
-  opacity: 40%;
   -webkit-transition: opacity 500ms;
   transition: opacity 500ms;
 }
@@ -11966,6 +11991,15 @@ tr:first-child {
   position: relative;
   margin-right: 10px;
 }
+
+.rts-box-catagory-section .box1 {
+  height: 560px;
+}
+
+.rts-box-catagory-section .box1 .picture img {
+  height: 100%;
+  object-fit: cover;
+}
 .rts-box-catagory-section .catagory-box.box1::before {
   background: #FFD4D4;
 }
@@ -12064,6 +12098,9 @@ tr:first-child {
 .rts-box-catagory-section .catagory-box .contents .icon {
   margin-bottom: 30px;
 }
+.rts-box-catagory-section .catagory-box .contents .icon img {
+  height: 100px;
+}
 .rts-box-catagory-section .catagory-box .contents .box-heading {
   font-size: 30px;
   line-height: 36px;
@@ -12115,7 +12152,7 @@ tr:first-child {
           justify-content: space-between;
 }
 .rts-wood-products-section .section-header3 .section-pretitle {
-  background: #523c2d;
+  background: #512323;
   color: #fff;
   padding: 3px 10px;
   border-radius: 4px;
@@ -12147,7 +12184,7 @@ tr:first-child {
   margin-left: 5px;
 }
 .rts-wood-products-section .section-header3 .slider-navigation .slider-btn.swiper-button-prev {
-  background: #523c2d;
+  background: #512323;
   color: #fff;
   left: -117px;
 }
@@ -18279,11 +18316,12 @@ tr:first-child {
 .footer-3 .newsletter-widget .subscribe-btn {
   padding: 10px 30px;
   color: #fff;
-  background: #985034;
+  background: #FFA5A5;
   font-size: 14px;
   border-radius: 6px;
   -webkit-transition: background 500ms;
   transition: background 500ms;
+  margin-top: 16px;
 }
 .footer-3 .newsletter-widget .subscribe-btn:hover {
   background: #040404;

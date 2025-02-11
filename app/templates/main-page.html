@@ -12,28 +12,36 @@
                                 <div class="container">
                                     <div class="single-inner">
                                         <div class="contents">
-                                            <span class="banner-pretitle-box">Hot Deal In This Week</span>
+                                            <span class="banner-pretitle-box">{{supplier.product.all|length}} уникальных продуктов</span>
                                             <h1 class="banner-heading mb--30">{{ supplier.name }}</h1>
                                             <div class="banner-action">
                                                 <object>
-                                                    <a class="banner-btn banner-btn2" href="product-details.html"><i
-                                                        class="rt-cart-shopping"></i>Shop
-                                                    Now</a>
+                                                    <a class="banner-btn banner-btn2" href="product-details.html">Перейти</a>
                                                 </object>
-                                                <div class="banner-review">
-                                                    <div class="review">
-                                                        <div class="star"><i class="fas fa-star"></i></div>
-                                                        <div class="star"><i class="fas fa-star"></i></div>
-                                                        <div class="star"><i class="fas fa-star"></i></div>
-                                                        <div class="star"><i class="fas fa-star"></i></div>
-                                                        <div class="star"><i class="fal fa-star"></i></div>
-                                                    </div>
-                                                    <span class="review-text"><span class="value">100+</span> Review</span>
-                                                </div>
                                             </div>
                                         </div>
-                                        <div class="banner-product-thumb"><img
-                                                src="{% static 'images/products/banner-product.jpg' %}" alt="banner-product"></div>
+                                        <div class="banner-product-thumb">
+                                            <div class="banner-product-thumb-blur"></div>
+                                                {% if supplier.slug == 'berezovskii-miasokombinat' %}
+                                                <img src="{% static 'images/berezovskii-miasokombinat.jpg' %}"
+                                                alt="banner-product">
+                                                {% elif supplier.slug == 'pinskii-miasokombinat' %}
+                                                <img src="{% static 'images/pinskii-miasokombinat.jpg' %}"
+                                                alt="banner-product">
+                                                {% else %}
+                                                <img src="{% static 'images/post/cata1.png' %}"
+                                                alt="banner-product">
+                                                {% endif %}
+                                                {% if supplier.slug == 'kalinkovichskii-miasokombinat' %}
+                                                    <img src="{% static 'images/logo-postavshik4.svg' %}" alt="" class="banner-product-thumb-logo">
+                                                {% elif supplier.slug == 'borisovskii-miasokombinat' %}
+                                                    <img src="{% static 'images/logo-postavshik3.png' %}" alt="" class="banner-product-thumb-logo">
+                                                {% elif supplier.slug == 'berezovskii-miasokombinat' %}
+                                                    <img src="{% static 'images/logo-postavshik1.svg' %}" alt="" class="banner-product-thumb-logo">
+                                                {% elif supplier.slug == 'pinskii-miasokombinat' %}
+                                                    <img src="{% static 'images/logo-postavshik2.svg' %}" alt="" class="banner-product-thumb-logo">
+                                                {% endif %}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -55,8 +63,8 @@
                 <div class="col-xl-3 col-md-6 col-sm-6">
                     <div class="catagory-box box1">
                         <a href="{% url 'category-list' supplier.slug %}" class="picture">
-                            {% if supplier.slug == 'kalinkovichskii-miasokombinat' %}
-                            <img src="{% static 'images/berezovskii-miasokombinkat.jpg' %}"
+                            {% if supplier.slug == 'berezovskii-miasokombinat' %}
+                            <img src="{% static 'images/berezovskii-miasokombinat.jpg' %}"
                                 alt="box-picture">
                             {% elif supplier.slug == 'pinskii-miasokombinat' %}
                             <img src="{% static 'images/pinskii-miasokombinat.jpg' %}"
@@ -68,10 +76,20 @@
                         </a>
                         <a href="{% url 'category-list' supplier.slug %}" class="view-collection-btn">Перейти</a>
                         <div class="contents">
-                            <div class="icon"><img src="{% static 'images/icons/bell.png' %}" alt=""></div>
+                            <div class="icon">
+                                {% if supplier.slug == 'kalinkovichskii-miasokombinat' %}
+                                    <img src="{% static 'images/logo-postavshik4.svg' %}" alt="">
+                                {% elif supplier.slug == 'borisovskii-miasokombinat' %}
+                                    <img src="{% static 'images/logo-postavshik3.png' %}" alt="">
+                                {% elif supplier.slug == 'berezovskii-miasokombinat' %}
+                                    <img src="{% static 'images/logo-postavshik1.svg' %}" alt="">
+                                {% elif supplier.slug == 'pinskii-miasokombinat' %}
+                                    <img src="{% static 'images/logo-postavshik2.svg' %}" alt="">
+                                {% endif %}
+                            </div>
                             <h2 class="box-heading">{{ supplier.name }}</h2>
                         </div>
-                        <span class="item-update">{{supplier.product.all|length}} Продукта</span>
+                        <span class="item-update">{{supplier.product.all|length}} уникальных продуктов</span>
                         {{suppliers.category}}
                     </div>
                 </div>
@@ -87,9 +105,9 @@
     <div class="rts-recent_products-section section-gap">
         <div class="container">
             <div class="recent-products-header section-header section-header3">
-                <span class="section-pretitle section-pretitle2 mb--15">Featured</span>
+                <span class="section-pretitle section-pretitle2 mb--15">Березовский</span>
                 <span class="section-title-2 mb--5
-                ">Wood Crafted Products</span>
+                ">Категории</span>
                 <div class="section-line mb-0"><img src="{% static 'images/items/curlyline.png' %}" alt="line"></div>
             </div>
             <div class="products-area products-area3">
@@ -395,15 +413,22 @@
     <div class="rts-wood-products-section section-space">
         <div class="container">
             <div class="section-header section-header3 text-start">
-                <div class="wrapper d-flex flex-column">
-                    <span class="section-pretitle mb--15">Hand-Picked</span>
-                    <span class="section-title-2 mb--5
-                ">Wood Crafted Products</span>
+                <div>
+                    <div class="wraper d-flex">
+                        <span class="section-pretitle mb--15 me-1">Березовский</span>
+                        <span class="section-pretitle mb--15 me-1">Борисовский</span>
+                        <span class="section-pretitle mb--15 me-1">Пинский</span>
+                        <span class="section-pretitle mb--15 me-1">Калинка</span>
+                    </div>
+                    <div class="wrapper d-flex flex-column">
+                        <span class="section-title-2 mb--5
+                    ">Категории</span>
+                </div>
                     <div class="section-line mb-0"><img src="{% static 'images/items/woodline.png' %}" alt="line"></div>
                 </div>
                 <div class="slider-navigation">
-                    <div class="swiper-button-prev slider-btn prev"><i class="fal fa-angle-left"></i>Prev</div>
-                    <div class="swiper-button-next slider-btn next">Next<i class="fal fa-angle-right"></i></div>
+                    <div class="swiper-button-prev slider-btn prev"><i class="fal fa-angle-left"></i>Назад</div>
+                    <div class="swiper-button-next slider-btn next">Дальше<i class="fal fa-angle-right"></i></div>
                 </div>
             </div>
             <div class="slider-div">
@@ -488,57 +513,29 @@
     <div class="rts-brands-section">
         <div class="container">
             <div class="recent-products-header section-header section-header2">
-                <span class="section-pretitle mb--10">Sponsors</span>
-                <span class="section-title-2">100+ Happy Users</span>
-                <div class="section-line mb-0"><img src="{% static 'images/items/curlyline.png' %}" alt="line"></div>
+                <span class="section-pretitle mb--10">Подробнее про</span>
+                <span class="section-title-2">мясокомбинаты</span>
+                <!-- <div class="section-line mb-0"><img src="{% static 'images/items/curlyline.png' %}" alt="line"></div> -->
             </div>
             <div class="brands-section-inner">
                 <div class="row justify-content-center align-items-center">
+                    {% for supplier in suppliers %}
                     <div class="col-lg-15 col-md-4 col-sm-6 col-xs-6 col-xxs-6">
                         <div class="brand-item">
-                            <a href="#0" class="front"><img src="{% static 'images/brands/1.png' %}" alt="brand"></a>
+                            <a href="#0" class="front">
+                                {% if supplier.slug == 'kalinkovichskii-miasokombinat' %}
+                                    <img src="{% static 'images/logo-postavshik4.svg' %}" alt="">
+                                {% elif supplier.slug == 'borisovskii-miasokombinat' %}
+                                    <img src="{% static 'images/logo-postavshik3.png' %}" alt="" style="width: 240px;">
+                                {% elif supplier.slug == 'berezovskii-miasokombinat' %}
+                                    <img src="{% static 'images/logo-postavshik1.svg' %}" alt="">
+                                {% elif supplier.slug == 'pinskii-miasokombinat' %}
+                                    <img src="{% static 'images/logo-postavshik2.svg' %}" alt="">
+                                {% endif %}
+                            </a>
                         </div>
                     </div>
-                    <div class="col-lg-15 col-md-4 col-sm-6 col-xs-6 col-xxs-6">
-                        <div class="brand-item">
-                            <a href="#0" class="front"><img src="{% static 'images/brands/2.png' %}" alt="brand"></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-15 col-md-4 col-sm-6 col-xs-6 col-xxs-6">
-                        <div class="brand-item">
-                            <a href="#0" class="front"><img src="{% static 'images/brands/3.png' %}" alt="brand"></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-15 col-md-4 col-sm-6 col-xs-6 col-xxs-6">
-                        <div class="brand-item">
-                            <a href="#0" class="front"><img src="{% static 'images/brands/4.png' %}" alt="brand"></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-15 col-md-4 col-sm-6 col-xs-6 col-xxs-6">
-                        <div class="brand-item">
-                            <a href="#0" class="front"><img src="{% static 'images/brands/5.png' %}" alt="brand"></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-15 col-md-4 col-sm-6 col-xs-6 col-xxs-6">
-                        <div class="brand-item">
-                            <a href="#0" class="front"><img src="{% static 'images/brands/6.png' %}" alt="brand"></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-15 col-md-4 col-sm-6 col-xs-6 col-xxs-6">
-                        <div class="brand-item">
-                            <a href="#0" class="front"><img src="{% static 'images/brands/7.png' %}" alt="brand"></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-15 col-md-4 col-sm-6 col-xs-6 col-xxs-6">
-                        <div class="brand-item">
-                            <a href="#0" class="front"><img src="{% static 'images/brands/8.png' %}" alt="brand"></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-15 col-md-4 col-sm-6 col-xs-6 col-xxs-6">
-                        <div class="brand-item">
-                            <a href="#0" class="front"><img src="{% static 'images/brands/9.png' %}" alt="brand"></a>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
