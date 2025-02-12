@@ -20415,6 +20415,9 @@ tr:first-child {
   background: #fff;
   border-radius: 50px;
 }
+.contact-area .container .contact-form .section-header .wrapper .sub-content img {
+  width: 36px;
+}
 .contact-area .container .contact-form .section-header .wrapper .sub-content .sub-text {
   color: #000;
   font-size: 15px;
@@ -20527,9 +20530,9 @@ tr:first-child {
   outline: 1px solid #EE403D;
 }
 .contact-area .container .contact-form .info-form .form-btn {
-  background: #EE403D;
+  background: #ff5656;
   color: #ffffff;
-  border: 1px solid #EE403D;
+  border: 1px solid #ff5656;
   font-size: 16px;
   font-weight: 700;
   line-height: 1;
@@ -20569,67 +20572,42 @@ tr:first-child {
   }
 }
 .contact-area .container .right-side .get-in-touch h3 {
-  font-size: 26px;
-  margin-bottom: 30px;
-  line-height: 1;
-  font-weight: 600;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #777;
+  margin: 30px 0;
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #e7e7e7;
 }
 .contact-area .container .right-side .get-in-touch .contact {
-  padding: 0 35px;
 }
 .contact-area .container .right-side .get-in-touch .contact ul li {
   position: relative;
   padding: 12px 0;
-  font-size: 16px;
-  color: #999999;
-  font-weight: 400;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 143%;
+  color: #040404;
+  display: block;
   cursor: pointer;
-  line-height: 26px;
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+}
+.contact-area .container .right-side .get-in-touch .contact ul li:first-child {
+  left: -6px;
 }
 .contact-area .container .right-side .get-in-touch .contact ul li a {
-  font-size: 16px;
-  color: #999999;
-  font-weight: 400;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 143%;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  line-height: 26px;
+  display: block;
 }
-.contact-area .container .right-side .get-in-touch .contact ul li.one::before {
-  content: "\f3c5";
-  left: -35px;
-  top: 12px;
-  color: #EE403D;
-  right: auto;
-  font-family: "Font awesome 5 Pro";
-  position: absolute;
-  font-size: 17px;
-  font-weight: 300;
-  z-index: 2;
-}
-.contact-area .container .right-side .get-in-touch .contact ul li.two::before {
-  content: "\f095";
-  left: -35px;
-  top: 11px;
-  color: #EE403D;
-  right: auto;
-  font-family: "Font awesome 5 Pro";
-  position: absolute;
-  font-size: 17px;
-  font-weight: 300;
-  z-index: 2;
-}
-.contact-area .container .right-side .get-in-touch .contact ul li.three::before {
-  content: "\f017";
-  left: -35px;
-  top: 11px;
-  color: #EE403D;
-  right: auto;
-  font-family: "Font awesome 5 Pro";
-  position: absolute;
-  font-size: 17px;
-  font-weight: 300;
-  z-index: 2;
-}
+
 .contact-area .container .right-side .section-button {
   text-align: center;
 }
@@ -20640,7 +20618,7 @@ tr:first-child {
 }
 .contact-area .container .right-side .section-button .btn-1 {
   margin: 25px 0 10px 0;
-  border: 1px solid #DDDDDD;
+  border: 1px solid #ffa800;
   border-radius: 5px;
   -webkit-transition: all 0.4s ease 0s;
   transition: all 0.4s ease 0s;
@@ -20663,6 +20641,7 @@ tr:first-child {
 .contact-area .container .right-side .section-button .btn-1 a i {
   margin-left: 10px;
   font-weight: 500;
+  color: #FF5656;
 }
 .contact-area .container .right-side .section-button .btn-2 {
   border: 1px solid #DDDDDD;
