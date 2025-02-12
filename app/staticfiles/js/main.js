@@ -1507,3 +1507,27 @@ logo.addEventListener('mouseenter', () => {
 logo.addEventListener('mouseleave', () => {
   lottieLogo.stop(); // Останавливает анимацию при уходе мыши
 });
+
+var swiperMainProduct = new Swiper(".swiper-main-product", {
+  slidesPerView: 5,
+  grid: {
+    rows: 2,
+  },
+  spaceBetween: 30,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  breakpoints: {
+    1080: {
+      slidesPerView: 5,
+    },
+    320: {
+      slidesPerView: 2,
+    }
+  }
+});
