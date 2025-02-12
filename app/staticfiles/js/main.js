@@ -1477,3 +1477,33 @@ if (nstSlider.length) {
     }
   });
 }
+
+const logo = document.querySelector('.logo')
+const preloader = document.querySelector('.preloader-new')
+const logoURL = document.querySelector('.logoURL')
+const preloaderURL = document.querySelector('.preloaderURL')
+
+const lottieLogo = lottie.loadAnimation({
+  container: logo, // the dom element that will contain the animation
+  renderer: 'svg',
+  loop: true,
+  autoplay: false,
+  path: logoURL.textContent // the path to the animation json
+});
+const lottiePreloader = lottie.loadAnimation({
+  container: preloader, // the dom element that will contain the animation
+  renderer: 'svg',
+  loop: true,
+  autoplay: true,
+  path: preloaderURL.textContent // the path to the animation json
+});
+
+logo.addEventListener('mouseenter', () => {
+  lottieLogo.goToAndStop(0, true); // Сбросить анимацию к началу
+  lottieLogo.setSpeed(1); // Установить скорость (можно уменьшить для плавности)
+  lottieLogo.play(); // Запустить анимацию
+});
+
+logo.addEventListener('mouseleave', () => {
+  lottieLogo.stop(); // Останавливает анимацию при уходе мыши
+});
