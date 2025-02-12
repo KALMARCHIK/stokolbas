@@ -10595,7 +10595,7 @@ tr:first-child {
 }
 
 .rts-wood-products-section {
-  background: #683030;
+  background: #fff5f5;
 }
 
 .rts-offer-section .container .rts-offer-inner {
@@ -10950,6 +10950,30 @@ tr:first-child {
 .rts-recent_products-section {
   margin-bottom: 40px;
 }
+.rts-recent_products-section .slider-navigation {
+  width: 280px;
+  bottom: 30px;
+  right: 0;
+  left: auto;
+}
+
+.rts-recent_products-section .slider-btn {
+  width: 120px;
+  font-weight: 700;
+}
+
+.rts-recent_products-section .swiper-button-prev{
+  border-radius: 6px;
+  background: #ff9292;
+  color: #fff;
+  column-gap: 5px;
+}
+.rts-recent_products-section .swiper-button-next{
+  border-radius: 6px;
+  background: #ffebeb;
+  color: #666;
+  column-gap: 5px;
+}
 .rts-recent_products-section .recent-products-header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10957,6 +10981,22 @@ tr:first-child {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .rts-recent_products-section .slider-navigation {
+    position: relative;
+    transform: unset;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    margin-top: 20px;
+  }
+
+  .rts-recent_products-section .slider-btn {
+    margin-top: auto;
+  }
 }
 .rts-recent_products-section .filter-buttons-group .filter-btn {
   font-weight: 700;
@@ -11270,6 +11310,15 @@ tr:first-child {
 
 .products-area {
   width: 100%;
+  overflow: hidden;
+}
+
+.products-area .swiper-wrapper {
+  flex-direction: row;
+}
+
+.products-area .swiper-slide {
+  margin-top: 0 !important;
 }
 
 .product-item {
@@ -11546,7 +11595,7 @@ tr:first-child {
 }
 .newsletter-banner .newsletter-contents {
   position: relative;
-  max-width: 576px;
+  max-width: 1224px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -11566,25 +11615,36 @@ tr:first-child {
   opacity: 0.6;
 }
 .newsletter-banner .newsletter-contents .newsletter-input {
-  width: 100%;
+  width: 85%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  border-radius: 7px;
   overflow: hidden;
 }
 .newsletter-banner .newsletter-contents .newsletter-input input {
-  width: 100%;
+  width: 350px;
   padding: 0 30px;
+  border-radius: 7px;
 }
 .newsletter-banner .newsletter-contents .newsletter-input input::-webkit-input-placeholder {
   font-weight: 400;
   font-size: 16px;
   line-height: 28px;
   color: #AFAFAF;
+}
+
+@media(max-width: 768px) {
+  .newsletter-banner .newsletter-contents .newsletter-input {
+    width: 100%;
+  }
+
+  .newsletter-banner .newsletter-contents .newsletter-input input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }
 .newsletter-banner .newsletter-contents .newsletter-input .subscribe-btn {
   padding: 16px 30px;
@@ -11621,7 +11681,8 @@ tr:first-child {
   }
 }
 .newsletter-banner.newsletter-banner3 {
-  background-image: url("../images/background/newsletter.jpg");
+  background-image: url("../images/background/bg-form.png");
+  background-attachment: fixed;
 }
 .newsletter-banner.newsletter-banner3::before {
   display: none;
@@ -11633,7 +11694,30 @@ tr:first-child {
           align-items: flex-start;
 }
 .newsletter-banner.newsletter-banner3 .newsletter-contents .section-title-2 {
-  color: #040404;
+  color: #fff;
+}
+
+.newsletter-banner.newsletter-banner3 .main-form-text {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 133%;
+  color: #fff;
+  opacity: 1;
+  margin-bottom: 80px;
+}
+
+@media(max-width: 768px) {
+  .newsletter-banner.newsletter-banner3 .main-form-text {
+    font-size: 18px;
+  }
+}
+
+.newsletter-banner.newsletter-banner3 .main-form-text span {
+  color: #fff;
+  background: #ff5656;
+  border-radius: 7px;
+  font-weight: 400;
+  padding: 0 5px;
 }
 .newsletter-banner.newsletter-banner3 .newsletter-contents .newsletter-input {
   position: relative;
@@ -11647,8 +11731,12 @@ tr:first-child {
   padding-left: 40px;
 }
 .newsletter-banner.newsletter-banner3 .newsletter-contents .newsletter-input .subscribe-btn {
-  background: #985034;
+  background: #ffa5a5;
+  width: 230px;
   padding: 15px 40px;
+  border-radius: 7px;
+  justify-content: center;
+  font-weight: 700;
 }
 .newsletter-banner.newsletter-banner3 .newsletter-contents .newsletter-input .subscribe-btn:hover {
   background: #040404;
@@ -12165,14 +12253,17 @@ tr:first-child {
           justify-content: space-between;
 }
 .rts-wood-products-section .section-header3 .section-pretitle {
-  background: #512323;
+  background: #ffd6d6;
   color: #fff;
   padding: 3px 10px;
   border-radius: 4px;
   max-width: 109px;
 }
+.rts-wood-products-section .section-header3 .section-pretitle.active {
+  background: #ff9292;
+}
 .rts-wood-products-section .section-header3 .section-title-2 {
-  color: #fff;
+  color: #666;
 }
 .rts-wood-products-section .section-header3 .slider-navigation {
   position: relative;
@@ -12182,8 +12273,8 @@ tr:first-child {
   right: unset;
 }
 .rts-wood-products-section .section-header3 .slider-navigation .slider-btn {
-  background: #fff;
-  color: #040404;
+  background: #ffebeb;
+  color: #666;
   border-radius: 0;
   width: 100px;
   height: 50px;
@@ -12197,16 +12288,26 @@ tr:first-child {
   margin-left: 5px;
 }
 .rts-wood-products-section .section-header3 .slider-navigation .slider-btn.swiper-button-prev {
-  background: #512323;
+  background: #ff9292;
   color: #fff;
   left: -117px;
+}
+@media (max-width: 768px) {
+  .rts-wood-products-section .section-header3 .slider-navigation .slider-btn.swiper-button-prev {
+    margin-top: auto;
+  }
+
+  .rts-wood-products-section .section-header3 .slider-navigation .slider-btn.swiper-button-next {
+    margin-top: auto;
+  }
 }
 .rts-wood-products-section .section-header3 .slider-navigation .slider-btn.swiper-button-prev i {
   margin-right: 5px;
 }
 .rts-wood-products-section .collection-item .collection-image {
   margin-bottom: 25px;
-  border-radius: 7px;
+  border-radius: 50%;
+  height: 340px;
   overflow: hidden;
 }
 .rts-wood-products-section .collection-item .collection-image:hover img {
@@ -12217,9 +12318,12 @@ tr:first-child {
   text-align: left;
 }
 .rts-wood-products-section .collection-item .bottom-content .product-name {
-  font-size: 16px;
-  line-height: 24px;
-  color: #fff;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 100%;
+  text-align: center;
+  display: block;
+  color: #ff5656;
   margin-bottom: 5px;
 }
 .rts-wood-products-section .collection-item .bottom-content .product-price {
