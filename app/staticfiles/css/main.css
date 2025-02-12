@@ -19943,6 +19943,14 @@ tr:first-child {
   font-weight: 400;
   line-height: 28px;
 }
+.about-us-area .container .section-text .description strong {
+  font-weight: 600;
+}
+.about-us-area .container .section-text .description-bold {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 112%;
+}
 @media (max-width: 991px) {
   .about-us-area .container .section-text .description {
     padding-bottom: 20px;
@@ -19983,7 +19991,7 @@ tr:first-child {
   position: absolute;
   font-size: 20px;
   font-weight: 300;
-  color: #999999;
+  color: #FF5656;
   top: 0;
   z-index: 2;
 }
@@ -20000,7 +20008,7 @@ tr:first-child {
 .team-area {
   overflow: hidden;
   background-color: #f6f6f6;
-  padding: 100px 0 50px 0;
+  padding: 50px 0 50px 0;
 }
 @media (max-width: 991px) {
   .team-area {
@@ -20027,17 +20035,19 @@ tr:first-child {
   padding: 0 10px;
 }
 .team-area .container .title {
-  font-size: 40px;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #000000;
-  margin-bottom: 40px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 175%;
+  color: #666;
+  max-width: 444px;
+  margin-bottom: 50px;
 }
 .team-area .container .team-wraper {
   position: relative;
   margin-bottom: 35px;
   width: 100%;
   overflow: hidden;
+  height: 340px;
 }
 .team-area .container .team-wraper:hover .team-content .footer__social {
   visibility: visible;
@@ -20053,6 +20063,11 @@ tr:first-child {
 .team-area .container .team-wraper .team-thumb {
   position: relative;
   z-index: 1;
+  height: 100%;
+}
+.team-area .container .team-wraper .team-thumb a {
+  display: block;
+  height: 100%;
 }
 .team-area .container .team-wraper .team-thumb::before {
   content: "";
@@ -20067,15 +20082,20 @@ tr:first-child {
 }
 .team-area .container .team-wraper .team-thumb a img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .team-area .container .team-wraper .team-content {
   left: 50px;
-  position: absolute;
   right: 60px;
   bottom: 20px;
   z-index: 1;
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
+}
+
+.team-area .container .team-wraper .team-content .banner-product-thumb-logo {
+  width: 200px !important;
 }
 .team-area .container .team-wraper .team-content h3 a {
   color: #ffffff;
@@ -20197,7 +20217,11 @@ tr:first-child {
   font-weight: bold;
   text-transform: uppercase;
   color: #000000;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
+}
+
+.features-area .container .features-1 .section-content .section-line {
+  margin-bottom: 24px;
 }
 @media (max-width: 1400px) and (min-width: 1200px) {
   .features-area .container .features-1 .section-content .title {
@@ -20252,7 +20276,7 @@ tr:first-child {
   border-radius: 5px;
   -webkit-transition: background 500ms;
   transition: background 500ms;
-  background: #EE403D;
+  background: #fa6666;
 }
 .features-area .container .features-1 .section-content .section-button a {
   color: #fff;
@@ -24381,5 +24405,18 @@ button {
   .banner-product-thumb-logo {
     width: 200px !important;
   }
+}
+
+.about-callback {
+  background: #fff5f5;
+  background-image: none !important;
+}
+
+.about-callback .section-title-2 {
+  color: #666 !important;
+}
+
+.about-callback .main-form-text {
+  color: #666 !important;
 }
 /*# sourceMappingURL=main.css.map */
