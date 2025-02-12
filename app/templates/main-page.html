@@ -13,7 +13,7 @@
                                     <div class="single-inner">
                                         <div class="contents">
                                             <span class="banner-pretitle-box">{{supplier.product.all|length}} уникальных продуктов</span>
-                                            <h1 class="banner-heading mb--30">{{ supplier.name }}</h1>
+                                            <h1 class="banner-heading mb--30">{{ supplier.name }} мясокомбинат</h1>
                                             <div class="banner-action">
                                                 <object>
                                                     <a class="banner-btn banner-btn2" href="product-details.html">Перейти</a>
@@ -61,7 +61,7 @@
             <div class="row">
                 {% for supplier in suppliers %}
                 <div class="col-xl-3 col-md-6 col-sm-6">
-                    <div class="catagory-box box1">
+                    <div class="catagory-box box{{ forloop.counter }}">
                         <a href="{% url 'category-list' supplier.slug %}" class="picture">
                             {% if supplier.slug == 'berezovskii-miasokombinat' %}
                             <img src="{% static 'images/berezovskii-miasokombinat.jpg' %}"
@@ -87,7 +87,7 @@
                                     <img src="{% static 'images/logo-postavshik2.svg' %}" alt="">
                                 {% endif %}
                             </div>
-                            <h2 class="box-heading">{{ supplier.name }}</h2>
+                            <h2 class="box-heading">{{ supplier.name }} мясокомбинат</h2>
                         </div>
                         <span class="item-update">{{supplier.product.all|length}} уникальных продуктов</span>
                         {{suppliers.category}}
@@ -105,10 +105,10 @@
     <div class="rts-recent_products-section section-gap">
         <div class="container">
             <div class="recent-products-header section-header section-header3">
-                <span class="section-pretitle section-pretitle2 mb--15">Березовский</span>
-                <span class="section-title-2 mb--5
-                ">Категории</span>
-                <div class="section-line mb-0"><img src="{% static 'images/items/curlyline.png' %}" alt="line"></div>
+                <span class="section-title-2 section-pretitle section-pretitle2 mb--15">Новинки</span>
+                <!-- <span class="section-title-2 mb--5
+                ">Категории</span> -->
+                <div class="section-line mb-0"><img src="{% static 'images/items/curlyline.svg' %}" alt="line"></div>
             </div>
             <div class="products-area products-area3">
                 <div class="row justify-content-center">
@@ -395,7 +395,7 @@
         <div class="container">
             <div class="newsletter-contents">
                 <span class="section-title-2 mb--5">Join Our Newsletter</span>
-                <div class="section-line mb--20"><img src="{% static 'images/items/woodline.png' %}" alt="line"></div>
+                <div class="section-line mb--20"><img src="{% static 'images/items/curlyline.svg' %}" alt="line"></div>
 
                 <div class="newsletter-input">
                     <div class="icon"><i class="fal fa-envelope"></i></div>
@@ -410,7 +410,7 @@
 
 
     <!--================= New Collection Section Start Here =================-->
-    <div class="rts-wood-products-section section-space">
+    <div class="rts-wood-products-section section-space my-0">
         <div class="container">
             <div class="section-header section-header3 text-start">
                 <div>
@@ -515,14 +515,14 @@
             <div class="recent-products-header section-header section-header2">
                 <span class="section-pretitle mb--10">Подробнее про</span>
                 <span class="section-title-2">мясокомбинаты</span>
-                <!-- <div class="section-line mb-0"><img src="{% static 'images/items/curlyline.png' %}" alt="line"></div> -->
+                <div class="section-line mb-0"><img src="{% static 'images/items/curlyline.svg' %}" alt="line"></div>
             </div>
             <div class="brands-section-inner">
                 <div class="row justify-content-center align-items-center">
                     {% for supplier in suppliers %}
                     <div class="col-lg-15 col-md-4 col-sm-6 col-xs-6 col-xxs-6">
                         <div class="brand-item">
-                            <a href="#0" class="front">
+                            <a href="{{supplier.website}}" class="front" target="_blank">
                                 {% if supplier.slug == 'kalinkovichskii-miasokombinat' %}
                                     <img src="{% static 'images/logo-postavshik4.svg' %}" alt="">
                                 {% elif supplier.slug == 'borisovskii-miasokombinat' %}

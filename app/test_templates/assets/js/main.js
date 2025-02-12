@@ -1413,21 +1413,21 @@
 
   // Newsletter popup
   $(document).ready(function () {
-    function showpanel() {
-      $(".anywere-home").addClass("bgshow");
-      $(".rts-newsletter-popup").addClass("popup");
-    }
-    setTimeout(showpanel, 4000)
+    // function showpanel() {
+    //   $(".anywere-home").addClass("bgshow");
+    //   $(".rts-newsletter-popup").addClass("popup");
+    // }
+    // setTimeout(showpanel, 4000)
   });
 
-  $(".anywere-home").on('click', function () {
-    $(".rts-newsletter-popup").removeClass("popup")
-    $(".anywere-home").removeClass("bgshow")
-  });
-  $(".newsletter-close-btn").on('click', function () {
-    $(".rts-newsletter-popup").removeClass("popup")
-    $(".anywere-home").removeClass("bgshow")
-  });
+  // $(".anywere-home").on('click', function () {
+  //   $(".rts-newsletter-popup").removeClass("popup")
+  //   $(".anywere-home").removeClass("bgshow")
+  // });
+  // $(".newsletter-close-btn").on('click', function () {
+  //   $(".rts-newsletter-popup").removeClass("popup")
+  //   $(".anywere-home").removeClass("bgshow")
+  // });
 
   // Product details popup
   $(".product-details-popup-btn").on('click', function () {

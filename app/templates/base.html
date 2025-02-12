@@ -35,46 +35,27 @@
    <!--================= Preloader Section Start Here =================-->
    <div id="weiboo-load">
     <div class="preloader-new">
-        <svg class="cart_preloader" role="img" aria-label="Shopping cart_preloader line animation"
-            viewBox="0 0 128 128" width="128px" height="128px" xmlns="http://www.w3.org/2000/svg">
-            <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8">
-                <g class="cart__track" stroke="hsla(0,10%,10%,0.1)">
-                    <polyline points="4,4 21,4 26,22 124,22 112,64 35,64 39,80 106,80" />
-                    <circle cx="43" cy="111" r="13" />
-                    <circle cx="102" cy="111" r="13" />
-                </g>
-                <g class="cart__lines" stroke="currentColor">
-                    <polyline class="cart__top" points="4,4 21,4 26,22 124,22 112,64 35,64 39,80 106,80"
-                        stroke-dasharray="338 338" stroke-dashoffset="-338" />
-                    <g class="cart__wheel1" transform="rotate(-90,43,111)">
-                        <circle class="cart__wheel-stroke" cx="43" cy="111" r="13" stroke-dasharray="81.68 81.68"
-                            stroke-dashoffset="81.68" />
-                    </g>
-                    <g class="cart__wheel2" transform="rotate(90,102,111)">
-                        <circle class="cart__wheel-stroke" cx="102" cy="111" r="13" stroke-dasharray="81.68 81.68"
-                            stroke-dashoffset="81.68" />
-                    </g>
-                </g>
-            </g>
-        </svg>
     </div>
 </div>
 </div>
 <!--================= Preloader End Here =================-->
 
 <div class="anywere anywere-home"></div>
+<div class="logoURL" style="display: none;">
+    {% static 'js/logo.json'%}
+</div>
+<div class="preloaderURL" style="display: none;">
+    {% static 'js/preloader.json'%}
+</div>
 
 <!--================= Header Section Start Here =================-->
 <header id="rtsHeader">
     <div class="header-topbar header-topbar2 header-topbar3">
         <div class="container">
             <div class="header-top-inner">
-                <h3 class="welcome-text"><i class="rt-truck"></i> Free shipping for all orders of <span
-                        class="value">150$</span></h3>
+                <h3 class="welcome-text">Белорусские колбасы оптом</h3>
                 <div class="topbar-action">
-                    <a href="#" class="action-item mr--40"><i class="rt-store"></i> Store Location<span
-                            class="separator"></span></a>
-                    <a href="#" class="action-item"><i class="rt-location-dot"></i> Track Order</a>
+                    <a href="#" class="action-item mr--40 fw-normal">Подписаться на прайс-листы</a>
                 </div>
             </div>
         </div>
@@ -83,7 +64,7 @@
         <div class="navbar-part navbar-part navbar-part3">
             <div class="container">
                 <div class="navbar-inner navbar-inner2">
-                    <a href="{% url 'main-page' %}" class="logo"><img src="{% static 'images/logo7.svg' %}" alt="umart-logo"></a>
+                    <a href="{% url 'main-page' %}" class="logo"></a>
                     <div class="navbar-search-area">
                         <div class="search-input-inner">
                             <select class="custom-select">
@@ -94,8 +75,8 @@
                                 {% endfor %}
                             </select>
                             <div class="input-div">
-                                <div class="search-input-icon"><i class="rt-search mr--10"></i>Search</div>
-                                <input class="search-input input4" type="text" placeholder="Keyword here...">
+                                <button class="search-input-icon"><i class="rt-search mr--10"></i>Поиск</button>
+                                <input class="search-input input4" type="text" placeholder="Что будем искать?">
                             </div>
                         </div>
                     </div>
@@ -116,7 +97,9 @@
         <div class="navbar-part navbar-part2 lower-navbar">
             <div class="container">
                 <div class="navbar-inner">
-                    <a href="index.html" class="logo"><img src="{% static 'images/logo3.svg' %}" alt="umart-logo"></a>
+                    <a href="index.html" class="logo mx-0"><img src="{% static 'images/logo7.svg' %}" alt="umart-logo">
+
+                    </a>
                     <div class="catagory-select-area">
                         <select class="custom-select">
                             <option value="hide">Все мясокомбинаты</option>
@@ -144,14 +127,15 @@
                                                 href="error.html">Санкт-Петербург</a></li>
                                     </ul>
                                 </li>
+                                <li><a class="menu-item" href="contact.html">Доставка</a></li>
                                 <li><a class="menu-item" href="contact.html">Контакты</a></li>
                             </ul>
                         </nav>
                     </div>
                     <div class="quick-contact">
-                        <a href="tel:123456789" class="phone contact-item"><i class="rt-phone-flip"></i> 568. 685. 350. 56 <span
+                        <a href="tel:+7 (903) 840-28-56" class="phone contact-item"><i class="rt-phone-flip"></i> +7 (903) 840-28-56 <span
                                 class="separator"></span></a>
-                        <a href="mailto:info@webexample.com" class="email contact-item"><i class="rt-envelope"></i> info@webexample.com</a>
+                        <a href="mailto:info@stokolbas.ru" class="email contact-item"><i class="rt-envelope"></i> info@stokolbas.ru</a>
                     </div>
                     <div class="hamburger"><span></span></div>
                 </div>
@@ -293,88 +277,22 @@
         <!-- side-mobile-menu start -->
         <nav class="side-mobile-menu side-mobile-menu1 side-mobile-menu2">
             <ul id="mobile-menu-active">
+                <li>
+                    <a class="mm-link" href="index.html">Главная</a>
+                </li>
+                <li>
+                    <a class="mm-link" href="shop.html">О нас</a>
+                </li>
                 <li class="has-dropdown firstlvl">
-                    <a class="mm-link" href="index.html">Home <i class="rt-angle-down"></i></a>
+                    <a class="mm-link" href="index.html">Регионы  <i class="rt-angle-down"></i></a>
                     <ul class="sub-menu">
-                        <li><a href="index.html">Main Home</a></li>
-                        <li><a href="index-two.html">Fashion Home</a></li>
-                        <li><a href="index-nine.html">Fashion Home Two</a></li>
-                        <li><a href="index-three.html">Furniture Home</a></li>
-                        <li><a href="index-four.html">Decor Home</a></li>
-                        <li><a href="index-five.html">Electronics Home</a></li>
-                        <li><a href="index-six.html">Grocery Home</a></li>
-                        <li><a href="index-seven.html">Footwear Home</a></li>
-                        <li><a href="index-eight.html">Gaming Home</a></li>
-                        <li><a href="index-ten.html">Sunglass Home</a></li>
+                        <li><a href="about.html">Москва</a></li>
+                        <li><a href="faq.html">Тула</a></li>
+                        <li><a href="error.html">Санкт-Петербург</a></li>
                     </ul>
                 </li>
-                <li class="has-dropdown firstlvl">
-                    <a class="mm-link" href="shop.html">Shop <i class="rt-angle-down"></i></a>
-                    <ul class="sub-menu mega-dropdown-mobile">
-                        <li class="mega-dropdown-li">
-                            <ul class="mega-dropdown-ul mm-show">
-                                <li class="dropdown-li"><a class="dropdown-link" href="shop.html">Shop</a>
-                                </li>
-                                <li class="dropdown-li"><a class="dropdown-link" href="slidebar-left.html">Left Sidebar
-                                        Shop</a>
-                                </li>
-                                <li class="dropdown-li"><a class="dropdown-link" href="slidebar-right.html">Right Sidebar
-                                        Shop</a>
-                                </li>
-                                <li class="dropdown-li"><a class="dropdown-link" href="full-width-shop.html">Full
-                                        Width Shop</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="mega-dropdown-li">
-                            <ul class="mega-dropdown-ul mm-show">
-                                <li class="dropdown-li"><a class="dropdown-link" href="product-details.html">Single Product
-                                        Layout
-                                        One</a>
-                                </li>
-                                <li class="dropdown-li"><a class="dropdown-link"
-                                        href="product-details2.html">Single Product Layout
-                                        Two</a>
-                                </li>
-                                <li class="dropdown-li"><a class="dropdown-link" href="variable-products.html">Variable Product</a>
-                                </li>
-                                <li class="dropdown-li"><a class="dropdown-link" href="grouped-products.html">Grouped Product</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="mega-dropdown-li">
-                            <ul class="mega-dropdown-ul mm-show">
-                                <li class="dropdown-li"><a class="dropdown-link" href="cart.html">Cart
-                                        </a>
-                                </li>
-                                <li class="dropdown-li"><a class="dropdown-link"
-                                        href="checkout.html">Checkout</a>
-                                </li>
-                                <li class="dropdown-li"><a class="dropdown-link"
-                                        href="account.html">My
-                                        Account</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class="has-dropdown firstlvl">
-                    <a class="mm-link" href="index.html">Pages <i class="rt-angle-down"></i></a>
-                    <ul class="sub-menu">
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="faq.html">FAQ's</a></li>
-                        <li><a href="error.html">Error 404</a></li>
-                    </ul>
-                </li>
-                <li class="has-dropdown firstlvl">
-                    <a class="mm-link" href="news.html">Blog <i class="rt-angle-down"></i></a>
-                    <ul class="sub-menu">
-                        <li><a href="news.html">Blog</a></li>
-                        <li><a href="news-grid.html">Blog Grid</a></li>
-                        <li><a href="news-details.html">Blog Details</a></li>
-                    </ul>
-                </li>
-                <li><a class="mm-link" href="contact.html">Contact</a></li>
+                <li><a class="mm-link" href="contact.html">Доставка</a></li>
+                <li><a class="mm-link" href="contact.html">Контакты</a></li>
             </ul>
         </nav>
         <div class="header-action-items header-action-items1 header-action-items-side">
@@ -426,46 +344,88 @@
 <!--================= Footer Start Here =================-->
 <div class="footer footer-2 footer-3">
     <div class="container">
+        <div class="footer-feature1">
+            <div class="row align-items-center">
+                <div class="col-xl-3">
+                    <div class="wrapper">
+                        <div class="icon">
+                            <svg width="50" height="51" viewBox="0 0 50 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.5 30.6816V38.1816C7.5 42.3241 15.335 45.6816 25 45.6816C34.665 45.6816 42.5 42.3241 42.5 38.1816V30.6816C42.5 34.8241 34.665 38.1816 25 38.1816C15.335 38.1816 7.5 34.8241 7.5 30.6816Z" fill="#FF5656" />
+                                <path d="M7.5 18.1816V25.6816C7.5 29.8241 15.335 33.1816 25 33.1816C34.665 33.1816 42.5 29.8241 42.5 25.6816V18.1816C42.5 22.3241 34.665 25.6816 25 25.6816C15.335 25.6816 7.5 22.3241 7.5 18.1816Z" fill="#FF5656" />
+                                <path d="M42.5 13.1816C42.5 17.3241 34.665 20.6816 25 20.6816C15.335 20.6816 7.5 17.3241 7.5 13.1816C7.5 9.03914 15.335 5.68164 25 5.68164C34.665 5.68164 42.5 9.03914 42.5 13.1816Z" fill="#FF5656" />
+                              </svg>
+                        </div>
+                        <div class="title">
+                            <h1 class="box-title my-0">Работаем без предоплаты</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3">
+                    <div class="wrapper">
+                        <div class="icon">
+                            <svg width="50" height="51" viewBox="0 0 50 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.5 5.68164C21.837 5.68164 21.2011 5.94503 20.7322 6.41387C20.2634 6.88271 20 7.5186 20 8.18164C20 8.84468 20.2634 9.48057 20.7322 9.94941C21.2011 10.4182 21.837 10.6816 22.5 10.6816H27.5C28.163 10.6816 28.7989 10.4182 29.2678 9.94941C29.7366 9.48057 30 8.84468 30 8.18164C30 7.5186 29.7366 6.88271 29.2678 6.41387C28.7989 5.94503 28.163 5.68164 27.5 5.68164H22.5Z" fill="#FF5656" />
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M10 13.1816C10 11.8556 10.5268 10.5838 11.4645 9.64611C12.4021 8.70842 13.6739 8.18164 15 8.18164C15 10.1708 15.7902 12.0784 17.1967 13.4849C18.6032 14.8915 20.5109 15.6816 22.5 15.6816H27.5C29.4891 15.6816 31.3968 14.8915 32.8033 13.4849C34.2098 12.0784 35 10.1708 35 8.18164C36.3261 8.18164 37.5979 8.70842 38.5355 9.64611C39.4732 10.5838 40 11.8556 40 13.1816V40.6816C40 42.0077 39.4732 43.2795 38.5355 44.2172C37.5979 45.1549 36.3261 45.6816 35 45.6816H15C13.6739 45.6816 12.4021 45.1549 11.4645 44.2172C10.5268 43.2795 10 42.0077 10 40.6816V13.1816ZM17.5 23.1816C16.837 23.1816 16.2011 23.445 15.7322 23.9139C15.2634 24.3827 15 25.0186 15 25.6816C15 26.3447 15.2634 26.9806 15.7322 27.4494C16.2011 27.9182 16.837 28.1816 17.5 28.1816H17.525C18.188 28.1816 18.8239 27.9182 19.2928 27.4494C19.7616 26.9806 20.025 26.3447 20.025 25.6816C20.025 25.0186 19.7616 24.3827 19.2928 23.9139C18.8239 23.445 18.188 23.1816 17.525 23.1816H17.5ZM25 23.1816C24.337 23.1816 23.7011 23.445 23.2322 23.9139C22.7634 24.3827 22.5 25.0186 22.5 25.6816C22.5 26.3447 22.7634 26.9806 23.2322 27.4494C23.7011 27.9182 24.337 28.1816 25 28.1816H32.5C33.163 28.1816 33.7989 27.9182 34.2678 27.4494C34.7366 26.9806 35 26.3447 35 25.6816C35 25.0186 34.7366 24.3827 34.2678 23.9139C33.7989 23.445 33.163 23.1816 32.5 23.1816H25ZM17.5 33.1816C16.837 33.1816 16.2011 33.445 15.7322 33.9139C15.2634 34.3827 15 35.0186 15 35.6816C15 36.3447 15.2634 36.9806 15.7322 37.4494C16.2011 37.9182 16.837 38.1816 17.5 38.1816H17.525C18.188 38.1816 18.8239 37.9182 19.2928 37.4494C19.7616 36.9806 20.025 36.3447 20.025 35.6816C20.025 35.0186 19.7616 34.3827 19.2928 33.9139C18.8239 33.445 18.188 33.1816 17.525 33.1816H17.5ZM25 33.1816C24.337 33.1816 23.7011 33.445 23.2322 33.9139C22.7634 34.3827 22.5 35.0186 22.5 35.6816C22.5 36.3447 22.7634 36.9806 23.2322 37.4494C23.7011 37.9182 24.337 38.1816 25 38.1816H32.5C33.163 38.1816 33.7989 37.9182 34.2678 37.4494C34.7366 36.9806 35 36.3447 35 35.6816C35 35.0186 34.7366 34.3827 34.2678 33.9139C33.7989 33.445 33.163 33.1816 32.5 33.1816H25Z" fill="#FF5656" />
+                              </svg>
+                        </div>
+                        <div class="title">
+                            <h1 class="box-title d-inline">Более тысячи </h1>
+                            <p class="d-inline">наименований колбасной продукции и мясных деликатессов</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3">
+                    <div class="wrapper">
+                        <div class="icon">
+                            <svg width="40" height="31" viewBox="0 0 40 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 5.68164C0 4.35556 0.526784 3.08379 1.46447 2.14611C2.40215 1.20842 3.67392 0.681641 5 0.681641H17.5L22.5 5.68164H35C36.3261 5.68164 37.5979 6.20842 38.5355 7.14611C39.4732 8.08379 40 9.35556 40 10.6816V25.6816C40 27.0077 39.4732 28.2795 38.5355 29.2172C37.5979 30.1549 36.3261 30.6816 35 30.6816H5C3.67392 30.6816 2.40215 30.1549 1.46447 29.2172C0.526784 28.2795 0 27.0077 0 25.6816V5.68164Z" fill="#FF5656" />
+                              </svg>
+                        </div>
+                        <div class="title">
+                            <h1 class="box-title my-0">Полный комплект сопроводительных документов</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3">
+                    <div class="wrapper last-child">
+                        <div class="icon">
+                            <svg width="50" height="51" viewBox="0 0 50 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 41.9316C20 42.9262 19.6049 43.88 18.9017 44.5833C18.1984 45.2866 17.2446 45.6816 16.25 45.6816C15.2554 45.6816 14.3016 45.2866 13.5983 44.5833C12.8951 43.88 12.5 42.9262 12.5 41.9316C12.5 40.9371 12.8951 39.9833 13.5983 39.28C14.3016 38.5767 15.2554 38.1816 16.25 38.1816C17.2446 38.1816 18.1984 38.5767 18.9017 39.28C19.6049 39.9833 20 40.9371 20 41.9316ZM37.5 41.9316C37.5 42.9262 37.1049 43.88 36.4017 44.5833C35.6984 45.2866 34.7446 45.6816 33.75 45.6816C32.7554 45.6816 31.8016 45.2866 31.0983 44.5833C30.3951 43.88 30 42.9262 30 41.9316C30 40.9371 30.3951 39.9833 31.0983 39.28C31.8016 38.5767 32.7554 38.1816 33.75 38.1816C34.7446 38.1816 35.6984 38.5767 36.4017 39.28C37.1049 39.9833 37.5 40.9371 37.5 41.9316Z" fill="#FF5656" />
+                                <path d="M7.5 10.6816C6.83696 10.6816 6.20107 10.945 5.73223 11.4139C5.26339 11.8827 5 12.5186 5 13.1816V38.1816C5 38.8447 5.26339 39.4806 5.73223 39.9494C6.20107 40.4182 6.83696 40.6816 7.5 40.6816H10.125C10.4119 39.2688 11.1784 37.9985 12.2947 37.0862C13.4109 36.1738 14.8083 35.6754 16.25 35.6754C17.6917 35.6754 19.0891 36.1738 20.2053 37.0862C21.3216 37.9985 22.0881 39.2688 22.375 40.6816H25C25.663 40.6816 26.2989 40.4182 26.7678 39.9494C27.2366 39.4806 27.5 38.8447 27.5 38.1816V13.1816C27.5 12.5186 27.2366 11.8827 26.7678 11.4139C26.2989 10.945 25.663 10.6816 25 10.6816H7.5ZM35 18.1816C34.337 18.1816 33.7011 18.445 33.2322 18.9139C32.7634 19.3827 32.5 20.0186 32.5 20.6816V35.8066C33.3044 35.6423 34.1332 35.6381 34.9392 35.7942C35.7452 35.9502 36.5126 36.2636 37.1974 36.7163C37.8823 37.169 38.4713 37.7522 38.9307 38.4326C39.3901 39.113 39.711 39.8772 39.875 40.6816H42.5C43.163 40.6816 43.7989 40.4182 44.2678 39.9494C44.7366 39.4806 45 38.8447 45 38.1816V25.6816C44.9999 25.0187 44.7364 24.3829 44.2675 23.9141L39.2675 18.9141C38.7988 18.4453 38.163 18.1818 37.5 18.1816H35Z" fill="#FF5656" />
+                              </svg>
+                        </div>
+                        <div class="title">
+                            <h1 class="box-title my-0">Бесплатная доставка</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="footer-inner">
             <div class="row justify-content-between">
                 <div class="col-xl-3 col-md-6 col-sm-6 box-widget-col">
                     <div class="footer-widget footer-box-widget">
                         <div class="footer-logo"><img src="{% static 'images/logo7.svg' %}" alt="footer-logo"></div>
-                        <p>Solid is the information & experience
-                            directed at an end-user</p>
+                        <p>Работаем для вас!</p>
                         <div class="quick-contact">
                             <div class="phone contact-item">
-                                <div class="icon"><img src="{% static 'images/icons/24clock.png' %}" alt="chat-icon">
+                                <div class="icon"><img src="{% static 'images/icons/call-icon.svg' %}" alt="chat-icon">
                                 </div>
                                 <div class="contact-info">
-                                    <a href="tel:0020500" class="service-time info">0020 500 - CALL - 000</a>
-                                    <span class="title">Mon - Fri: 9:00-20:00</span>
+                                    <a href="tel:+7 (903) 840-28-56" class="service-time info">+7 (903) 840-28-56</a>
+                                    <a href="tel:+7 (4872) 701-418" class="service-time info">+7 (4872) 701-418</a>
                                 </div>
                             </div>
                             <div class="email contact-item">
-                                <div class="icon"><img src="{% static 'images/icons/mail.png' %}" alt="phone-icon">
+                                <div class="icon"><img src="{% static 'images/icons/mail-icon.svg' %}" alt="phone-icon">
                                 </div>
-                                <div class="contact-info">
-                                    <a href="mailto:info@webmail.com"
-                                        class="email-address info">info@webmail.com</a>
-                                    <span class="title">Get Support</span>
+                                <div class="contact-info d-flex align-items-center">
+                                    <a href="mailto:info@stokolbas.ru"
+                                        class="email-address info">info@stokolbas.ru</a>
                                 </div>
                             </div>
                         </div>
-                        <ul class="social-links-footer2">
-                            <li><a class="platform fb" target="_blank" href="http://facebook.com"><i
-                                        class="fab fa-facebook"></i></a>
-                            </li>
-                            <li><a class="platform yt" target="_blank" href="http://youtube.com"><i
-                                        class="fab fa-youtube"></i></a>
-                            </li>
-                            <li><a class="platform ttr" target="_blank" href="http://twitter.com"><i
-                                        class="fab fa-twitter"></i></a>
-                            </li>
-                            <li><a class="platform lkd" target="_blank" href="http://linkedin.com"><i
-                                        class="fab fa-linkedin"></i></a>
-                            </li>
-                        </ul>
+                        
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6 col-sm-6">
@@ -498,24 +458,12 @@
                     </div>
                 </div>
             </div>
-            <div class="footer-bottombar">
-                <div class="app-download">
-                    <span class="download-text">Order faster with our App!</span>
-                    <a href="http://appstore.com" target="_blank" class="download-store"><img
-                            src="{% static 'images/items/appstore.jpg' %}" alt=""></a>
-                    <a href="https://play.google.com/store/apps" target="_blank" class="download-store"><img
-                            src="{% static 'images/items/playstore.jpg' %}" alt=""></a>
-                </div>
-                <div class="payment-methods"><img src="{% static 'images/footer/payment2.svg' %}" alt="payment-methods">
-                </div>
-            </div>
         </div>
     </div>
     <div class="footer-bottom-area">
         <div class="container">
             <div class="footer-bottom-inner">
-                <span class="copyright">Copyright & Design By <a href="http://reacthemes.com" class="brand"
-                        target="_blank">Reacthemes</a> -2022</span>
+                <span class="copyright">2025</span>
             </div>
         </div>
     </div>
@@ -540,6 +488,7 @@
     <script src="{% static 'js/vendors/isotope.pkgd.min.js' %}"></script>
     <!--================= Magnefic Popup Plugin =================-->
     <script src="{% static 'js/vendors/jquery.magnific-popup.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <!--================= Main Script =================-->
     <script src="{% static 'js/main.js' %}"></script>
 </body>
