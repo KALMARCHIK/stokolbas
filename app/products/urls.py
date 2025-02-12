@@ -8,6 +8,7 @@ from products.views import (
     ProductDetailView,
     RegionsDetailView,
     ContactsView,
+    AboutView,
     SupplierListView,
     MainPageView,
     FeedbackCreateView,
@@ -62,6 +63,12 @@ urlpatterns = [
     path('contacts/', 
         ContactsView.as_view(),
         name='contacts',
+        ),
+
+    # О нас
+    path('about/', 
+        AboutView.as_view(),
+        name='about',
         )
 ]
 

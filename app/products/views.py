@@ -119,6 +119,9 @@ class RegionsDetailView(DetailView):
 
 class ContactsView(TemplateView):
     template_name = 'contacts.html'
+
+class AboutView(TemplateView):
+    template_name = 'about.html'
     
 class MainPageView(ListView):
     template_name = 'main-page.html'
