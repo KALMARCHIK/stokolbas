@@ -122,6 +122,9 @@ class ContactsView(TemplateView):
 
 class AboutView(TemplateView):
     template_name = 'about.html'
+
+class DeliveryView(TemplateView):
+    template_name = 'delivery.html'
     
 class MainPageView(ListView):
     template_name = 'main-page.html'

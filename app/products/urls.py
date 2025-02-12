@@ -12,6 +12,7 @@ from products.views import (
     SupplierListView,
     MainPageView,
     FeedbackCreateView,
+    DeliveryView
 )
 
 urlpatterns = [
@@ -69,7 +70,13 @@ urlpatterns = [
     path('about/', 
         AboutView.as_view(),
         name='about',
-        )
+        ),
+    
+    # О нас
+    path('delivery/', 
+        DeliveryView.as_view(),
+        name='delivery',
+        ),
 ]
 
 
