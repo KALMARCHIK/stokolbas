@@ -70,10 +70,14 @@ class CategoryListView(ListView):
     template_name = 'category_list.html'
     context_object_name = 'categories'
 
-    def get_queryset(self):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         # Получаем поставщика по slug
         supplier = get_object_or_404(Supplier, slug=self.kwargs['supplier_slug'])
-        return Category.objects.filter(supplier=supplier)
+        context['supplier_current'] = supplier
+        context['suppliers'] = Supplier.objects.prefetch_related('product').all()
+        context['products'] = Product.objects.filter(supplier=supplier)
+        return context
     
 
 class ProductListView(ListView):
@@ -125,6 +129,9 @@ class AboutView(TemplateView):
 
 class DeliveryView(TemplateView):
     template_name = 'delivery.html'
+
+class KalugaView(TemplateView):
+    template_name = 'kaluga.html'
     
 class MainPageView(ListView):
     template_name = 'main-page.html'

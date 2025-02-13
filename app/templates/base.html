@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/rt-icons.css' %}">
     <!--================= Animate css =================-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.nstSlider.min.css' %}">
     <!--================= Magnific popup Plugin =================-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/magnific-popup.css' %}">
     <!--================= Swiper Slider Plugin =================-->
@@ -119,7 +120,7 @@
                                 <li class="has-dropdown"><a class="menu-item" href="#">Регионы <i
                                     class="rt-plus"></i></a>
                                     <ul class="dropdown-ul">
-                                        <li class="dropdown-li"><a class="dropdown-link" href="about.html">Москва</a>
+                                        <li class="dropdown-li"><a class="dropdown-link" href="{% url 'kaluga' %}">Калуга</a>
                                         </li>
                                         <li class="dropdown-li"><a class="dropdown-link"
                                                 href="faq.html">Тула</a></li>
@@ -286,7 +287,7 @@
                 <li class="has-dropdown firstlvl">
                     <a class="mm-link" href="index.html">Регионы  <i class="rt-angle-down"></i></a>
                     <ul class="sub-menu">
-                        <li><a href="about.html">Москва</a></li>
+                        <li><a href="{% url 'kaluga' %}">Калуга</a></li>
                         <li><a href="faq.html">Тула</a></li>
                         <li><a href="error.html">Санкт-Петербург</a></li>
                     </ul>
@@ -480,6 +481,7 @@
     <script src="{% static 'js/vendors/swiper-bundle.min.js' %}"></script>
      <!--================= Nice Select =================-->
      <script src="{% static 'js/vendors/jquery.nice-select.js' %}"></script>
+     <script src="{% static 'js/vendors/jquery.nstSlider.min.js' %}"></script>
     <!--================= metisMenu Plugin =================-->
     <script src="{% static 'js/vendors/metisMenu.min.js' %}"></script>
     <!--================= Main Menu Plugin =================-->

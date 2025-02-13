@@ -12,7 +12,8 @@ from products.views import (
     SupplierListView,
     MainPageView,
     FeedbackCreateView,
-    DeliveryView
+    DeliveryView,
+    KalugaView
 )
 
 urlpatterns = [
@@ -76,6 +77,11 @@ urlpatterns = [
     path('delivery/', 
         DeliveryView.as_view(),
         name='delivery',
+        ),
+    
+    path('kaluga/', 
+        KalugaView.as_view(),
+        name='kaluga',
         ),
 ]
 

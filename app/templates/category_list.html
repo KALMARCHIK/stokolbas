@@ -4,38 +4,257 @@
 {% block title %}Список категорий{% endblock %}
 
 {% block content %}
-    <!--================= Newsletter Section Start Here =================-->
-    <div class="rts-best-catagory-section2 section-gap">
-        <div class="container">
-            <div class="row justify-content-center">
-                {% for category in categories %}
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="catagory-card">
-                            <div class="contents">
-                                <h3 class="catagory-title">{{ category.name }}</h3>
-                                <ul class="catagory-lists">
-                                    <li><a href="category.html">iPhone <i class="fal fa-angle-right"></i></a></li>
-                                    <li><a href="category.html">Phone Accessories <i class="fal fa-angle-right"></i></a>
-                                    </li>
-                                    <li><a href="category.html">Phone Cases <i class="fal fa-angle-right"></i></a></li>
-                                    <li><a href="category.html">Postpaid Phones <i class="fal fa-angle-right"></i></a></li>
-                                </ul>
-                                <a href="{% url 'product-list' category.supplier.slug category.slug %}" class="all-btn">Перейти <i
-                                        class="fal fa-long-arrow-right ml--5"></i></a>
-                            </div>
-                            <div class="category-thumb">
-                                {% if category.image %}
-                                        <img src="{{ category.image.url }}" alt="{{ product.name }}">
-                                    {% else %}
-                                        <img src="{% static 'images/products/home4/catagory/1.png' %}"
-                                        alt="category-thumb">
-                                    {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
+   <!--================= Shop Section Start Here =================-->
+<div class="page-path">
+    <div class="container">
+        <div class="breadcrumbs-inner">
+            <h1 class="path-title">
+                {% if supplier_current.slug == 'kalinkovichskii' %}
+                    <img src="{% static 'images/logo-postavshik4.svg' %}" alt="" class="breadcrumbs-logo">
+                {% elif supplier_current.slug == 'borisovskii' %}
+                    <img src="{% static 'images/logo-postavshik3.png' %}" alt="" class="breadcrumbs-logo">
+                {% elif supplier_current.slug == 'berezovskii' %}
+                    <img src="{% static 'images/logo-postavshik1.svg' %}" alt="" class="breadcrumbs-logo">
+                {% elif supplier_current.slug == 'pinskii' %}
+                    <img src="{% static 'images/logo-postavshik2.svg' %}" alt="" class="breadcrumbs-logo">
+                {% endif %}
+                {{supplier_current}}
+            </h1>
+            <div>
+                <button class="breadcrumbs-btn">
+                  Прайс-листы
+                </button>
+                <div class="breadcrumbs-date">
+                  Обновлены 12.02.2025
+                </div>
             </div>
         </div>
     </div>
-    <!--================= Newsletter Section End Here =================-->
+</div>
+<div class="rts-shop-section section-gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3">
+                <div class="side-sticky">
+                    <div class="shop-side-action">
+                        <div class="action-item">
+                            <div class="action-top">
+                                <span class="action-title">Категория</span>
+                            </div>
+                            <div class="product-brands">
+                                <div class="brands-inner">
+                                    <ul>
+                                        {% for category in supplier_current.category.all %}
+                                            <li><a class="product-brand" href="shop.html">{{category.name}}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <div class="action-top">
+                                <span class="action-title">Цена</span>
+                            </div>
+                            <div class="nstSlider" data-range_min="50" data-range_max="20000" data-cur_min="20"
+                                data-cur_max="10000">
+
+                                <div class="bar"></div>
+                                <div class="leftGrip price-range-grip"></div>
+                                <div class="rightGrip price-range-grip"></div>
+                            </div>
+                            <div class="range-label-area">
+                                <div class="min-price d-flex">
+                                    <span class="range-lbl">От:</span>
+                                    <span class="currency-symbol">$</span>
+                                    <div class="leftLabel price-range-label"></div>
+                                </div>
+                                <div class="min-price d-flex">
+                                    <span class="range-lbl">До:</span>
+                                    <span class="currency-symbol">$</span>
+                                    <div class="rightLabel price-range-label"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <div class="action-top">
+                                <span class="action-title">Срок реализации</span>
+                            </div>
+                            <div class="nstSlider" data-range_min="50" data-range_max="20000" data-cur_min="20"
+                                data-cur_max="10000">
+
+                                <div class="bar"></div>
+                                <div class="leftGrip price-range-grip"></div>
+                                <div class="rightGrip price-range-grip"></div>
+                            </div>
+                            <div class="range-label-area">
+                                <div class="min-price d-flex">
+                                    <span class="range-lbl align-self-center">От:</span>
+                                    <div class="leftLabel price-range-label"></div>
+                                    <span class="currency-symbol"> суток</span>
+                                </div>
+                                <div class="min-price d-flex">
+                                    <span class="range-lbl align-self-center">До:</span>
+                                    <div class="rightLabel price-range-label"></div>
+                                    <span class="currency-symbol"> суток</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <div class="action-top">
+                                <span class="action-title">Мясокомбинат</span>
+                            </div>
+                            {% for supplier in suppliers %}
+                                <a href="{% url 'category-list' supplier.slug %}" class="color-item {% if supplier_current.name == supplier.name %} selected{% endif %}">
+                                    <div class="color black"><i class="fas fa-check"></i></div>
+                                    <span class="color-name">{{supplier.name}}</span>
+                                    <div class="color-arrow"><i class="far fa-long-arrow-right"></i></div>
+                                </a>
+                            {% endfor %}
+                        </div>
+                        <div class="banner-item">
+                            <div class="banner-inner">
+                                {% if supplier_current.slug == 'kalinkovichskii' %}
+                                    <img src="{% static 'images/logo-postavshik4.svg' %}" alt="" class="banner-category-logo">
+                                {% elif supplier_current.slug == 'borisovskii' %}
+                                    <img src="{% static 'images/logo-postavshik3.png' %}" alt="" class="banner-category-logo">
+                                {% elif supplier_current.slug == 'berezovskii' %}
+                                    <img src="{% static 'images/logo-postavshik1.svg' %}" alt="" class="banner-category-logo">
+                                {% elif supplier_current.slug == 'pinskii' %}
+                                    <img src="{% static 'images/logo-postavshik2.svg' %}" alt="" class="banner-category-logo">
+                                {% endif %}
+                                <span class="pretitle">О мясокомбинате</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9">
+                <div class="shop-product-topbar">
+                    <span class="items-onlist">Всего {{supplier_current.product.all|length}} видов продуктов</span>
+                </div>
+                <div class="products-area products-area3">
+                    <div class="row justify-content-center">
+                        {% for product in products %}
+                        <div class="col-xl-3 col-md-4 col-sm-6">
+                            <div class="product-item product-item2 element-item3 product-details-popup-btn">
+                                <div href="product-details.html" class="product-image">
+                                    {% if product.image %}
+                                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                    {% else %}
+                                        <img src="{% static 'images/products/home3/1.jpg' %}" alt="No image available">
+                                    {% endif %}
+                                </div>
+                                <div class="bottom-content">
+                                    <span class="product-category">{{product.name}}</span>
+                                    <div href="product-details.html" class="product-name">{{ product.category }}</div>
+                                    <div class="action-wrap">
+                                        <span class="product-price">{{ product.price }} ₽/кг.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <!-- <div class="product-pagination-area mt--20">
+                    <button class="prev"><i class="far fa-long-arrow-left"></i></button>
+                    <button class="number active">01</button>
+                    <button class="number">02</button>
+                    <button class="skip-number">---</button>
+                    <button class="number">07</button>
+                    <button class="number">08</button>
+                    <button class="next"><i class="far fa-long-arrow-right"></i></button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+<!--================= Shop Section Section End Here =================-->
+<div class="product-details-popup-wrapper">
+    <div class="rts-product-details-section rts-product-details-section2 product-details-popup-section">
+        <div class="product-details-popup">
+            <button class="product-details-close-btn"><i class="fal fa-times"></i></button>
+            <div class="details-product-area">
+                <div class="product-thumb-area">
+                    <div class="cursor"></div>
+                    <div class="thumb-wrapper one filterd-items figure">
+                        <div class="product-thumb zoom" onmousemove="zoom(event)"
+                            style="background-image: url(assets/images/products/product-details.jpg)"><img
+                                src="{% static 'images/products/product-details.jpg' %}" alt="product-thumb">
+                        </div>
+                    </div>
+                    <div class="thumb-wrapper two filterd-items hide">
+                        <div class="product-thumb zoom" onmousemove="zoom(event)"
+                            style="background-image: url(assets/images/products/product-filt2.jpg)"><img
+                                src="{% static 'images/products/product-filt2.jpg' %}" alt="product-thumb">
+                        </div>
+                    </div>
+                    <div class="thumb-wrapper three filterd-items hide">
+                        <div class="product-thumb zoom" onmousemove="zoom(event)"
+                            style="background-image: url(assets/images/products/product-filt3.jpg)"><img
+                                src="{% static 'images/products/product-filt3.jpg' %}" alt="product-thumb">
+                        </div>
+                    </div>
+                    <div class="product-thumb-filter-group">
+                        <div class="thumb-filter filter-btn active" data-show=".one"><img
+                                src="{% static 'images/products/product-filt1.jpg' %}" alt="product-thumb-filter"></div>
+                        <div class="thumb-filter filter-btn" data-show=".two"><img
+                                src="{% static 'images/products/product-filt2.jpg' %}" alt="product-thumb-filter"></div>
+                        <div class="thumb-filter filter-btn" data-show=".three"><img
+                                src="{% static 'images/products/product-filt3.jpg' %}" alt="product-thumb-filter"></div>
+                    </div>
+                </div>
+                <div class="contents">
+                    <div class="product-status">
+                        <span class="product-catagory">Dress</span>
+                        <div class="rating-stars-group">
+                            <div class="rating-star"><i class="fas fa-star"></i></div>
+                            <div class="rating-star"><i class="fas fa-star"></i></div>
+                            <div class="rating-star"><i class="fas fa-star-half-alt"></i></div>
+                            <span>10 Reviews</span>
+                        </div>
+                    </div>
+                    <h2 class="product-title">Wide Cotton Tunic Dress <span class="stock">In Stock</span></h2>
+                    <span class="product-price"><span class="old-price">$9.35</span> $7.25</span>
+                    <p>
+                        Priyoshop has brought to you the Hijab 3 Pieces Combo Pack PS23. It is a
+                        completely modern design and you feel comfortable to put on this hijab.
+                        Buy it at the best price.
+                    </p>
+                    <div class="product-bottom-action">
+                        <div class="cart-edit">
+                            <div class="quantity-edit action-item">
+                                <button class="button minus"><i class="fal fa-minus minus"></i></button>
+                                <input type="text" class="input" value="01" />
+                                <button class="button plus">+<i class="fal fa-plus plus"></i></button>
+                            </div>
+                        </div>
+                        <a href="cart.html" class="addto-cart-btn action-item"><i class="rt-basket-shopping"></i>
+                            Add To
+                            Cart</a>
+                        <a href="wishlist.html" class="wishlist-btn action-item"><i class="rt-heart"></i></a>
+                    </div>
+                    <div class="product-uniques">
+                        <span class="sku product-unipue"><span>SKU: </span> BO1D0MX8SJ</span>
+                        <span class="catagorys product-unipue"><span>Categories: </span> T-Shirts, Tops, Mens</span>
+                        <span class="tags product-unipue"><span>Tags: </span> fashion, t-shirts, Men</span>
+                    </div>
+                    <div class="share-social">
+                        <span>Share:</span>
+                        <a class="platform" href="http://facebook.com" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a class="platform" href="http://twitter.com" target="_blank"><i
+                                class="fab fa-twitter"></i></a>
+                        <a class="platform" href="http://behance.com" target="_blank"><i
+                                class="fab fa-behance"></i></a>
+                        <a class="platform" href="http://youtube.com" target="_blank"><i
+                                class="fab fa-youtube"></i></a>
+                        <a class="platform" href="http://linkedin.com" target="_blank"><i
+                                class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
