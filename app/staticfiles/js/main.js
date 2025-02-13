@@ -1394,7 +1394,7 @@
   });
 
 
-  $(".color-item").one('click', function () {
+  $(".color-item").on('click', function () {
     $(this).toggleClass('selected');
 
   });
@@ -1464,9 +1464,9 @@ function zoom(e) {
   zoomer.style.backgroundPosition = x + '% ' + y + '%';
 }
 
-var nstSlider = $('.nstSlider');
+var nstSlider2 = $('.nstSlider');
 
-if (nstSlider.length) {
+if (nstSlider2.length) {
   $('.nstSlider').nstSlider({
     "left_grip_selector": ".leftGrip",
     "right_grip_selector": ".rightGrip",
