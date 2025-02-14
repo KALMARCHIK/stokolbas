@@ -8195,6 +8195,14 @@ tr:first-child {
     flex-direction: column;
     row-gap: 20px;
   }
+
+  .page-path .breadcrumbs-inner .path-title {
+    font-size: 28px;
+  }
+
+  .page-path .breadcrumbs-inner .breadcrumbs-logo {
+    height: 40px;
+  }
 }
 .page-path ul {
   display: -webkit-box;
