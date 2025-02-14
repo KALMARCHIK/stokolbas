@@ -24543,9 +24543,11 @@ button {
   width: 1400px;
 }
 
-.price-list-table-wrap {
-  width: 100%;
-  overflow: scroll;
+@media (max-width: 1400px) {
+  .price-list-table-wrap {
+    width: 100%;
+    overflow: scroll;
+  }
 }
 
 .price-list-table-head-wrap {
