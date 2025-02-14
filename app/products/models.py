@@ -15,6 +15,7 @@ class Supplier(models.Model):
     name = models.CharField(verbose_name='Наименование компании', max_length=255, unique=True)
     website = models.URLField(verbose_name='Сайт компании', blank=True, null=True)
     price_list = models.FileField(upload_to="price_lists/", blank=True, null=True, verbose_name="Прайс-лист (Excel)")
+    image = models.CharField(verbose_name='Картинка', max_length=200, blank=True, null=True)
     slug = models.SlugField(unique=True, blank=True)  # Добавляем slug
 
     def __str__(self):
@@ -29,7 +30,7 @@ class Category(models.Model):
 
     name = models.CharField(verbose_name='Категория', max_length=100)
     supplier = models.ForeignKey(Supplier, verbose_name='Поставщик', on_delete=models.CASCADE, related_name='category')
-    image = models.ImageField(verbose_name='Картинка товара', upload_to='categories_image/', blank=True, null=True)
+    image = models.CharField(verbose_name='Картинка товара', max_length=200, blank=True, null=True)
     slug = models.SlugField(unique=True, blank=True)  # Добавляем slug
 
     def __str__(self):
@@ -47,9 +48,10 @@ class Product(models.Model):
     bulk_price = models.IntegerField(verbose_name='Цена от 1000 кг')
     category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.CASCADE, related_name='products')
     implementation_period = models.CharField(verbose_name='Срок реализации', max_length=100)
-    weight_unit = models.CharField(verbose_name='Мера измерения', max_length=10)
+    variety = models.CharField(verbose_name='Сорт', max_length=10)
+    compound = models.TextField(verbose_name='Состав')
     is_new = models.BooleanField(verbose_name='Новинка', default=False)
-    image = models.ImageField(verbose_name='Картинка товара', upload_to='products_image/', blank=True, null=True)
+    image = models.CharField(verbose_name='Картинка товара', max_length=200, blank=True, null=True)
     slug = models.SlugField(unique=True, blank=True)  # Добавляем slug
 
     def __str__(self):
@@ -85,7 +87,7 @@ def generate_slug(sender, instance, **kwargs):
     """Универсальный сигнал для генерации slug перед сохранением модели."""
     if not instance.slug:
         instance.slug = get_unique_slug(instance)
-        print(instance.slug)
+        # print(instance.slug)
 
 
 def get_unique_slug(instance, field_name="name"):
@@ -100,7 +102,7 @@ def get_unique_slug(instance, field_name="name"):
     while model_class.objects.filter(slug=unique_slug).exists():
         unique_slug = f"{slug}-{counter}"
         counter += 1
-    print(unique_slug)
+    # print(unique_slug)
     return unique_slug
 
 @receiver(pre_save, sender=Product)
@@ -118,4 +120,4 @@ def generate_product_slug(sender, instance, **kwargs):
             counter += 1
 
         instance.slug = unique_slug
-        print(instance.slug)
+        # print(instance.slug)

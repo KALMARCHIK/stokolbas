@@ -1,0 +1,23 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - production
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up SSH
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Deploy to Server
+      run: |
+        ssh -o StrictHostKeyChecking=no root@217.114.3.6 'cd ~./srv/stokolbas/ && git pull origin production && ./deploy.sh'

@@ -4,7 +4,7 @@ from django.db import transaction
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('slug', 'supplier', 'name', 'category', 'is_new', 'implementation_period', 'weight_unit', 'price', 'bulk_price', 'image')  # Показываем имя поставщика в списке товаров
+    list_display = ('slug', 'supplier', 'name', 'category', 'is_new', 'implementation_period', 'variety', 'compound', 'price', 'bulk_price', 'image')  # Показываем имя поставщика в списке товаров
     list_filter = ('name', 'category', 'supplier')
     actions = ['parse_selected_product_image', 'update_product_new_status']
 
@@ -25,14 +25,14 @@ class ProductAdmin(admin.ModelAdmin):
     #     self.message_user(request, "Для выбранных продуктов обновлен статус новинок!")
 
     def parse_selected_product_image(self, request, queryset):
-        print([i.supplier for i in queryset])
+        # print([i.supplier for i in queryset])
         kalinko = []
         berez = []
         pinski = []
         borisovski = []
 
         from parsers.kalinko_parser import kalinko_parser, save_image
-        from parsers.bereza_parser import bereza_parser
+        # from parsers.bereza_parser import bereza_parser
         for i in queryset:
             if i.supplier == 'Березовский мясоконсервный комбинат':
                 berez.append(i)
@@ -43,8 +43,8 @@ class ProductAdmin(admin.ModelAdmin):
             elif i.supplier == 'Борисовский мясоконсервный комбинат':
                 borisovski.append(i)
         
-        save_image()
-        bereza_parser(berez)
+        kalinko_parser()
+        # bereza_parser(berez)
 
 
         self.message_user(request, "Для выбранных продуктов найдены изображения!")
@@ -55,14 +55,14 @@ admin.site.register(Product, ProductAdmin)
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'supplier','slug')
+    list_display = ('name', 'supplier','image', 'slug')
     list_filter = ('name', 'supplier')
 
 admin.site.register(Category, CategoryAdmin)
 
 
 class SupplierAdmin(admin.ModelAdmin):
-    list_display = ('name', 'website', 'price_list', 'slug')
+    list_display = ('name', 'website', 'price_list', 'image', 'slug')
     # list_filter = ('category', 'price')
     actions = ["parse_selected_price_lists"]
 
@@ -73,19 +73,18 @@ class SupplierAdmin(admin.ModelAdmin):
 
         # 🔹 1. Собираем список поставщиков с загруженными файлами
         for supplier in queryset:
-            if supplier.price_list:
-                suppliers_to_process.append((supplier.price_list.path, supplier))
+            if supplier.website:
+                suppliers_to_process.append(supplier)
 
         # 🔹 2. Запускаем обработку ТОЛЬКО после завершения транзакции
         def process_files():
-            from parsers.excel_parser import parse_price_list
-            for file_path, supplier_name in suppliers_to_process:
-                parse_price_list(file_path, supplier_name)  # Проброс имени поставщика
+            from parsers.web_parser import start_parsing
+            start_parsing(suppliers_to_process)  
+        process_files()
+        # transaction.on_commit(process_files)  # Выполняем после сохранения в БД
+        self.message_user(request, "Данные для поставщика будут обработаны после сохранения данных!")
 
-        transaction.on_commit(process_files)  # Выполняем после сохранения в БД
-        self.message_user(request, "Выбранные прайс-листы будут обработаны после сохранения данных!")
-
-    parse_selected_price_lists.short_description = "Обработать прайс-листы"
+    parse_selected_price_lists.short_description = "Обработать данные"
 
 admin.site.register(Supplier, SupplierAdmin)
 

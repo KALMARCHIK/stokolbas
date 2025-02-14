@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Выполняем миграции базы данных
-# python manage.py migrate --noinput
+python manage.py migrate --noinput
 python manage.py makemigrations
 python manage.py migrate
 

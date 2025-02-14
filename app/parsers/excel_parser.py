@@ -1,50 +1,7 @@
 import pandas as pd
 from products.models import Product, Category
 
-def load_category(clean_df, supplier):
-    unique_categories = set(clean_df['category'].dropna().unique())  # Только уникальные значения
 
-    existing_categories = set(Category.objects.filter(supplier=supplier).values_list('name', flat=True))
-
-    new_categories = [Category(name=cat, supplier=supplier) for cat in unique_categories if cat not in existing_categories]
-
-    for cat in unique_categories:
-        if cat not in existing_categories:
-            try:
-                new_category = Category.objects.create(name=cat, supplier=supplier)
-                new_categories.append(new_category)
-            except Exception as e:
-                print(e)
-
-def load_price_list(clean_df, supplier):
-    products = []
-    
-    for _, row in clean_df.iterrows():
-        try:
-            category_name = row.get('category')
-            category_object = Category.objects.filter(name=f'{category_name}', supplier=supplier).first()
-        except Exception as e:
-            print(e)
-        try:
-            try:
-                price = row.get('price')
-                new_product = Product.objects.create(
-                                name=row['name'],
-                                weight_unit=row.get('unit', ''),  # Безопасное получение значения
-                                price=price,
-                                bulk_price=row.get('bulk_price', 0),
-                                implementation_period = row.get('shelf_life', ''),
-                                category=category_object,
-                                supplier=supplier,
-                                )
-                new_product.append(new_product)
-            except Exception as e:
-                print(e)
-            
-        except Exception as e:
-            print(e)
-
-    
 def parse_price_list(file_path, supplier_name):
 
     # Загружаем файл
@@ -130,7 +87,28 @@ def parse_price_list(file_path, supplier_name):
 
     # Преобразуем в DataFrame
     clean_df = pd.DataFrame(processed_data)
-    print(clean_df.head(-10))
-    load_category(clean_df, supplier_name)
-    load_price_list(clean_df, supplier_name)
+    # print(clean_df.head(-10))
+
+
+def extract_prices(file_path):
+    df = pd.read_excel(file_path, None)  # Читаем все листы
+    result = {}
+    
+    for sheet_name, sheet in df.items():
+        for idx, row in sheet.iterrows():
+            if "Наименование продукции" in row.values and "Цена за 1кг, Руб" in row.values and "Цена за 1кг от 1т., Руб" in row.values:
+                name_col = row[row == "Наименование продукции"].index[0]
+                price_col = row[row == "Цена за 1кг, Руб"].index[0]
+                bulk_price_col = row[row == "Цена за 1кг от 1т., Руб"].index[0]
+                
+                for _, data_row in sheet.iloc[idx+1:].iterrows():
+                    product_name = str(data_row[name_col]).strip()
+                    price = data_row[price_col]
+                    bulk_price = data_row[bulk_price_col]
+                    
+                    if pd.notna(product_name) and pd.notna(price) and pd.notna(bulk_price):
+                        result[product_name] = [price, bulk_price]
+                break  # Останавливаемся после нахождения заголовков
+    
+    return result
 

@@ -9,8 +9,8 @@ COPY . /app/
 
 # Даем права на выполнение entrypoint.sh
 COPY entrypoint.dev.sh /entrypoint.dev.sh
-RUN chmod +x /entrypoint.dev.sh
-ENTRYPOINT ["/entrypoint.dev.sh"]
+RUN chmod +x ./entrypoint.dev.sh
+ENTRYPOINT ["./entrypoint.dev.sh"]
 
 EXPOSE 8000
 
