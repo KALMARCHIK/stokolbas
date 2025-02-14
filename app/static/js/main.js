@@ -970,7 +970,6 @@
 
   $('.action-item').on('click', function () {
     $(".slide-bar").removeClass("show");
-    $(".anywere").removeClass("bgshow");
     $(".hamburger").removeClass("active");
   });
 
@@ -1003,7 +1002,6 @@
 
   $('.action-item').on('click', function () {
     $(".slide-bar").removeClass("show");
-    $(".anywere").removeClass("bgshow");
     $(".hamburger-1").removeClass("active");
   });
 
@@ -1414,26 +1412,61 @@
   // Newsletter popup
   $(document).ready(function () {
     function showpanel() {
-      $(".anywere-home").addClass("bgshow");
       $(".rts-newsletter-popup").addClass("popup");
     }
     setTimeout(showpanel, 4000)
   });
-
+  $(".addto-cart-btn").on('click', function () {
+    $(".rts-newsletter-popup").addClass("popup");
+  });
   $(".anywere-home").on('click', function () {
     $(".rts-newsletter-popup").removeClass("popup")
-    $(".anywere-home").removeClass("bgshow")
   });
   $(".newsletter-close-btn").on('click', function () {
     $(".rts-newsletter-popup").removeClass("popup")
-    $(".anywere-home").removeClass("bgshow")
   });
 
   // Product details popup
-  $(".product-details-popup-btn").on('click', function () {
-    $(".product-details-popup-wrapper").addClass("popup")
-    $(".anywere").addClass("bgshow")
-  });
+  const productPopupBtns = document.querySelectorAll('.product-details-popup-btn')
+  const productsPopup = document.querySelectorAll('.product-details-popup-wrapper')
+  let currentIndex
+  productPopupBtns.forEach((el, index) => {
+    el.addEventListener('click', (e) => {
+      const popUpId = el.getAttribute('data-popup-id')
+      const currentPopup = document.querySelector(popUpId)
+      currentIndex = index
+      productsPopup.forEach(el => {
+        el.classList.remove('popup')
+      })
+      console.log(currentIndex)
+      currentPopup.classList.add('popup')
+      $(".anywere").addClass("bgshow")
+    })
+  })
+
+  const productDetailsNext = document.querySelectorAll('.product-details-next')
+  const productDetailsPrev = document.querySelectorAll('.product-details-prev')
+
+  productDetailsNext.forEach(el => {
+    el.addEventListener('click', () => {
+      productsPopup[currentIndex].classList.remove('popup')
+      currentIndex++
+      productsPopup[currentIndex].classList.add('popup')
+    })
+  })
+
+  productDetailsPrev.forEach(el => {
+    el.addEventListener('click', () => {
+      productsPopup[currentIndex].classList.remove('popup')
+      currentIndex--
+      productsPopup[currentIndex].classList.add('popup')
+    })
+  })
+
+  // $(".product-details-popup-btn").on('click', function () {
+  //   $(".product-details-popup-wrapper").addClass("popup")
+  //   $(".anywere").addClass("bgshow")
+  // });
   $(".product-bottom-action .view-btn").on('click', function () {
     $(".product-details-popup-wrapper").addClass("popup")
     $(".anywere").addClass("bgshow")

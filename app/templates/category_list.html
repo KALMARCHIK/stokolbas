@@ -136,7 +136,7 @@
                     <div class="row justify-content-center">
                         {% for product in products %}
                         <div class="col-xl-3 col-md-4 col-sm-6">
-                            <div class="product-item product-item2 element-item3 product-details-popup-btn">
+                            <div class="product-item product-item2 element-item3 product-details-popup-btn" data-popup-id="#popup{{product.id}}">
                                 <div href="product-details.html" class="product-image">
                                     {% if product.image %}
                                         <img src="{{ product.image.url }}" alt="{{ product.name }}">
@@ -170,18 +170,30 @@
     </div>
 </div>
 <!--================= Shop Section Section End Here =================-->
-<div class="product-details-popup-wrapper">
+{% for product in products %}
+<div class="product-details-popup-wrapper" id="popup{{product.id}}">
     <div class="rts-product-details-section rts-product-details-section2 product-details-popup-section">
         <div class="product-details-popup">
             <button class="product-details-close-btn"><i class="fal fa-times"></i></button>
+            <button class="product-details-next product-details-arrow" data-popup-id="#popup{{product.id}}">
+                <svg width="17" height="30" viewBox="0 0 17 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.4142 16.4142C17.1953 15.6332 17.1953 14.3668 16.4142 13.5858L3.68629 0.857864C2.90524 0.0768156 1.63891 0.0768156 0.857864 0.857864C0.0768156 1.63891 0.0768156 2.90524 0.857864 3.68629L12.1716 15L0.857864 26.3137C0.0768156 27.0948 0.0768156 28.3611 0.857864 29.1421C1.63891 29.9232 2.90524 29.9232 3.68629 29.1421L16.4142 16.4142ZM14 17H15V13H14V17Z" fill="#FE6969" />
+                </svg>
+            </button>
+            <button class="product-details-prev product-details-arrow">
+                <svg width="17" height="30" viewBox="0 0 17 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.585786 16.4142C-0.195262 15.6332 -0.195262 14.3668 0.585786 13.5858L13.3137 0.857864C14.0948 0.0768156 15.3611 0.0768156 16.1421 0.857864C16.9232 1.63891 16.9232 2.90524 16.1421 3.68629L4.82843 15L16.1421 26.3137C16.9232 27.0948 16.9232 28.3611 16.1421 29.1421C15.3611 29.9232 14.0948 29.9232 13.3137 29.1421L0.585786 16.4142ZM3 17H2V13H3V17Z" fill="#FE6969" />
+                </svg>
+            </button>
             <div class="details-product-area">
                 <div class="product-thumb-area">
                     <div class="cursor"></div>
                     <div class="thumb-wrapper one filterd-items figure">
-                        <div class="product-thumb zoom" onmousemove="zoom(event)"
-                            style="background-image: url(assets/images/products/product-details.jpg)"><img
-                                src="{% static 'images/products/product-details.jpg' %}" alt="product-thumb">
-                        </div>
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        {% else %}
+                            <img src="{% static 'images/products/home3/1.jpg' %}" alt="No image available">
+                        {% endif %}
                     </div>
                     <div class="thumb-wrapper two filterd-items hide">
                         <div class="product-thumb zoom" onmousemove="zoom(event)"
@@ -195,66 +207,40 @@
                                 src="{% static 'images/products/product-filt3.jpg' %}" alt="product-thumb">
                         </div>
                     </div>
-                    <div class="product-thumb-filter-group">
-                        <div class="thumb-filter filter-btn active" data-show=".one"><img
-                                src="{% static 'images/products/product-filt1.jpg' %}" alt="product-thumb-filter"></div>
-                        <div class="thumb-filter filter-btn" data-show=".two"><img
-                                src="{% static 'images/products/product-filt2.jpg' %}" alt="product-thumb-filter"></div>
-                        <div class="thumb-filter filter-btn" data-show=".three"><img
-                                src="{% static 'images/products/product-filt3.jpg' %}" alt="product-thumb-filter"></div>
-                    </div>
                 </div>
                 <div class="contents">
                     <div class="product-status">
-                        <span class="product-catagory">Dress</span>
-                        <div class="rating-stars-group">
-                            <div class="rating-star"><i class="fas fa-star"></i></div>
-                            <div class="rating-star"><i class="fas fa-star"></i></div>
-                            <div class="rating-star"><i class="fas fa-star-half-alt"></i></div>
-                            <span>10 Reviews</span>
-                        </div>
+                        <span class="product-catagory">{{product.category}}</span>
+                        <span class="product-catagory active">{{product.supplier}}</span>
                     </div>
-                    <h2 class="product-title">Wide Cotton Tunic Dress <span class="stock">In Stock</span></h2>
-                    <span class="product-price"><span class="old-price">$9.35</span> $7.25</span>
-                    <p>
-                        Priyoshop has brought to you the Hijab 3 Pieces Combo Pack PS23. It is a
-                        completely modern design and you feel comfortable to put on this hijab.
-                        Buy it at the best price.
-                    </p>
-                    <div class="product-bottom-action">
-                        <div class="cart-edit">
-                            <div class="quantity-edit action-item">
-                                <button class="button minus"><i class="fal fa-minus minus"></i></button>
-                                <input type="text" class="input" value="01" />
-                                <button class="button plus">+<i class="fal fa-plus plus"></i></button>
-                            </div>
-                        </div>
-                        <a href="cart.html" class="addto-cart-btn action-item"><i class="rt-basket-shopping"></i>
-                            Add To
-                            Cart</a>
-                        <a href="wishlist.html" class="wishlist-btn action-item"><i class="rt-heart"></i></a>
-                    </div>
+                    <h2 class="product-title">{{product.name}} <span class="stock">Новинка</span></h2>
+                    <span class="product-price">{{product.price}} ₽/кг</span>
                     <div class="product-uniques">
-                        <span class="sku product-unipue"><span>SKU: </span> BO1D0MX8SJ</span>
-                        <span class="catagorys product-unipue"><span>Categories: </span> T-Shirts, Tops, Mens</span>
-                        <span class="tags product-unipue"><span>Tags: </span> fashion, t-shirts, Men</span>
+                        <span class="sku product-unipue">
+                            <span>Состав: </span><br> 
+                            мясо лося, свинина, брусника сушёная, соль, специи
+                        </span>
+                        <span class="catagorys product-unipue">
+                            <span>Срок годности: </span> <br> 
+                            4 месяца при температуре воздуха от 0 ºС до 6 ºС и относительной влажности (75-78)% 
+                        </span>
                     </div>
-                    <div class="share-social">
-                        <span>Share:</span>
-                        <a class="platform" href="http://facebook.com" target="_blank"><i
-                                class="fab fa-facebook-f"></i></a>
-                        <a class="platform" href="http://twitter.com" target="_blank"><i
-                                class="fab fa-twitter"></i></a>
-                        <a class="platform" href="http://behance.com" target="_blank"><i
-                                class="fab fa-behance"></i></a>
-                        <a class="platform" href="http://youtube.com" target="_blank"><i
-                                class="fab fa-youtube"></i></a>
-                        <a class="platform" href="http://linkedin.com" target="_blank"><i
-                                class="fab fa-linkedin"></i></a>
+                    <div class="product-bottom-action">
+                        <button href="cart.html" class="addto-cart-btn action-item"><i class="rt-basket-shopping"></i>
+                            Купить
+                        </button>
+                        <a href="cart.html" class="price-list-btn action-item">
+                            Весь прайс-лист
+                            <i class="fal fa-long-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
+            <p>
+                Наличие собственного логистического центра и специально оснащенного транспорта, позволяет нам осуществлять доставку продукции в Москву и Московскую, Тульскую, Калужскую, Рязанскую, Орловскую и Липецкие области. 
+            </p>
         </div>
     </div>
 </div>
+{% endfor %}
 {% endblock %}

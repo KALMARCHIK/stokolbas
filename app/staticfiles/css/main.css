@@ -185,7 +185,6 @@ i {
 }
 .anywere.bgshow,
 .anywere-home.bgshow {
-  display: none;
   background: #0E1013;
   opacity: 70%;
   visibility: visible;
@@ -21502,12 +21501,15 @@ tr:first-child {
   margin-bottom: 15px;
 }
 .rts-product-details-section .details-product-area .product-catagory {
-  background: #EE403D;
+  background: #ffaeae;
   padding: 0px 10px;
   border-radius: 4px;
   font-size: 14px;
   color: #fff;
   margin-right: 20px;
+}
+.rts-product-details-section .details-product-area .product-catagory.active {
+  background: #ff5656;
 }
 .rts-product-details-section .details-product-area .rating-stars-group .rating-star i {
   color: #ffcd00;
@@ -22091,7 +22093,7 @@ tr:first-child {
 .rts-product-details-section .details-product-area .addto-cart-btn {
   margin-right: 20px;
   padding: 0 30px;
-  background: #EE403D;
+  background: #fe6969;
   color: #fff;
   font-weight: 700;
   border: none;
@@ -22666,12 +22668,37 @@ tr:first-child {
 .product-details-popup {
   pointer-events: none;
   margin: 0 auto;
-  height: 520px;
   border-radius: 7px;
   background: #fff;
   padding: 30px !important;
   position: relative;
   z-index: 999;
+}
+.product-details-popup p {
+  max-width: 790px;
+}
+
+.product-details-popup .contents {
+  max-width: 480px;
+}
+
+.product-details-popup img {
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+}
+
+.product-details-popup .price-list-btn {
+  height: 60px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  color: #ff5656;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  border-color: unset !important;
+  border: 0 !important;
 }
 .product-details-popup .product-thumb-area {
   margin-right: 40px !important;
@@ -22702,7 +22729,7 @@ tr:first-child {
 }
 .product-details-popup .product-details-close-btn i {
   font-size: 20px;
-  color: #040404;
+  color: #FE6969;
 }
 @media (max-width: 1200px) {
   .product-details-popup .product-details-close-btn {
@@ -24470,5 +24497,28 @@ button {
 
 .breadcrumbs-logo {
   height: 60px;
+}
+
+.product-details-arrow {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.product-details-prev {
+  left: -100px;
+  padding-right: 6px;
+}
+
+.product-details-next {
+  right: -100px;
 }
 /*# sourceMappingURL=main.css.map */
