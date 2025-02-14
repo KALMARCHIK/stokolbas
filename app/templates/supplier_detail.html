@@ -36,22 +36,50 @@
     <div class="price-list-head">
       Прайс-лист обновлен 12.02.2025
     </div>
-    <div class="price-list-table">
-      <div class="price-list-table-head-wrap">
-        <div class="price-list-table-head">
-          Наименование товара
+    <div class="price-list-table-wrap">
+      <div class="price-list-table">
+        <div class="price-list-table-head-wrap">
+          <div class="price-list-table-head">
+            Наименование товара
+          </div>
+          <div class="price-list-table-head">
+            Ед.изм
+          </div>
+          <div class="price-list-table-head">
+            Цена руб/кг
+          </div>
+          <div class="price-list-table-head">
+            Цена от 1000 кг, руб/кг
+          </div>
+          <div class="price-list-table-head">
+            Сроки реализации, суток
+          </div>
         </div>
-        <div class="price-list-table-head">
-          Ед.изм
-        </div>
-        <div class="price-list-table-head">
-          Цена руб/кг
-        </div>
-        <div class="price-list-table-head">
-          Цена от 1000 кг, руб/кг
-        </div>
-        <div class="price-list-table-head">
-          Сроки реализации, суток
+        <div>
+          {% for category in supplier.category.all %}
+            <div class="price-list-table-category price-list-table-row">
+              {{category.name}}
+            </div>
+            {% for product in category.products.all %}
+              <div class="price-list-table-row-wrap price-list-table-row">
+                <div class="price-list-table-row-item">
+                  {{product.name}}
+                </div>
+                <div class="price-list-table-row-item">
+                  {{product.weight_unit}}
+                </div>
+                <div class="price-list-table-row-item">
+                  {{product.price}}
+                </div>
+                <div class="price-list-table-row-item">
+                  {{product.bulk_price}}
+                </div>
+                <div class="price-list-table-row-item">
+                  {{product.implementation_period}}
+                </div>
+              </div>
+            {% endfor %}
+          {% endfor %}
         </div>
       </div>
     </div>
