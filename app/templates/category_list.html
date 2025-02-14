@@ -229,7 +229,7 @@
                         <button href="cart.html" class="addto-cart-btn action-item"><i class="rt-basket-shopping"></i>
                             Купить
                         </button>
-                        <a href="cart.html" class="price-list-btn action-item">
+                        <a href="{% url 'supplier-detail' product.supplier.slug %}" class="price-list-btn action-item">
                             Весь прайс-лист
                             <i class="fal fa-long-arrow-right"></i>
                         </a>

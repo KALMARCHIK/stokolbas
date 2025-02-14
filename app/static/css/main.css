@@ -24521,4 +24521,32 @@ button {
 .product-details-next {
   right: -100px;
 }
+
+.price-list-head {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  color: #ff5656;
+  padding-left: 30px;
+  margin-bottom: 11px;
+}
+
+.price-list-table {
+  border: 1px solid #f0f0f0;
+  border-radius: 6px;
+  padding: 30px;
+}
+
+.price-list-table-head-wrap {
+  display: grid;
+  grid-column-gap: 20px;
+  grid-template-columns: 30% 15% 15% 15% 15%;
+}
+
+.price-list-table-head {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  color: #040404;
+}
 /*# sourceMappingURL=main.css.map */

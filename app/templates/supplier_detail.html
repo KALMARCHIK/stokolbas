@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Список поставщиков{% endblock %}
+
+{% block content %}
+<div class="page-path">
+  <div class="container">
+      <div class="breadcrumbs-inner">
+          <h1 class="path-title">
+              {% if supplier.slug == 'kalinkovichskii' %}
+                  <img src="{% static 'images/logo-postavshik4.svg' %}" alt="" class="breadcrumbs-logo">
+              {% elif supplier.slug == 'borisovskii' %}
+                  <img src="{% static 'images/logo-postavshik3.png' %}" alt="" class="breadcrumbs-logo">
+              {% elif supplier.slug == 'berezovskii' %}
+                  <img src="{% static 'images/logo-postavshik1.svg' %}" alt="" class="breadcrumbs-logo">
+              {% elif supplier.slug == 'pinskii' %}
+                  <img src="{% static 'images/logo-postavshik2.svg' %}" alt="" class="breadcrumbs-logo">
+              {% endif %}
+              {{supplier.name}}
+          </h1>
+          <div>
+              <button class="breadcrumbs-btn">
+                Скачать прайс-лист
+              </button>
+              <div class="breadcrumbs-date">
+                Обновлены 12.02.2025
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="section-gap">
+  <div class="container">
+    <div class="price-list-head">
+      Прайс-лист обновлен 12.02.2025
+    </div>
+    <div class="price-list-table">
+      <div class="price-list-table-head-wrap">
+        <div class="price-list-table-head">
+          Наименование товара
+        </div>
+        <div class="price-list-table-head">
+          Ед.изм
+        </div>
+        <div class="price-list-table-head">
+          Цена руб/кг
+        </div>
+        <div class="price-list-table-head">
+          Цена от 1000 кг, руб/кг
+        </div>
+        <div class="price-list-table-head">
+          Сроки реализации, суток
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
