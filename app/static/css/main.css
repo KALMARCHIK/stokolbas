@@ -11360,6 +11360,7 @@ tr:first-child {
 .product-item .product-image img {
   height: 235px;
   width: 100%;
+  object-fit: cover;
 }
 .product-item .product-name {
   font-weight: 400;
@@ -22652,11 +22653,13 @@ tr:first-child {
 }
 @media (max-width: 768px) {
   .rts-product-details-section.product-details-popup-section .product-details-popup {
-    margin-top: 100px;
     padding: 20px;
     width: 92%;
-    height: 90vh;
+    height: 80vh;
     overflow-y: scroll;
+  }
+  .product-details-next {
+    display: none !important;
   }
   .rts-product-details-section.product-details-popup-section .details-product-area {
     -webkit-box-orient: vertical;
