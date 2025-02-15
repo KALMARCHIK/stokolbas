@@ -1,88 +1,197 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Список поставщиков{% endblock %}
+{% block title %}{{supplier.name}} {% endblock %}
 
 {% block content %}
-<div class="page-path">
+<div class="banner banner-3">
+  <div class="swiper bannerSlide bannerInside">
+      <div class="swiper-wrapper">
+                  <a href="{% url 'category-list' supplier.slug %}" class="swiper-slide">
+                      <div class="banner-single bg-image bg-image-3">
+                          <div class="container">
+                              <div class="single-inner">
+                                  <div class="contents">
+                                      <span class="banner-pretitle-box">{{supplier.product.all|length}} уникальных продуктов</span>
+                                      <h1 class="banner-heading mb--30">{{ supplier.name }} мясокомбинат</h1>
+                                      {% if supplier.slug == 'kalinkovichskii' %}
+                                        <p>
+                                          <strong>ОАО «Калинковичский мясокомбинат»</strong> располагает прекрасными производственными площадями для переработки основного сырья (крупного рогатого скота и свиней), изготовления консервов, полуфабрикатов и колбасных изделий, проведения термической обработки, хранения мяса и мясопродуктов в охлажденном состоянии. Всего ассортимент продукции предприятия насчитывает около 300 наименований высококачественных колбас, изделий ливерно-паштетной группы и кровяных колбас, деликатесной продукции, полуфабрикатов и консервов, пельменей, имеющих устойчивый спрос под торговой маркой «Великое княжество».
+                                        </p>
+                                      {% elif supplier.slug == 'borisovskii' %}
+                                        <p>
+                                          <strong>Филиал «Борисовский мясокомбинат»</strong> — это мясоперерабатывающее предприятие, расположенное в г. Борисове в 75 км от столицы Беларуси. Мясокомбинат оснащен современным оборудованием для производства продукции всех видов: сыровяленые и сырокопченые, салями, вареные колбасы, охлажденные полуфабрикаты и пельмени
+                                        </p>
+                                      {% elif supplier.slug == 'berezovskii' %}
+                                        <p>
+                                          <strong>ОАО "Березовский МКК"</strong> включен в план реконструкции мясной промышленности Республики Беларусь, производится модернизация и замена устаревшего оборудования, что позволяет выпускать высококачественную продукцию.
+
+                                          Главный девиз работников предприятия: "Качество продукции сегодня – наше благополучие завтр
+                                        </p>
+                                      {% elif supplier.slug == 'pinskii' %}
+                                        <p>
+                                          <strong>ОАО «Пинский мясокомбинат»</strong> – одно из крупнейших современных предприятий пищевой промышленности Брестской области. Его история начинается с сентября 1939 года. Сегодня на предприятии в сутки перерабатывается до 50 т мяса, основная часть которого идет на экспорт
+                                        </p>
+                                      {% endif %}
+                                      <div class="banner-action">
+                                          <object>
+                                              <a class="banner-btn banner-btn2" href="{% url 'category-list' supplier.slug %}">Перейти</a>
+                                          </object>
+                                      </div>
+                                  </div>
+                                  <div class="banner-product-thumb">
+                                      <div class="banner-product-thumb-blur"></div>
+                                          {% if supplier.slug == 'berezovskii' %}
+                                          <img src="{% static 'images/berezovskii-miasokombinat.jpg' %}"
+                                          alt="banner-product">
+                                          {% elif supplier.slug == 'pinskii' %}
+                                          <img src="{% static 'images/pinskii-miasokombinat.jpg' %}"
+                                          alt="banner-product">
+                                          {% else %}
+                                          <img src="{% static 'images/post/cata1.png' %}"
+                                          alt="banner-product">
+                                          {% endif %}
+                                          {% if supplier.slug == 'kalinkovichskii' %}
+                                              <img src="{% static 'images/logo-postavshik4.svg' %}" alt="" class="banner-product-thumb-logo">
+                                          {% elif supplier.slug == 'borisovskii' %}
+                                              <img src="{% static 'images/logo-postavshik3.png' %}" alt="" class="banner-product-thumb-logo">
+                                          {% elif supplier.slug == 'berezovskii' %}
+                                              <img src="{% static 'images/logo-postavshik1.svg' %}" alt="" class="banner-product-thumb-logo">
+                                          {% elif supplier.slug == 'pinskii' %}
+                                              <img src="{% static 'images/logo-postavshik2.svg' %}" alt="" class="banner-product-thumb-logo">
+                                          {% endif %}
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </a>
+      </div>
+      <div class="slider-navigation">
+          <div class="swiper-button-prev slider-btn prev"><i class="fal fa-long-arrow-up"></i></div>
+          <div class="swiper-button-next slider-btn next"><i class="fal fa-long-arrow-down"></i>
+          </div>
+      </div>
+  </div>
+</div>
+
+<section class="about-us-area pt-120 pb-75 pt-md-60 pb-md-15 pt-xs-50 pb-xs-10">
   <div class="container">
-      <div class="breadcrumbs-inner">
-          <h1 class="path-title">
-              {% if supplier.slug == 'kalinkovichskii' %}
-                  <img src="{% static 'images/logo-postavshik4.svg' %}" alt="" class="breadcrumbs-logo">
-              {% elif supplier.slug == 'borisovskii' %}
-                  <img src="{% static 'images/logo-postavshik3.png' %}" alt="" class="breadcrumbs-logo">
-              {% elif supplier.slug == 'berezovskii' %}
-                  <img src="{% static 'images/logo-postavshik1.svg' %}" alt="" class="breadcrumbs-logo">
-              {% elif supplier.slug == 'pinskii' %}
-                  <img src="{% static 'images/logo-postavshik2.svg' %}" alt="" class="breadcrumbs-logo">
-              {% endif %}
-              {{supplier.name}}
-          </h1>
-          <div>
-              <button class="breadcrumbs-btn">
-                Скачать прайс-лист
+      <div class="section-text">
+          <div class="row">
+              <div class="col-lg-6">
+                  <p class="description description-bold description-supplier">
+                    Для улучшения <strong>качества</strong>  выпускаемой продукции постоянно проводится замена устаревшего оборудования на  <strong>современное</strong> высокопроизводительное.
+                  </p>
+
+                  <a href="{% url 'category-list' supplier.slug %}" class="katalog-btn">
+                    Каталог
+                  </a>
+              </div>
+              <div class="col-lg-6">
+                  <div class="service-list">
+                      <ul>
+                          <li><a>Производственные мощности мясокомбината составляют 50т мяса в смену</a></li>
+                          <li><a>Автоматический режим термообработки продукции</a></li>
+                          <li><a>Собственная котельная для улучшения качества обработки паром</a></li>
+                          <li><a>Высокотехнологичное оборудование, соответствующее всем современным стандартам</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<div class="newsletter-banner newsletter-banner3 section-space mb-0">
+  <div class="container">
+      <div class="newsletter-contents">
+          <span class="section-title-2 mb--5">Купить колбасы из Белоруссии оптом стало легче!</span>
+          <div class="section-line mb--20"><img src="{% static 'images/items/curlyline.svg' %}" alt="line"></div>
+          <p class="main-form-text">
+              Белорусские колбасные изделия имеют демократичные цены при достойном качестве. Социальная декларация Белорусских предприятий: <span>«Безопасный продукт – здоровая нация»</span> - это их жизненная позиция. В последнее время и наш, Российский потребитель, все чаще, задумывается о полезности и безопасности продуктов питания. Наша компания представляет одни из лучших комбинатов Западной части Белоруссии!
+          </p>
+
+          <div class="newsletter-input">
+              <input type="text" placeholder="Имя">
+              <input type="text" placeholder="Телефон" class="phoneMask">
+              <button class="subscribe-btn">
+                  Отправить
+                  <i class="fal fa-long-arrow-right"></i>
               </button>
-              <div class="breadcrumbs-date">
-                Обновлены 12.02.2025
+          </div>
+      </div>
+  </div>
+</div>
+<div class="rts-wood-products-section section-space my-0">
+  <div class="container">
+      <div class="section-header section-header3 text-start">
+          <div>
+              <!-- <div class="wraper d-flex">
+                  <span class="section-pretitle mb--15 me-3 active">Березовский</span>
+                  <span class="section-pretitle mb--15 me-3">Борисовский</span>
+                  <span class="section-pretitle mb--15 me-3">Пинский</span>
+                  <span class="section-pretitle mb--15 me-3">Калинка</span>
+              </div> -->
+              <div class="wrapper d-flex flex-column">
+                  <span class="section-title-2 mb--5
+              ">Новинки</span>
+          </div>
+              
+          </div>
+          <div class="slider-navigation">
+              <div class="swiper-button-prev slider-btn prev"><i class="fal fa-angle-left"></i>Назад</div>
+              <div class="swiper-button-next slider-btn next">Дальше<i class="fal fa-angle-right"></i></div>
+          </div>
+      </div>
+      <div class="slider-div">
+          <div class="swiper rts-sixSlide-over">
+              <div class="swiper-wrapper">
+                {% for category in supplier.category.all %}
+                  <div class="swiper-slide">
+                      <div class="collection-item"><a class="collection-image" href="product-details.html"><img
+                                  src="{% static 'images/products/home3/1.jpg' %}" alt="collection-image"></a>
+                          <div class="bottom-content">
+                              <a href="product-details.html" class="product-name">{{category.name}}</a>
+                          </div>
+                      </div>
+                  </div>
+                {% endfor %}
               </div>
           </div>
       </div>
   </div>
 </div>
 
-<div class="section-gap">
+<!--================= brands Section Start Here =================-->
+<div class="rts-brands-section">
   <div class="container">
-    <div class="price-list-head">
-      Прайс-лист обновлен 12.02.2025
-    </div>
-    <div class="price-list-table-wrap">
-      <div class="price-list-table">
-        <div class="price-list-table-head-wrap">
-          <div class="price-list-table-head">
-            Наименование товара
-          </div>
-          <div class="price-list-table-head">
-            Ед.изм
-          </div>
-          <div class="price-list-table-head">
-            Цена руб/кг
-          </div>
-          <div class="price-list-table-head">
-            Цена от 1000 кг, руб/кг
-          </div>
-          <div class="price-list-table-head">
-            Сроки реализации, суток
-          </div>
-        </div>
-        <div>
-          {% for category in supplier.category.all %}
-            <div class="price-list-table-category price-list-table-row">
-              {{category.name}}
-            </div>
-            {% for product in category.products.all %}
-              <div class="price-list-table-row-wrap price-list-table-row">
-                <div class="price-list-table-row-item">
-                  {{product.name}}
-                </div>
-                <div class="price-list-table-row-item">
-                  {{product.weight_unit}}
-                </div>
-                <div class="price-list-table-row-item">
-                  {{product.price}}
-                </div>
-                <div class="price-list-table-row-item">
-                  {{product.bulk_price}}
-                </div>
-                <div class="price-list-table-row-item">
-                  {{product.implementation_period}}
-                </div>
-              </div>
-            {% endfor %}
-          {% endfor %}
-        </div>
+      <div class="recent-products-header section-header section-header2">
+          <span class="section-pretitle mb--10">Подробнее про</span>
+          <span class="section-title-2">мясокомбинаты</span>
+          <div class="section-line mb-0"><img src="{% static 'images/items/curlyline.svg' %}" alt="line"></div>
       </div>
-    </div>
+      <div class="brands-section-inner">
+          <div class="row justify-content-center align-items-center">
+              {% for supplier in suppliers %}
+              <div class="col-lg-15 col-md-4 col-sm-6 col-xs-6 col-xxs-6">
+                  <div class="brand-item">
+                      <a href="{{supplier.website}}" class="front" target="_blank">
+                          {% if supplier.slug == 'kalinkovichskii' %}
+                              <img src="{% static 'images/logo-postavshik4.svg' %}" alt="">
+                          {% elif supplier.slug == 'borisovskii' %}
+                              <img src="{% static 'images/logo-postavshik3.png' %}" alt="" style="width: 240px;">
+                          {% elif supplier.slug == 'berezovskii' %}
+                              <img src="{% static 'images/logo-postavshik1.svg' %}" alt="">
+                          {% elif supplier.slug == 'pinskii' %}
+                              <img src="{% static 'images/logo-postavshik2.svg' %}" alt="">
+                          {% endif %}
+                      </a>
+                  </div>
+              </div>
+              {% endfor %}
+          </div>
+      </div>
   </div>
 </div>
+<!--================= brands Section End Here =================-->
 {% endblock %}

@@ -71,21 +71,23 @@
             <div class="swiper rts-cmmnSlider-over2" data-swiper="pagination">
                 <div class="swiper-wrapper">
                   {% for supplier in suppliers %}
-                    <div class="swiper-slide">
+                    <a href="{% url 'category-list' supplier.slug %}" class="swiper-slide">
                         <div class="team-wraper">
                             <div class="team-thumb">
-                                <a href="#">
-                                  {% if supplier.slug == 'berezovskii' %}
-                                    <img src="{% static 'images/berezovskii-miasokombinat.jpg' %}"
-                                                alt="banner-product">
-                                  {% elif supplier.slug == 'pinskii' %}
-                                    <img src="{% static 'images/pinskii-miasokombinat.jpg' %}"
-                                                alt="banner-product">
-                                  {% else %}
-                                    <img src="{% static 'images/post/cata1.png' %}"
-                                                alt="banner-product">
-                                  {% endif %}
-                                </a>
+                                <object>
+                                    <a href="{% url 'category-list' supplier.slug %}">
+                                        {% if supplier.slug == 'berezovskii' %}
+                                          <img src="{% static 'images/berezovskii-miasokombinat.jpg' %}"
+                                                      alt="banner-product">
+                                        {% elif supplier.slug == 'pinskii' %}
+                                          <img src="{% static 'images/pinskii-miasokombinat.jpg' %}"
+                                                      alt="banner-product">
+                                        {% else %}
+                                          <img src="{% static 'images/post/cata1.png' %}"
+                                                      alt="banner-product">
+                                        {% endif %}
+                                      </a>
+                                </object>
                             </div>
                             <div class="team-content">
                               {% if supplier.slug == 'kalinkovichskii' %}
@@ -99,7 +101,7 @@
                               {% endif %}
                             </div>
                         </div>
-                    </div>
+                    </a>
                   {% endfor %}
                 </div>
             </div>

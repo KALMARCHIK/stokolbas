@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Список категорий{% endblock %}
+
+{% block content %}
+<div class="page-path">
+  <div class="container">
+      <div class="breadcrumbs-inner">
+          <h1 class="path-title">Мы работаем в Калуге!</h1>
+          <div>
+            <button class="breadcrumbs-btn">
+              Прайс-листы
+            </button>
+            <div class="breadcrumbs-date">
+              Обновлены 12.02.2025
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="newsletter-banner newsletter-banner3 mb-0 region-callback">
+  <div class="container">
+      <div class="newsletter-contents">
+          <span class="section-title-2 mb--5">Компания СТОКОЛБАС осуществляет продажу Белорусских колбас оптом в городе <span>Калуга</span>, а так же по <span>Калужской области</span></span>
+          <div class="section-line mb--20"><img src="{% static 'images/items/curlyline.svg' %}" alt="line"></div>
+          <p class="main-form-text">
+            Мы можем предложить Вам бесплатную доставку нашей продукции до Калуги и до городов Калужской области (Боровск, Кондрово, Жиздра, Киров, Жуков и т.д.). Вся доставка осуществляется собственным специально оборудованным транспортом!
+          </p>
+
+          <div class="newsletter-input">
+              <input type="text" placeholder="Имя">
+              <input type="text" placeholder="Телефон">
+              <button class="subscribe-btn">
+                  Отправить
+                  <i class="fal fa-long-arrow-right"></i>
+              </button>
+          </div>
+      </div>
+  </div>
+</div>
+  <!--================= Team Area Start Here =================-->
+  <div class="team-area">
+    <div class="container">
+        <h2 class="title">СТОКОЛБАС работает по конкурентно устойчивым ценам и может предложить вам более одной тысячи наименований колбасных изделий и мясных деликатесов! С 2006 года наша компания является ведущим и надежным поставщиком известных Белорусских мясокомбинатов:</h2>
+        <div class="slider-div">
+            <div class="swiper rts-cmmnSlider-over2" data-swiper="pagination">
+                <div class="swiper-wrapper">
+                  {% for supplier in suppliers %}
+                    <a href="{% url 'category-list' supplier.slug %}" class="swiper-slide">
+                      <div class="team-wraper">
+                          <div class="team-thumb">
+                              <object>
+                                  <a href="{% url 'category-list' supplier.slug %}">
+                                      {% if supplier.slug == 'berezovskii' %}
+                                        <img src="{% static 'images/berezovskii-miasokombinat.jpg' %}"
+                                                    alt="banner-product">
+                                      {% elif supplier.slug == 'pinskii' %}
+                                        <img src="{% static 'images/pinskii-miasokombinat.jpg' %}"
+                                                    alt="banner-product">
+                                      {% else %}
+                                        <img src="{% static 'images/post/cata1.png' %}"
+                                                    alt="banner-product">
+                                      {% endif %}
+                                    </a>
+                              </object>
+                          </div>
+                          <div class="team-content">
+                            {% if supplier.slug == 'kalinkovichskii' %}
+                                <img src="{% static 'images/logo-postavshik4.svg' %}" alt="" class="banner-product-thumb-logo">
+                            {% elif supplier.slug == 'borisovskii' %}
+                                <img src="{% static 'images/logo-postavshik3.png' %}" alt="" class="banner-product-thumb-logo">
+                            {% elif supplier.slug == 'berezovskii' %}
+                                <img src="{% static 'images/logo-postavshik1.svg' %}" alt="" class="banner-product-thumb-logo">
+                            {% elif supplier.slug == 'pinskii' %}
+                                <img src="{% static 'images/logo-postavshik2.svg' %}" alt="" class="banner-product-thumb-logo">
+                            {% endif %}
+                          </div>
+                      </div>
+                    </a>
+                  {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--================= Feature Area Start Here =================-->
+<div class="features-area">
+  <div class="container">
+      <div class="features-1">
+          <div class="row align-items-center">
+              <div class="col-lg-6">
+                  <div class="image-section">
+                      <a href="#"><img src="assets/images/about/features-1.jpg" alt="features-1"></a>
+                  </div>
+              </div>
+              <div class="col-lg-6">
+                  <div class="section-content">
+                      <h2 class="title">Бесплатная доставка по регионам</h2>
+                      <div class="section-line"><img src="{% static 'images/items/curlyline.svg' %}" alt="line"></div>
+                      <p class="description">
+                        Наличие собственного логистического центра и специально оснащенного транспорта, позволяет нам осуществлять доставку продукции не только по Туле и Тульской области, а так же в Москву и Московскую область, Калужскую, Рязанскую, Орловскую и Липецкие области. Купить колбасу оптом у нас гораздо проще, ведь мы ценим Ваше время и деньги, а так же готовы рассмотреть выгодные условия доставки нашей продукции в дальние регионы!
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!--================= Feature Area End Here =================-->
+
+{% endblock %}

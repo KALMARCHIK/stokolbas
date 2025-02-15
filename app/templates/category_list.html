@@ -37,18 +37,24 @@
             <div class="col-xl-3 mb-3">
                 <div class="side-sticky">
                     <div class="shop-side-action">
-                        <div class="action-item">
-                            <div class="action-top">
-                                <span class="action-title">Категория</span>
+                        <div class="action-item" id="accordionExample2">
+                            <div class="action-top accordion-header" id="headingSix">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse" aria-expanded="true" aria-controls="collapse">
+                                        <span class="action-title">Категория</span>
+                                </button>
                             </div>
-                            <div class="product-brands">
-                                <div class="brands-inner">
-                                    <ul>
-                                        {% for category in supplier_current.category.all %}
-                                            <li><a class="product-brand" href="shop.html">{{category.name}}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
+                            <div id="collapse" class="accordion-collapse collapse"
+                                    aria-labelledby="headingSix" data-bs-parent="#accordionExample2">
+                                    <div class="product-brands">
+                                        <div class="brands-inner">
+                                            <ul>
+                                                {% for category in supplier_current.category.all %}
+                                                    <li><a class="product-brand" href="shop.html">{{category.name}}</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
                             </div>
                         </div>
                         <div class="action-item">
@@ -65,13 +71,13 @@
                             <div class="range-label-area">
                                 <div class="min-price d-flex">
                                     <span class="range-lbl">От:</span>
-                                    <span class="currency-symbol">$</span>
                                     <div class="leftLabel price-range-label"></div>
+                                    <span class="currency-symbol">₽</span>
                                 </div>
                                 <div class="min-price d-flex">
                                     <span class="range-lbl">До:</span>
-                                    <span class="currency-symbol">$</span>
                                     <div class="rightLabel price-range-label"></div>
+                                    <span class="currency-symbol">₽</span>
                                 </div>
                             </div>
                         </div>
@@ -229,7 +235,7 @@
                         <button href="cart.html" class="addto-cart-btn action-item"><i class="rt-basket-shopping"></i>
                             Купить
                         </button>
-                        <a href="{% url 'supplier-detail' product.supplier.slug %}" class="price-list-btn action-item">
+                        <a href="{% url 'supplier-price' product.supplier.slug %}" class="price-list-btn action-item">
                             Весь прайс-лист
                             <i class="fal fa-long-arrow-right"></i>
                         </a>

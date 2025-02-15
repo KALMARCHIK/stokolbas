@@ -3330,6 +3330,15 @@ i {
           align-items: center;
   border-left: 1px solid #f0f0f0;
   height: 100%;
+  color: #FF5656;
+}
+
+.rts-newsletter-popup .newsletter-inner .input-icon img {
+  width: 20px;
+}
+
+.rts-newsletter-popup .newsletter-inner .input-icon svg {
+  width: 30px;
 }
 .rts-newsletter-popup .newsletter-inner .subscribe-btn {
   padding: 20px 0;
@@ -12339,11 +12348,13 @@ tr:first-child {
   margin-right: 5px;
 }
 .rts-wood-products-section .collection-item .collection-image {
+  margin: 0 auto;
   margin-bottom: 25px;
   border-radius: 50%;
   height: 280px;
   width: 280px;
   overflow: hidden;
+  display: block;
 }
 .rts-wood-products-section .collection-item .collection-image:hover img {
   -webkit-transform: scale(110%);

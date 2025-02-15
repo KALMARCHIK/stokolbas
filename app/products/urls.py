@@ -13,7 +13,8 @@ from products.views import (
     MainPageView,
     FeedbackCreateView,
     DeliveryView,
-    KalugaView
+    KalugaView,
+    SupplierPriceView
 )
 
 urlpatterns = [
@@ -37,6 +38,12 @@ urlpatterns = [
     path('suppliers/<slug:supplier_slug>/', 
         SupplierDetailView.as_view(), 
         name='supplier-detail',
+        ),
+
+    # Поставщики
+    path('supplier-price/<slug:supplier_slug>/', 
+        SupplierPriceView.as_view(), 
+        name='supplier-price',
         ),
 
     # Категории

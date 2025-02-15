@@ -7,7 +7,7 @@
         <div class="swiper bannerSlide">
             <div class="swiper-wrapper">
                 {% for supplier in suppliers %}
-                        <a href="{% url 'category-list' supplier.slug %}" class="swiper-slide">
+                        <a href="{% url 'supplier-detail' supplier.slug %}" class="swiper-slide">
                             <div class="banner-single bg-image bg-image-3">
                                 <div class="container">
                                     <div class="single-inner">
@@ -16,7 +16,7 @@
                                             <h1 class="banner-heading mb--30">{{ supplier.name }} мясокомбинат</h1>
                                             <div class="banner-action">
                                                 <object>
-                                                    <a class="banner-btn banner-btn2" href="product-details.html">Перейти</a>
+                                                    <a class="banner-btn banner-btn2" href="{% url 'supplier-detail' supplier.slug %}">Перейти</a>
                                                 </object>
                                             </div>
                                         </div>
@@ -62,7 +62,7 @@
                 {% for supplier in suppliers %}
                 <div class="col-xl-3 col-md-6 col-sm-6">
                     <div class="catagory-box box{{ forloop.counter }}">
-                        <a href="{% url 'category-list' supplier.slug %}" class="picture">
+                        <a href="{% url 'supplier-detail' supplier.slug %}" class="picture">
                             {% if supplier.slug == 'berezovskii' %}
                             <img src="{% static 'images/berezovskii-miasokombinat.jpg' %}"
                                 alt="box-picture">
@@ -74,7 +74,7 @@
                                 alt="box-picture">
                             {% endif %}
                         </a>
-                        <a href="{% url 'category-list' supplier.slug %}" class="view-collection-btn">Перейти</a>
+                        <a href="{% url 'supplier-detail' supplier.slug %}" class="view-collection-btn">Перейти</a>
                         <div class="contents">
                             <div class="icon">
                                 {% if supplier.slug == 'kalinkovichskii' %}
@@ -363,7 +363,7 @@
 
                 <div class="newsletter-input">
                     <input type="text" placeholder="Имя">
-                    <input type="text" placeholder="Телефон">
+                    <input type="text" placeholder="Телефон" class="phoneMask">
                     <button class="subscribe-btn">
                         Отправить
                         <i class="fal fa-long-arrow-right"></i>
@@ -470,7 +470,7 @@
                     {% for supplier in suppliers %}
                     <div class="col-lg-15 col-md-4 col-sm-6 col-xs-6 col-xxs-6">
                         <div class="brand-item">
-                            <a href="{{supplier.website}}" class="front" target="_blank">
+                            <a href="{% url 'supplier-detail' supplier.slug %}" class="front">
                                 {% if supplier.slug == 'kalinkovichskii' %}
                                     <img src="{% static 'images/logo-postavshik4.svg' %}" alt="">
                                 {% elif supplier.slug == 'borisovskii' %}

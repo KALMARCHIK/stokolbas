@@ -64,6 +64,15 @@ class SupplierDetailView(DetailView):
         # Получаем поставщика по slug
         return get_object_or_404(Supplier, slug=self.kwargs['supplier_slug'])
     
+class SupplierPriceView(DetailView):
+    model = Supplier
+    template_name = 'supplier_price.html'
+    context_object_name = 'supplier'
+
+    def get_object(self):
+        # Получаем поставщика по slug
+        return get_object_or_404(Supplier, slug=self.kwargs['supplier_slug'])
+    
 
 class CategoryListView(ListView):
     model = Category

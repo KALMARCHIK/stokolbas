@@ -1410,12 +1410,12 @@
 
 
   // Newsletter popup
-  $(document).ready(function () {
-    function showpanel() {
-      $(".rts-newsletter-popup").addClass("popup");
-    }
-    setTimeout(showpanel, 4000)
-  });
+  // $(document).ready(function () {
+  //   function showpanel() {
+  //     $(".rts-newsletter-popup").addClass("popup");
+  //   }
+  //   setTimeout(showpanel, 4000)
+  // });
   $(".addto-cart-btn").on('click', function () {
     $(".rts-newsletter-popup").addClass("popup");
   });
@@ -1564,3 +1564,12 @@ var swiperMainProduct = new Swiper(".swiper-main-product", {
     }
   }
 });
+
+const phoneMaskEl = document.querySelectorAll('.phoneMask');
+const maskOptions = {
+  mask: '+{7} (000) 000 00-00'
+};
+
+phoneMaskEl.forEach(el => {
+  IMask(el, maskOptions);
+})
