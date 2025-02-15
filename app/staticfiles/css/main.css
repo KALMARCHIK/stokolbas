@@ -3901,6 +3901,7 @@ i {
 }
 .range-label-area .price-range-label {
   font-weight: 500;
+  margin-right: 5px;
 }
 
 /**------------------------------------------------------------------
@@ -5745,6 +5746,9 @@ tr:first-child {
 .header-topbar.header-topbar3 .header-top-inner .topbar-action .action-item {
   position: relative;
   font-size: 14px;
+}
+.header-topbar.header-topbar3 .header-top-inner .topbar-action .action-item:hover {
+  color: #ff5656;
 }
 .header-topbar.header-topbar3 .header-top-inner .topbar-action .action-item i {
   color: #985034;
@@ -11773,7 +11777,7 @@ tr:first-child {
   color: #fff;
 }
 .newsletter-banner.newsletter-banner3 .newsletter-contents .subscribe-btn:hover {
-  background: #040404;
+  background: #ff5656;
   color: #fff;
 }
 .newsletter-banner.newsletter-banner3 .newsletter-contents .subscribe-btn i {
@@ -12327,6 +12331,10 @@ tr:first-child {
   font-size: 16px;
   font-weight: 700;
 }
+.rts-wood-products-section .section-header3 .slider-navigation .slider-btn:hover {
+  background: #ff5656;
+  color: #fff;
+}
 .rts-wood-products-section .section-header3 .slider-navigation .slider-btn i {
   margin-left: 5px;
 }
@@ -12334,6 +12342,10 @@ tr:first-child {
   background: #ff9292;
   color: #fff;
   left: -117px;
+}
+
+.rts-wood-products-section .section-header3 .slider-navigation .slider-btn.swiper-button-prev:hover {
+  background: #ff5656;
 }
 @media (max-width: 768px) {
   .rts-wood-products-section .section-header3 .slider-navigation .slider-btn.swiper-button-prev {
@@ -20027,9 +20039,7 @@ tr:first-child {
     padding: 0 60px 30px 25px;
   }
 }
-.about-us-area .container .section-text .service-list ul li:hover a {
-  text-decoration: underline;
-}
+
 .about-us-area .container .section-text .service-list ul li::before {
   content: "\f00c";
   left: 25px;
@@ -20643,6 +20653,10 @@ tr:first-child {
   align-items: center;
   column-gap: 15px;
 }
+
+.contact-area .container .right-side .get-in-touch .contact ul li a:hover {
+  color: #ff5656;
+}
 .contact-area .container .right-side .get-in-touch .contact ul li:first-child {
   left: -6px;
 }
@@ -21088,6 +21102,12 @@ tr:first-child {
           box-shadow: unset;
 }
 .faq-area .container .faq-que-list .accordion-item .accordion-button:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: 0;
+}
+
+.accordion-button:focus {
   -webkit-box-shadow: none;
           box-shadow: none;
   outline: 0;
@@ -22726,6 +22746,9 @@ tr:first-child {
   column-gap: 10px;
   border-color: unset !important;
   border: 0 !important;
+}
+.product-details-popup .price-list-btn:hover i {
+  transform: translateX(5px);
 }
 .product-details-popup .product-thumb-area {
   margin-right: 40px !important;
@@ -24489,7 +24512,10 @@ button {
   font-weight: 700;
   font-size: 18px;
   line-height: 150%;
-  color: #fff;
+  color: #fff !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .breadcrumbs-date {
@@ -24637,5 +24663,73 @@ button {
 
 .price-list-table-row-item:first-child {
   text-align: left;
+}
+
+.bannerInside {
+  width: 100%;
+}
+
+.bannerInside p {
+  max-width: 580px;
+  font-size: 16px;
+line-height: 175%;
+color: #666;
+}
+
+.bannerInside p strong {
+  font-weight: 600;
+}
+
+.katalog-btn{
+  box-shadow: 0 16px 32px 0 rgba(103, 103, 103, 0.06);
+  background: #ff5656;
+  border-radius: 6px;
+  width: 190px;
+  height: 59px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 131%;
+  color: #fff;
+  margin-top: 25px;
+}
+
+.about-us-area .container .section-text .description-supplier {
+  font-weight: 400;
+font-size: 32px;
+line-height: 112%;
+color: #666;
+}
+
+.accordion-button:not(.collapsed) {
+  background: none;
+  color: inherit;
+  box-shadow: none;
+  border: 0;
+}
+
+.accordion-button {
+  padding: 0;
+}
+
+.action-item .accordion-button::after {
+  content: "\f068";
+  position: absolute;
+  font-family: "Font awesome 5 Pro";
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+  right: 0px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  z-index: 1;
+  background: none;
+}
+
+.action-item .collapsed::after {
+  content: "\f067";
 }
 /*# sourceMappingURL=main.css.map */
