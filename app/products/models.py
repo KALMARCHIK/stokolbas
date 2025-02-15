@@ -31,7 +31,7 @@ class Category(models.Model):
     name = models.CharField(verbose_name='Категория', max_length=100)
     supplier = models.ForeignKey(Supplier, verbose_name='Поставщик', on_delete=models.CASCADE, related_name='category')
     image = models.CharField(verbose_name='Картинка товара', max_length=200, blank=True, null=True)
-    slug = models.SlugField(unique=True, blank=True)  # Добавляем slug
+    slug = models.SlugField(unique=True, blank=True, max_length=255)  # Добавляем slug
 
     def __str__(self):
         return self.name
@@ -47,12 +47,12 @@ class Product(models.Model):
     price = models.IntegerField(verbose_name='Цена')
     bulk_price = models.IntegerField(verbose_name='Цена от 1000 кг')
     category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.CASCADE, related_name='products')
-    implementation_period = models.CharField(verbose_name='Срок реализации', max_length=100)
-    variety = models.CharField(verbose_name='Сорт', max_length=10)
+    implementation_period = models.CharField(verbose_name='Срок реализации', max_length=1000)
+    variety = models.CharField(verbose_name='Сорт', max_length=1000)
     compound = models.TextField(verbose_name='Состав')
     is_new = models.BooleanField(verbose_name='Новинка', default=False)
     image = models.CharField(verbose_name='Картинка товара', max_length=200, blank=True, null=True)
-    slug = models.SlugField(unique=True, blank=True)  # Добавляем slug
+    slug = models.SlugField(unique=True, blank=True, max_length=255)  # Добавляем slug
 
     def __str__(self):
         return json.dumps({
