@@ -10,12 +10,7 @@ COPY . /app
 # Даем права на выполнение entrypoint.sh
 COPY entrypoint.dev.sh /entrypoint.dev.sh
 RUN chmod +x ./entrypoint.dev.sh
-<<<<<<< HEAD
 ENTRYPOINT ["./entrypoint.dev.sh"]
-=======
-ENTRYPOINT ["sh", "/entrypoint.dev.sh"]
-# ENTRYPOINT ["./entrypoint.dev.sh"]
->>>>>>> c28d5b670053cf5a93e27328330c7997ed85c401
 
 EXPOSE 8000
 

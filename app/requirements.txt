@@ -15,11 +15,7 @@ pillow==11.1.0
 psycopg2-binary==2.9.10
 gunicorn==23.0.0
 openpyxl==3.1.5
-<<<<<<< HEAD
 BeautifulSoup4
 fuzzywuzzy
 requests
 python-Levenshtein
-=======
-requests
->>>>>>> c28d5b670053cf5a93e27328330c7997ed85c401

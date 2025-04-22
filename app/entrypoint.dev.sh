@@ -2,11 +2,7 @@
 
 # Выполняем миграции базы данных
 python manage.py migrate --noinput
-<<<<<<< HEAD
 python manage.py makemigrations
-=======
-python manage.py makemigrations --noinput
->>>>>>> c28d5b670053cf5a93e27328330c7997ed85c401
 python manage.py migrate
 
 # Собираем статические файлы
