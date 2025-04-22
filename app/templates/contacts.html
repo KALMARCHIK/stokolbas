@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Список категорий{% endblock %}
+
+{% block content %}
+<!--contact-area start-->
+<div class="page-path">
+  <div class="container">
+      <div class="breadcrumbs-inner">
+          <h1 class="path-title">Контакты</h1>
+          <ul>
+              <li><a class="home-page-link" href="{% url 'main-page' %}">Главная <i class="fal fa-angle-right"></i></a></li>
+              <li><a class="current-page" href="#">Контакты</a></li>
+          </ul>
+      </div>
+  </div>
+</div>
+<div class="contact-area">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-8 col-md-12">
+              <form class="contact-form mb-10">
+                  <div class="section-header section-header5 text-start">
+                      <div class="wrapper">
+                          <div class="sub-content">
+                            <img src="{% static 'images/items/curlyline.svg' %}" alt="line">
+                              <span class="sub-text">Связаться с нами</span>
+                          </div>
+                          <h2 class="title">Оставьте обращение</h2>
+                      </div>
+                  </div>
+                  <div class="info-form">
+                      <div class="row">
+                          <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                              <div class="input-box mb-20">
+                                  <input type="text" id="validationDefault01" placeholder="Имя" required>
+                              </div>
+                          </div>
+                          <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                              <div class="input-box mail-input mb-20">
+                                  <input type="email" id="validationDefault02" placeholder="Почта"
+                                      required>
+                              </div>
+                          </div>
+                          <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                              <div class="input-box number-input mb-30">
+                                  <input type="number" id="validationDefault03" placeholder="Телефон"
+                                      required>
+                              </div>
+                          </div>
+                          <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                              
+                          </div>
+                          <div class="col-lg-12 col-sm-12">
+                              <div class="input-box text-input mb-20">
+                                  <textarea name="Message" id="validationDefault05" cols="30" rows="10"
+                                      placeholder="Сообщение..." required></textarea>
+                              </div>
+                          </div>
+                          <div class="col-12 mb-15">
+                              <a href="#" class="form-btn form-btn4">
+                                Отправить
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+              </form>
+          </div>
+          <div class="col-lg-4">
+              <div class="right-side">
+                  <div class="get-in-touch">
+                      <img src="{% static 'images/logo7.svg' %}" alt="">
+                      <h3 class="section-title2">
+                        Работаем для вас!
+                      </h3>
+                      <div class="contact">
+                          <ul>
+                              <li class="one">
+                                <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M30.2409 27.8815L23.1693 34.9532C22.86 35.2628 22.4927 35.5084 22.0885 35.6759C21.6843 35.8435 21.251 35.9297 20.8134 35.9297C20.3758 35.9297 19.9426 35.8435 19.5383 35.6759C19.1341 35.5084 18.7668 35.2628 18.4576 34.9532L11.3843 27.8815C9.51962 26.0168 8.24981 23.641 7.7354 21.0546C7.22099 18.4683 7.48507 15.7874 8.49426 13.3511C9.50345 10.9148 11.2124 8.83244 13.4051 7.36739C15.5977 5.90233 18.1755 5.12036 20.8126 5.12036C23.4496 5.12036 26.0275 5.90233 28.2201 7.36739C30.4128 8.83244 32.1217 10.9148 33.1309 13.3511C34.1401 15.7874 34.4042 18.4683 33.8898 21.0546C33.3754 23.641 32.1056 26.0168 30.2409 27.8815V27.8815Z" stroke="#FF5656" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                  <path d="M24.348 21.9887C25.2857 21.051 25.8125 19.7792 25.8125 18.4531C25.8125 17.127 25.2857 15.8553 24.348 14.9176C23.4104 13.9799 22.1386 13.4531 20.8125 13.4531C19.4864 13.4531 18.2146 13.9799 17.277 14.9176C16.3393 15.8553 15.8125 17.127 15.8125 18.4531C15.8125 19.7792 16.3393 21.051 17.277 21.9887C18.2146 22.9263 19.4864 23.4531 20.8125 23.4531C22.1386 23.4531 23.4104 22.9263 24.348 21.9887Z" stroke="#FF5656" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <a href="#">Одоевское ш., 77, Тула</a>
+                              </li>
+                              <li class="two">
+                                <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M2.78881 2.09618C2.16369 2.7213 1.8125 3.56915 1.8125 4.45321V6.11987C1.8125 19.9265 13.0058 31.1199 26.8125 31.1199H28.4792C29.3632 31.1199 30.2111 30.7687 30.8362 30.1436C31.4613 29.5184 31.8125 28.6706 31.8125 27.7865V22.3215C31.8126 21.9716 31.7025 21.6305 31.4979 21.3466C31.2933 21.0627 31.0045 20.8505 30.6725 20.7399L23.1842 18.2432C22.8036 18.1167 22.3902 18.1317 22.0198 18.2853C21.6493 18.439 21.3467 18.7211 21.1675 19.0799L19.2842 22.8415C15.2033 20.9977 11.9347 17.7291 10.0908 13.6482L13.8525 11.7649C14.2113 11.5856 14.4933 11.283 14.647 10.9126C14.8007 10.5422 14.8157 10.1288 14.6892 9.74821L12.1925 2.25987C12.082 1.92813 11.87 1.63955 11.5864 1.43496C11.3029 1.23037 10.9622 1.12014 10.6125 1.11987H5.14583C4.26178 1.11987 3.41393 1.47106 2.78881 2.09618Z" stroke="#FF5656" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <div>
+                                  <a href="tel:+7 (903) 840-28-56">+7 (903) 840-28-56</a>
+                                  <a href="tel:+7 (4872) 701-418">+7 (4872) 701-418</a>
+                                </div>
+                              </li>
+                              <li class="three">
+                                <svg width="33" height="26" viewBox="0 0 33 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M1.8125 6.45312L14.9625 15.2198C15.5103 15.5853 16.154 15.7803 16.8125 15.7803C17.471 15.7803 18.1147 15.5853 18.6625 15.2198L31.8125 6.45312M5.14583 24.7865H28.4792C29.3632 24.7865 30.2111 24.4353 30.8362 23.8101C31.4613 23.185 31.8125 22.3372 31.8125 21.4531V4.78646C31.8125 3.9024 31.4613 3.05456 30.8362 2.42944C30.2111 1.80431 29.3632 1.45313 28.4792 1.45312H5.14583C4.26178 1.45313 3.41393 1.80431 2.78881 2.42944C2.16369 3.05456 1.8125 3.9024 1.8125 4.78646V21.4531C1.8125 22.3372 2.16369 23.185 2.78881 23.8101C3.41393 24.4353 4.26178 24.7865 5.14583 24.7865Z" stroke="#FF5656" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <a href="#">info@stokolbas.ru</a>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="section-button">
+                      <div class="btn-1">
+                          <a href="#">Открыть в Я.Картах  <i class="rt-location-dot"></i></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="map">
+      <p><iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A784ffccc9b73bd41266f03363102586f217a69ee1ad2c175f34e7f5d70cda2e2&amp;source=constructor" width="100%" height="500" frameborder="0"></iframe></p>
+  </div>
+</div>
+<!--contact-area end-->
+{% endblock %}

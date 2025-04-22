@@ -1,7 +1,48 @@
 from django.shortcuts import get_object_or_404
-from django.views.generic import DetailView, ListView, TemplateView
-from products.models import Supplier, Product, Category, Regions
+from django.views.generic import DetailView, ListView, TemplateView, CreateView
+from products.models import Supplier, Product, Category, Regions, Feedback
+from products.forms import FeedbackForm
+from django.urls import reverse_lazy
+# from django.core.mail import send_mail
+import requests
+import logging 
+import os
 
+logger = logging.getLogger(__name__)
+
+
+# WHATSAPP_API_URL = "https://api.whatsapp.com/send?phone=89959069468&text="
+
+class FeedbackCreateView(CreateView):
+    model = Feedback
+    form_class = FeedbackForm
+    template_name = "feedback.html"
+    success_url = reverse_lazy("feedback_success")  # Перенаправление после успешной отправки
+
+    def form_valid(self, form):
+        feedback = form.save()
+
+        # Отправка email
+        # send_mail(
+        #     subject="Новая заявка на обратную связь",
+        #     message=f"Имя: {feedback.name}\nТелефон: {feedback.phone}\nГород: {feedback.city}\nСообщение: {feedback.message}",
+        #     from_email="jora.tzvetkov@gmail.com",
+        #     recipient_list=["dasaspic46@gmail.com"]
+        # )
+
+        # Отправка в Telegram
+        try:
+            text = f"📩 Новая заявка!\n\n👤 Имя: {feedback.name}\n📞 Телефон: {feedback.phone}\n🏙 Город: {feedback.city}\n✉ Сообщение: {feedback.message}"
+            url = f"https://api.telegram.org/bot{os.getenv('TELEGRAM_BOT_TOKEN')}/sendMessage"
+            data = {"chat_id": os.getenv('TELEGRAM_CHAT_ID'), "text": text}
+            response = requests.post(url, data=data)
+            response_data = response.json()
+            if not response_data.get("ok"):  # Если Telegram API вернул ошибку
+                logger.error(f"Ошибка Telegram API: {response_data}")
+        except Exception as e:
+            logger.error(f"Ошибка отправки в Telegram: {e}")
+
+        return super().form_valid(form)
 
 class SupplierListView(ListView):
     model = Supplier
@@ -23,16 +64,29 @@ class SupplierDetailView(DetailView):
         # Получаем поставщика по slug
         return get_object_or_404(Supplier, slug=self.kwargs['supplier_slug'])
     
+class SupplierPriceView(DetailView):
+    model = Supplier
+    template_name = 'supplier_price.html'
+    context_object_name = 'supplier'
+
+    def get_object(self):
+        # Получаем поставщика по slug
+        return get_object_or_404(Supplier, slug=self.kwargs['supplier_slug'])
+    
 
 class CategoryListView(ListView):
     model = Category
     template_name = 'category_list.html'
     context_object_name = 'categories'
 
-    def get_queryset(self):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         # Получаем поставщика по slug
         supplier = get_object_or_404(Supplier, slug=self.kwargs['supplier_slug'])
-        return Category.objects.filter(supplier=supplier)
+        context['supplier_current'] = supplier
+        context['suppliers'] = Supplier.objects.prefetch_related('product').all()
+        context['products'] = Product.objects.filter(supplier=supplier)
+        return context
     
 
 class ProductListView(ListView):
@@ -40,12 +94,15 @@ class ProductListView(ListView):
     template_name = 'product_list.html'
     context_object_name = 'products'
 
-    def get_queryset(self):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         # Получаем поставщика по slug
         supplier = get_object_or_404(Supplier, slug=self.kwargs['supplier_slug'])
         # Получаем категорию по slug
         category = get_object_or_404(Category, slug=self.kwargs['category_slug'], supplier=supplier)
-        return Product.objects.filter(category=category)
+        context['category'] = category
+        context['products'] = Product.objects.filter(category=category)
+        return context
     
 
 class ProductDetailView(DetailView):
@@ -75,6 +132,15 @@ class RegionsDetailView(DetailView):
 
 class ContactsView(TemplateView):
     template_name = 'contacts.html'
+
+class AboutView(TemplateView):
+    template_name = 'about.html'
+
+class DeliveryView(TemplateView):
+    template_name = 'delivery.html'
+
+class KalugaView(TemplateView):
+    template_name = 'kaluga.html'
     
 class MainPageView(ListView):
     template_name = 'main-page.html'
@@ -83,7 +149,7 @@ class MainPageView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['categories'] =  Category.objects.prefetch_related('products').all() 
-        context['suppliers'] = Supplier.objects.prefetch_related('category').all() 
+        context['suppliers'] = Supplier.objects.prefetch_related('product').all()
         return context
 
 class BaseView(ListView):

@@ -5,600 +5,535 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="{% static 'images/logo/favicon.png' %}">
-
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <!-- select 2 -->
-    <link rel="stylesheet" href="{% static 'css/select2.min.css' %}">
-    <!-- Slick -->
-    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
-    <!-- Wow -->
-    <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
-    <!-- Main css -->
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="apple-touch-icon" href="{% static 'images/fav.png' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/fav.png' %}">
+    <!--================= Bootstrap V5 CSS =================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <!--================= Font Awesome 5 CSS =================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
+    <!--================= RT Icons CSS =================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/rt-icons.css' %}">
+    <!--================= Animate css =================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.nstSlider.min.css' %}">
+    <!--================= Magnific popup Plugin =================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/magnific-popup.css' %}">
+    <!--================= Swiper Slider Plugin =================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
+    <!--================= Mobile Menu CSS =================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/metisMenu.css' %}">
+    <!--================= Preloader CSS =================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/preloader.css' %}">
+    <!--================= Main Menu CSS =================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/rtsmenu.css' %}">
+    <!--================= Main Stylesheet =================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/variables/variable3.css' %}">
+    <!--================= Main Stylesheet =================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
     <title>{% block title %}Сто колбас{% endblock %}</title>
 </head>
 <body>
-    <!--==================== Preloader Start ====================-->
-  <div class="preloader">
-    <img src="{% static 'images/icon/preloader.gif' %}" alt="">
-    <!-- <div class="loader"></div> -->
-  </div>
-<!--==================== Preloader End ====================-->
-
-<!--==================== Overlay Start ====================-->
-<div class="overlay"></div>
-<!--==================== Overlay End ====================-->
-
-<!--==================== Sidebar Overlay End ====================-->
-<div class="side-overlay"></div>
-<!--==================== Sidebar Overlay End ====================-->
-
-<!-- ==================== Scroll to Top End Here ==================== -->
-<div class="progress-wrap">
-  <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-      <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-  </svg>
-</div>
-<!-- ==================== Scroll to Top End Here ==================== -->
-
-<!-- ==================== Search Box Start Here ==================== -->
- <form action="#" class="search-box">
-  <button type="button" class="search-box__close position-absolute inset-block-start-0 inset-inline-end-0 m-16 w-48 h-48 border border-gray-100 rounded-circle flex-center text-white hover-text-gray-800 hover-bg-white text-2xl transition-1">
-    <i class="ph ph-x"></i>
-  </button>
-  <div class="container">
-    <div class="position-relative">
-      <input type="text" class="form-control py-16 px-24 text-xl rounded-pill pe-64" placeholder="Search for a product or brand">
-      <button type="submit" class="w-48 h-48 bg-main-600 rounded-circle flex-center text-xl text-white position-absolute top-50 translate-middle-y inset-inline-end-0 me-8">
-        <i class="ph ph-magnifying-glass"></i>
-      </button>
-    </div>
-  </div>
- </form>
-<!-- ==================== Search Box End Here ==================== -->
-
-<!-- ==================== Mobile Menu Start Here ==================== -->
-<div class="mobile-menu scroll-sm d-lg-none d-block">
-    <button type="button" class="close-button"> <i class="ph ph-x"></i> </button>
-    <div class="mobile-menu__inner">
-        <a href="{% url 'main-page' %}" class="mobile-menu__logo">
-            <img src="{% static 'images/logo/logo.svg' %}" alt="Logo">
-        </a>
-        <div class="mobile-menu__menu">
-            <!-- Nav Menu Start -->
-<ul class="nav-menu flex-align nav-menu--mobile">
-    <li class="on-hover-item nav-menu__item has-submenu">
-        <a href="javascript:void(0)" class="nav-menu__link">Главная</a>
-    </li>
-    <li class="on-hover-item nav-menu__item">
-        <a href="javascript:void(0)" class="nav-menu__link">О нас</a>
-    </li>
-    <li class="on-hover-item nav-menu__item has-submenu">
-        <a href="javascript:void(0)" class="nav-menu__link">Регионы</a>
-         <ul class="on-hover-dropdown common-dropdown nav-submenu scroll-sm">
-            <li class="common-dropdown__item nav-submenu__item">
-                <a href="cart.html" class="common-dropdown__link nav-submenu__link hover-bg-neutral-100"> Cart</a>
-            </li>
-            <li class="common-dropdown__item nav-submenu__item">
-                <a href="checkout.html" class="common-dropdown__link nav-submenu__link hover-bg-neutral-100"> Checkout </a>
-            </li>
-            <li class="common-dropdown__item nav-submenu__item">
-                <a href="account.html" class="common-dropdown__link nav-submenu__link hover-bg-neutral-100"> Account</a>
-            </li>
-        </ul>
-    </li>
-    <li class="nav-menu__item">
-        <a href="contact.html" class="nav-menu__link">Контакты</a>
-    </li>
-</ul>
-<!-- Nav Menu End -->
-        </div>
+   <!--================= Preloader Section Start Here =================-->
+   <div id="weiboo-load">
+    <div class="preloader-new">
     </div>
 </div>
-<!-- ==================== Mobile Menu End Here ==================== -->
-
-
-    <!-- ======================= Middle Top Start ========================= -->
-<div class="header-top bg-main-600 flex-between">
-    <div class="container container-lg">
-        <div class="flex-between flex-wrap gap-8">
-            <ul class="flex-align flex-wrap d-none d-md-flex">
-                <li class="border-right-item"><a href="#shipping" class="text-white text-sm hover-text-decoration-underline">Become A Seller</a></li>
-                <li class="border-right-item"><a href="#shipping" class="text-white text-sm hover-text-decoration-underline">About us</a></li>
-                <li class="border-right-item"><a href="#shipping" class="text-white text-sm hover-text-decoration-underline">Free Delivery</a></li>
-                <li class="border-right-item"><a href="#shipping" class="text-white text-sm hover-text-decoration-underline">Returns Policy</a></li>
-            </ul>
-        <ul class="header-top__right flex-align flex-wrap">
-                <li class="on-hover-item border-right-item border-right-item-sm-space has-submenu arrow-white">
-                    <a href="javascript:void(0)" class="text-white text-sm py-8">Help Center</a>
-                    <ul class="on-hover-dropdown common-dropdown common-dropdown--sm max-h-200 scroll-sm px-0 py-8">
-                        <li class="nav-submenu__item">
-                            <a href="#" class="nav-submenu__link hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <span class="text-sm d-flex"><i class="ph ph-headset"></i></span>
-                                Call Center
-                            </a>
-                        </li>
-                        <li class="nav-submenu__item">
-                            <a href="#" class="nav-submenu__link hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <span class="text-sm d-flex"><i class="ph ph-chat-circle-dots"></i></span>
-                                Live Chat
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="on-hover-item border-right-item border-right-item-sm-space has-submenu arrow-white">
-                    <a href="javascript:void(0)" class="selected-text text-white text-sm py-8">Eng</a>
-                    <ul class="selectable-text-list on-hover-dropdown common-dropdown common-dropdown--sm max-h-200 scroll-sm px-0 py-8">
-                        <li>
-                            <a href="javascript:void(0)" class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <img src="{% static 'images/thumbs/flag1.png' %}" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
-                                English
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <img src="{% static 'images/thumbs/flag2.png' %}" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
-                                Japan
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <img src="{% static 'images/thumbs/flag3.png' %}" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
-                                French
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <img src="{% static 'images/thumbs/flag4.png' %}" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
-                                Germany
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <img src="{% static 'images/thumbs/flag6.png' %}" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
-                                Bangladesh
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <img src="{% static 'images/thumbs/flag5.png' %}" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
-                                South Korea
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="on-hover-item border-right-item border-right-item-sm-space has-submenu arrow-white">
-                    <a href="javascript:void(0)" class="selected-text text-white text-sm py-8">USD</a>
-                   <ul class="selectable-text-list on-hover-dropdown common-dropdown common-dropdown--sm max-h-200 scroll-sm px-0 py-8">
-                        <li>
-                            <a href="javascript:void(0)" class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <img src="{% static 'images/thumbs/flag1.png' %}" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
-                                USD
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <img src="{% static 'images/thumbs/flag2.png' %}" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
-                                Yen
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <img src="{% static 'images/thumbs/flag3.png' %}" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
-                                Franc 
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <img src="{% static 'images/thumbs/flag4.png' %}" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
-                                EURO
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <img src="{% static 'images/thumbs/flag6.png' %}" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
-                                BDT
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0"> 
-                                <img src="{% static 'images/thumbs/flag5.png' %}" alt="" class="w-16 h-12 rounded-4 border border-gray-100">
-                                WON
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="border-right-item">
-                    <a href="account.html" class="text-white text-sm py-8 flex-align gap-6"> 
-                        <span class="icon text-md d-flex"> <i class="ph ph-user-circle"></i> </span> 
-                        <span class="hover-text-decoration-underline">My Account</span>
-                     </a>
-                </li>
-            </ul>
-        </div>
-    </div>
 </div>
-<!-- ======================= Middle Top End ========================= -->
+<!--================= Preloader End Here =================-->
 
-    <!-- ======================= Middle Header Start ========================= -->
-<header class="header-middle bg-color-one border-bottom border-gray-100">
-    <div class="container container-lg">
-        <nav class="header-inner flex-between">
-            <!-- Logo Start -->
-            <div class="logo">
-                <a href="{% url 'main-page' %}" class="link">
-                    <img src="{% static 'images/logo/logo.svg' %}" alt="Logo">
-                </a>
-            </div>
-            <!-- Logo End  -->
-            <div class="search-category d-flex h-48 select-border-end-0 radius-end-0 search-form d-sm-flex d-none">
-                <select class="js-example-basic-single border border-gray-200 border-end-0" name="state">
-                    <option value="1" selected disabled>Все категории</option>
-                    {% for category in categories %}
-                    <option value="1">{{ category.name }}</option>
-                    {% endfor %}
-                </select>
+<div class="anywere anywere-home"></div>
+<div class="logoURL" style="display: none;">
+    {% static 'js/logo.json'%}
+</div>
+<div class="preloaderURL" style="display: none;">
+    {% static 'js/preloader.json'%}
+</div>
 
-                <div class="search-form__wrapper position-relative">
-                    <input type="text" class="search-form__input common-input py-13 ps-16 pe-18 rounded-end-pill pe-44" placeholder="Search for a product or brand">
-                    <button type="submit" class="w-32 h-32 bg-main-600 rounded-circle flex-center text-xl text-white position-absolute top-50 translate-middle-y inset-inline-end-0 me-8"><i class="ph ph-magnifying-glass"></i></button>
+<!--================= Header Section Start Here =================-->
+<header id="rtsHeader">
+    <div class="header-topbar header-topbar2 header-topbar3">
+        <div class="container">
+            <div class="header-top-inner">
+                <h3 class="welcome-text">Белорусские колбасы оптом</h3>
+                <div class="topbar-action">
+                    <a href="#" class="action-item mr--40 fw-normal">Прайс-листы</a>
                 </div>
             </div>
-            <!-- form location Start -->
-            <form action="#" class="flex-align flex-wrap form-location-wrapper">
-
-                <div class="location-box bg-white flex-align gap-8 py-6 px-16 rounded-pill border border-gray-100">
-                    <span class="text-gray-900 text-xl d-xs-flex d-none"><i class="ph ph-map-pin"></i></span>
-                    <div class="line-height-1">
-                        <span class="text-gray-600 text-xs">Your Location</span>
-                        <div class="line-height-1">
-                            <select class="js-example-basic-single border border-gray-200 border-end-0" name="state">
-                                <option value="1">Alabama</option>
-                                <option value="1">Alaska</option>
-                                <option value="1">Arizona</option>
-                                <option value="1">Delaware</option>
-                                <option value="1">Florida</option>
-                                <option value="1">Georgia</option>
-                                <option value="1">Hawaii</option>
-                                <option value="1">Indiana</option>
-                                <option value="1">Marzland</option>
-                                <option value="1">Nevada</option>
-                                <option value="1">New Jersey</option>
-                                <option value="1">New Mexico</option>
-                                <option value="1">New York</option>
+        </div>
+    </div>
+    <div class="navbar-wrapper">
+        <div class="navbar-part navbar-part navbar-part3">
+            <div class="container">
+                <div class="navbar-inner navbar-inner2">
+                    <a href="{% url 'main-page' %}" class="logo"></a>
+                    <div class="navbar-search-area">
+                        <div class="search-input-inner">
+                            <select class="custom-select">
+                                <option value="hide">Все мясокомбинаты</option>
+                                <option value="all">Все</option>
+                                {% for supplier in suppliers %}
+                                    <option value="{{supplier.slug}}">{{supplier.name}}</option>
+                                {% endfor %}
                             </select>
+                            <div class="input-div">
+                                <button class="search-input-icon"><i class="rt-search mr--10"></i>Поиск</button>
+                                <input class="search-input input4" type="text" placeholder="Что будем искать?">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="navbar-select-area">
+                        <select class="topbar-select custom-select">
+                            <option value="eng">Москва</option>
+                            <option value="esp">Тула</option>
+                            <option value="ban">Санкт-Петербург</option>
+                        </select>
+                    </div>
+                    <div class="hamburger"><span></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar-sticky lower-navbar-sticky">
+        <div class="navbar-part navbar-part2 lower-navbar">
+            <div class="container">
+                <div class="navbar-inner">
+                    <a href="index.html" class="logo mx-0"><img src="{% static 'images/logo7.svg' %}" alt="umart-logo">
+
+                    </a>
+                    <div class="catagory-select-area">
+                        <select class="custom-select">
+                            <option value="hide">Все мясокомбинаты</option>
+                            <option value="all">Все</option>
+                            {% for supplier in suppliers %}
+                                <option value="{{supplier.slug}}">{{supplier.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="rts-menu">
+                        <nav class="menus menu-toggle">
+                            <ul class="nav__menu">
+                                <li class="has-dropdown"><a class="menu-item active1" href="{% url 'main-page' %}">Главная</a>
+                                </li>
+                                <li class="has-dropdown"><a class="menu-item" href="{% url 'about' %}">О нас</a>
+                                </li>
+                                <li class="has-dropdown"><a class="menu-item" href="#">Регионы <i
+                                    class="rt-plus"></i></a>
+                                    <ul class="dropdown-ul">
+                                        <li class="dropdown-li"><a class="dropdown-link" href="{% url 'regions-detail' 'kaluga' %}">Калуга</a>
+                                        </li>
+                                        <li class="dropdown-li"><a class="dropdown-link"
+                                                href="faq.html">Тула</a></li>
+                                        <li class="dropdown-li"><a class="dropdown-link"
+                                                href="error.html">Санкт-Петербург</a></li>
+                                    </ul>
+                                </li>
+                                <li><a class="menu-item" href="{% url 'delivery' %}">Доставка</a></li>
+                                <li><a class="menu-item" href="{% url 'contacts' %}">Контакты</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="quick-contact">
+                        <a href="tel:+7 (903) 840-28-56" class="phone contact-item"><i class="rt-phone-flip"></i> +7 (903) 840-28-56 <span
+                                class="separator"></span></a>
+                        <a href="mailto:info@stokolbas.ru" class="email contact-item"><i class="rt-envelope"></i> info@stokolbas.ru</a>
+                    </div>
+                    <div class="hamburger"><span></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cart-bar">
+        <div class="cart-header">
+            <h3 class="cart-heading">MY CART (3 ITEMS)</h3>
+            <div class="close-cart"><i class="fal fa-times"></i></div>
+        </div>
+        <div class="product-area">
+            <div class="product-item">
+                <div class="product-detail">
+                    <div class="product-thumb"><img src="{% static 'images/slider/image1.jpg' %}" alt="product-thumb"></div>
+                    <div class="item-wrapper">
+                        <span class="product-name">Parachute Jacket</span>
+                        <div class="item-wrapper">
+                            <span class="product-variation"><span class="color">Green /</span>
+                                <span class="size">XL</span></span>
+                        </div>
+                        <div class="item-wrapper">
+                            <span class="product-qnty">3 ×</span>
+                            <span class="product-price">$198.00</span>
                         </div>
                     </div>
                 </div>
-            </form>
-            <!-- form location start -->
-             
-            <!-- Header Middle Right start -->
-            
-            <!-- Header Middle Right End  -->
-        </nav>
-    </div>
-</header>
-<!-- ======================= Middle Header End ========================= -->
-    <!-- ==================== Header Start Here ==================== -->
-<header class="header bg-white border-bottom border-gray-100">
-    <div class="container container-lg">
-        <nav class="header-inner d-flex justify-content-between gap-8">
-            <div class="flex-align menu-category-wrapper">
-
-                <!-- Category Dropdown Start -->
-                <div class="category on-hover-item">
-                    <button type="button" class="category__button flex-align gap-8 fw-medium p-16 border-end border-start border-gray-100 text-heading">
-                        <span class="icon text-2xl d-xs-flex d-none"><i class="ph ph-dots-nine"></i></span>
-                        <span class="d-sm-flex d-none">Мясокомбинаты
-                        <span class="arrow-icon text-xl d-flex align-items-center ms-1"><i class="ph ph-caret-down"></i></span>
-                    </button>
-
-                    <div class="responsive-dropdown on-hover-dropdown common-dropdown nav-submenu p-0 submenus-submenu-wrapper">
-
-                        <button type="button" class="close-responsive-dropdown rounded-circle text-xl position-absolute inset-inline-end-0 inset-block-start-0 mt-4 me-8 d-lg-none d-flex"> <i class="ph ph-x"></i> </button>
-
-                        <!-- Logo Start -->
-                        <div class="logo px-16 d-lg-none d-block">
-                            <a href="{% url 'main-page' %}" class="link">
-                                <img src="{% static 'images/logo/logo.svg' %}" alt="Logo">
-                            </a>
+                <div class="cart-edit">
+                    <div class="quantity-edit">
+                        <button class="button"><i class="fal fa-minus minus"></i></button>
+                        <input type="text" class="input" value="3" />
+                        <button class="button plus">+<i class="fal fa-plus plus"></i></button>
+                    </div>
+                    <div class="item-wrapper d-flex mr--5 align-items-center">
+                        <a href="#" class="product-edit"><i class="fal fa-edit"></i></a>
+                        <a href="#" class="delete-cart"><i class="fal fa-times"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="product-detail">
+                    <div class="product-thumb"><img src="{% static 'images/slider/image2.jpg' %}" alt="product-thumb"></div>
+                    <div class="item-wrapper">
+                        <span class="product-name">Narrow Trouser</span>
+                        <div class="item-wrapper">
+                            <span class="product-variation"><span class="color">Green /</span>
+                                <span class="size">XL</span></span>
                         </div>
-                        <!-- Logo End -->
-
-                        <ul class="scroll-sm p-0 py-8 w-300 max-h-400 overflow-y-auto">
-                            {% for supplier in suppliers %}
-                                <li class="has-submenus-submenu">
-                                    <a href="{% url 'category-list' supplier.slug %}" class="text-gray-500 text-15 py-12 px-16 flex-align gap-8 rounded-0">
-                                        <span class="text-xl d-flex"><i class="ph ph-carrot"></i></span>
-                                        <span>{{supplier.name}}</span>
-                                        <span class="icon text-md d-flex ms-auto"><i class="ph ph-caret-right"></i></span>
-                                    </a>
-        
-                                    <div class="submenus-submenu py-16">
-                                        <h6 class="text-lg px-16 submenus-submenu__title">{{supplier.name}}</h6>
-                                        <ul class="submenus-submenu__list max-h-300 overflow-y-auto scroll-sm">
-                                            {% for category in supplier.category.all %}
-                                                <li>
-                                                    <a href="{% url 'product-list' category.supplier.slug category.slug %}">{{ category.name }}</a>
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-                                    </div>
-                                </li>
-                            {% endfor %}
-                            
+                        <div class="item-wrapper">
+                            <span class="product-qnty">2 ×</span>
+                            <span class="product-price">$88.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cart-edit">
+                    <div class="quantity-edit">
+                        <button class="button"><i class="fal fa-minus minus"></i></button>
+                        <input type="text" class="input" value="2" />
+                        <button class="button plus">+<i class="fal fa-plus plus"></i></button>
+                    </div>
+                    <div class="item-wrapper d-flex mr--5 align-items-center">
+                        <a href="#" class="product-edit"><i class="fal fa-edit"></i></a>
+                        <a href="#" class="delete-cart"><i class="fal fa-times"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="product-item last-child">
+                <div class="product-detail">
+                    <div class="product-thumb"><img src="{% static 'images/slider/image5.jpg' %}" alt="product-thumb"></div>
+                    <div class="item-wrapper">
+                        <span class="product-name">Bellyless Hoodie</span>
+                        <div class="item-wrapper">
+                            <span class="product-variation"><span class="color">Green /</span>
+                                <span class="size">XL</span></span>
+                        </div>
+                        <div class="item-wrapper">
+                            <span class="product-qnty">1 ×</span>
+                            <span class="product-price">$289.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cart-edit">
+                    <div class="quantity-edit">
+                        <button class="button"><i class="fal fa-minus minus"></i></button>
+                        <input type="text" class="input" value="2" />
+                        <button class="button plus">+<i class="fal fa-plus plus"></i></button>
+                    </div>
+                    <div class="item-wrapper d-flex mr--5 align-items-center">
+                        <a href="#" class="product-edit"><i class="fal fa-edit"></i></a>
+                        <a href="#" class="delete-cart"><i class="fal fa-times"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cart-bottom-area">
+            <span class="spend-shipping"><i class="fal fa-truck"></i> SPENT <span class="amount">$199.00</span> MORE
+                FOR FREE SHIPPING</span>
+            <span class="total-price">TOTAL: <span class="price">$556</span></span>
+            <a href="checkout.html" class="checkout-btn cart-btn">PROCEED TO CHECKOUT</a>
+            <a href="cart.html" class="view-btn cart-btn">VIEW CART</a>
+        </div>
+    </div>
+    <!-- slide-bar start -->
+    <aside class="slide-bar">
+        <div class="offset-sidebar">
+            <a class="hamburger-1 mobile-hamburger-1 mobile-hamburger-2 ml--30" href="#"><span><i class="rt-xmark"></i></span></a>
+        </div>
+        <!-- offset-sidebar start -->
+        <div class="offset-sidebar-main">
+            <div class="offset-widget mb-40">
+                <div class="info-widget">
+                    <img src="{% static 'images/logo7.svg' %}" alt="">
+                    <p class="mb-30">
+                        We must explain to you how all seds this mistakens idea denouncing pleasures and praising account.
+                    </p>
+                </div>
+                <div class="info-widget info-widget2">
+                    <h4 class="offset-title mb-20">Get In Touch </h4>
+                    <ul>
+                        <li class="info phone"><a href="tel:78090790890208806803">780 907 908 90, 208 806 803</a></li>
+                        <li class="info email"><a href="email:info@webmail.com">info@webmail.com</a></li>
+                        <li class="info web"><a href="www.webexample.com">www.webexample.com</a></li>
+                        <li class="info location">13/A, New Pro State, NYC</li>
+                    </ul>
+                    <div class="offset-social-link">
+                        <h4 class="offset-title mb-20">Follow Us </h4>
+                        <ul class="social-icon">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fab fa-behance"></i></a></li>
                         </ul>
                     </div>
-                </div> 
-                <!-- Category Dropdown End  -->
-    
-                <!-- Menu Start  -->
-                <div class="header-menu d-lg-block d-none">
-                    <!-- Nav Menu Start -->
-<ul class="nav-menu flex-align ">
-    <li class="on-hover-item nav-menu__item">
-        <a href="javascript:void(0)" class="nav-menu__link">Главная</a>
-    </li>
-    <li class="on-hover-item nav-menu__item">
-        <a href="javascript:void(0)" class="nav-menu__link">О нас</a>
-    </li>
-    <li class="on-hover-item nav-menu__item has-submenu">
-        <a href="javascript:void(0)" class="nav-menu__link">Регионы</a>
-         <ul class="on-hover-dropdown common-dropdown nav-submenu scroll-sm">
-            <li class="common-dropdown__item nav-submenu__item">
-                <a href="cart.html" class="common-dropdown__link nav-submenu__link hover-bg-neutral-100"> Cart</a>
-            </li>
-            <li class="common-dropdown__item nav-submenu__item">
-                <a href="checkout.html" class="common-dropdown__link nav-submenu__link hover-bg-neutral-100"> Checkout </a>
-            </li>
-            <li class="common-dropdown__item nav-submenu__item">
-                <a href="account.html" class="common-dropdown__link nav-submenu__link hover-bg-neutral-100"> Account</a>
-            </li>
-        </ul>
-    </li>
-    <li class="nav-menu__item">
-        <a href="contact.html" class="nav-menu__link">Контакты</a>
-    </li>
-</ul>
-<!-- Nav Menu End -->
                 </div>
-                <!-- Menu End  -->
             </div>
-
-            <!-- Header Right start -->
-            <div class="header-right flex-align">
-                <a href="tel:01234567890" class="bg-main-600 text-white p-12 h-100 hover-bg-main-800 flex-align gap-8 text-lg d-lg-flex d-none"> 
-                    <div class="d-flex text-32"><i class="ph ph-phone-call"></i></div>
-                    01- 234 567 890
-                </a>
-                <div class="me-16 d-lg-none d-block">
-                    <div class="flex-align flex-wrap gap-12">
-    <button type="button" class="search-icon flex-align d-lg-none d-flex gap-4 item-hover">
-        <span class="text-2xl text-gray-700 d-flex position-relative item-hover__text">
-            <i class="ph ph-magnifying-glass"></i>
-        </span>
-    </button>
-</div>
-                </div>
-                <button type="button" class="toggle-mobileMenu d-lg-none ms-3n text-gray-800 text-4xl d-flex"> <i class="ph ph-list"></i> </button>
-            </div>
-            <!-- Header Right End  -->
-        </nav>
-    </div>
-</header>
-<!-- ==================== Header End Here ==================== -->
-    <header>
-        <nav>
-            <ul>
-                <li><a href="{% url 'supplier-list' %}">Поставщики</a></li>
-                
-
-
+        </div>
+        <!-- offset-sidebar end -->
+        <!-- side-mobile-menu start -->
+        <nav class="side-mobile-menu side-mobile-menu1 side-mobile-menu2">
+            <ul id="mobile-menu-active">
+                <li>
+                    <a class="mm-link" href="{% url 'main-page' %}">Главная</a>
+                </li>
+                <li>
+                    <a class="mm-link" href="{% url 'about' %}">О нас</a>
+                </li>
+                <li class="has-dropdown firstlvl">
+                    <a class="mm-link" href="index.html">Регионы  <i class="rt-angle-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="{% url 'regions-detail' 'kaluga' %}">Калуга</a></li>
+                        <li><a href="faq.html">Тула</a></li>
+                        <li><a href="error.html">Санкт-Петербург</a></li>
+                    </ul>
+                </li>
+                <li><a class="mm-link" href="{% url 'delivery' %}">Доставка</a></li>
+                <li><a class="mm-link" href="{% url 'contacts' %}">Контакты</a></li>
             </ul>
         </nav>
-    </header>
-
-    <main>
-        {% block content %}{% endblock %}
-    </main>
-
-    <!-- ==================== Footer Start Here ==================== -->
-<footer class="footer py-120">
-    <img src="{% static 'images/bg/body-bottom-bg.png' %}" alt="BG" class="body-bottom-bg">
-    <div class="container container-lg">
-        <div class="footer-item-wrapper d-flex align-items-start flex-wrap">
-            <div class="footer-item">
-                <div class="footer-item__logo">
-                    <a href="{% url 'main-page' %}"> <img src="{% static 'images/logo/logo.svg' %}" alt=""></a>
+        <div class="header-action-items header-action-items1 header-action-items-side">
+            <div class="search-part">
+                <div class="search-icon action-item icon"><i class="rt-search"></i></div>
+                <div class="search-input-area">
+                    <div class="container">
+                        <div class="search-input-inner">
+                            <select id="custom-select">
+                                <option value="hide">Все Категории</option>
+                                <option value="all">Все</option>
+                                {% for category in categories %}
+                                    <option value="{{category.slug}}">{{category.name}}</option>
+                                {% endfor %}
+                            </select>
+                            <div class="input-div">
+                                <div class="search-input-icon"><i class="rt-search mr--10"></i></div>
+                                <input class="search-input" type="text" placeholder="Search by keyword or #">
+                            </div>
+                            <div class="search-close-icon"><i class="rt-xmark"></i></div>
+                        </div>
+                    </div>
                 </div>
-                <p class="mb-24">We're Grocery Shop, an innovative team of food supliers.</p>
-                <div class="flex-align gap-16 mb-16">
-                    <span class="w-32 h-32 flex-center rounded-circle bg-main-600 text-white text-md flex-shrink-0"><i class="ph-fill ph-map-pin"></i></span>
-                    <span class="text-md text-gray-900 ">789 Inner Lane, Biyes park, California, USA</span>
-                </div>
-                <div class="flex-align gap-16 mb-16">
-                    <span class="w-32 h-32 flex-center rounded-circle bg-main-600 text-white text-md flex-shrink-0"><i class="ph-fill ph-phone-call"></i></span>
-                    <div class="flex-align gap-16 flex-wrap">
-                        <a href="tel:+00123456789" class="text-md text-gray-900 hover-text-main-600">+00 123 456 789</a>
-                        <span class="text-md text-main-600 ">or</span>
-                        <a href="tel:+00987654012" class="text-md text-gray-900 hover-text-main-600">+00 987 654 012</a>
+            </div>
+            <div class="cart action-item">
+                <div class="cart-nav">
+                    <div class="cart-icon icon"><i class="rt-cart"></i><span class="wishlist-dot icon-dot">3</span>
                     </div>
                 </div>
                 <div class="flex-align gap-16 mb-16">
                     <span class="w-32 h-32 flex-center rounded-circle bg-main-600 text-white text-md flex-shrink-0"><i class="ph-fill ph-envelope"></i></span>
-                    <a href="mailto:support24@marketpro.com" class="text-md text-gray-900 hover-text-main-600">support24@marketpro.com</a>
+                    <a href="{% url 'feedback' %}" class="text-md text-gray-900 hover-text-main-600">Обратная связь</a>
                 </div>
             </div>
-            
-            <div class="footer-item">
-                <h6 class="footer-item__title">Information</h6>
-                <ul class="footer-menu">
-                    <li class="mb-16">
-                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Become a Vendor</a>
-                    </li>
-                    <li class="mb-16">
-                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Affiliate Program</a>
-                    </li>
-                    <li class="mb-16">
-                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Privacy Policy</a>
-                    </li>
-                    <li class="mb-16">
-                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Our Suppliers</a>
-                    </li>
-                    <li class="mb-16">
-                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Extended Plan</a>
-                    </li>
-                    <li class="">
-                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Community</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="footer-item">
-                <h6 class="footer-item__title">Customer Support</h6>
-                <ul class="footer-menu">
-                    <li class="mb-16">
-                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Help Center</a>
-                    </li>
-                    <li class="mb-16">
-                        <a href="contact.html" class="text-gray-600 hover-text-main-600">Contact Us</a>
-                    </li>
-                    <li class="mb-16">
-                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Report Abuse</a>
-                    </li>
-                    <li class="mb-16">
-                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Submit and Dispute</a>
-                    </li>
-                    <li class="mb-16">
-                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Policies & Rules</a>
-                    </li>
-                    <li class="">
-                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Online Shopping</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="footer-item">
-                <h6 class="footer-item__title">My Account</h6>
-                <ul class="footer-menu">
-                    <li class="mb-16">
-                        <a href="shop.html" class="text-gray-600 hover-text-main-600">My Account</a>
-                    </li>
-                    <li class="mb-16">
-                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Order History</a>
-                    </li>
-                    <li class="mb-16">
-                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Shoping Cart</a>
-                    </li>
-                    <li class="mb-16">
-                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Compare</a>
-                    </li>
-                    <li class="mb-16">
-                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Help Ticket</a>
-                    </li>
-                    <li class="">
-                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Wishlist</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="footer-item">
-                <h6 class="footer-item__title">Daily Groceries</h6>
-                <ul class="footer-menu">
-                    <li class="mb-16">
-                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Dairy & Eggs</a>
-                    </li>
-                    <li class="mb-16">
-                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Meat & Seafood</a>
-                    </li>
-                    <li class="mb-16">
-                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Breakfast Food</a>
-                    </li>
-                    <li class="mb-16">
-                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Household Supplies</a>
-                    </li>
-                    <li class="mb-16">
-                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Bread & Bakery</a>
-                    </li>
-                    <li class="">
-                        <a href="shop.html" class="text-gray-600 hover-text-main-600">Pantry Staples</a>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="footer-item">
-                <h6 class="">Shop on The Go</h6>
-                <p class="mb-16">Marketpro App is available.  Get it now</p>
-                <div class="flex-align gap-8 my-32">
-                    <a href="https://www.apple.com/store" class="">
-                        <img src="{% static 'images/thumbs/store-img1.png' %}" alt="">
-                    </a>
-                    <a href="https://play.google.com/store/apps?hl=en" class="">
-                        <img src="{% static 'images/thumbs/store-img2.png' %}" alt="">
-                    </a>
+            <div class="wishlist action-item">
+                <div class="favourite-icon icon"><i class="rt-heart"></i><span class="cart-dot icon-dot">0</span>
                 </div>
-
-                <ul class="flex-align gap-16">
-    <li>
-        <a href="https://www.facebook.com" class="w-44 h-44 flex-center bg-main-100 text-main-600 text-xl rounded-circle hover-bg-main-600 hover-text-white">
-            <i class="ph-fill ph-facebook-logo"></i>
-        </a>
-    </li>
-    <li>
-        <a href="https://www.twitter.com" class="w-44 h-44 flex-center bg-main-100 text-main-600 text-xl rounded-circle hover-bg-main-600 hover-text-white">
-            <i class="ph-fill ph-twitter-logo"></i>
-        </a>
-    </li>
-    <li>
-        <a href="https://www.linkedin.com" class="w-44 h-44 flex-center bg-main-100 text-main-600 text-xl rounded-circle hover-bg-main-600 hover-text-white">
-            <i class="ph-fill ph-instagram-logo"></i>
-        </a>
-    </li>
-    <li>
-        <a href="https://www.pinterest.com" class="w-44 h-44 flex-center bg-main-100 text-main-600 text-xl rounded-circle hover-bg-main-600 hover-text-white">
-            <i class="ph-fill ph-linkedin-logo"></i>
-        </a>
-    </li>
-</ul>
+            </div>
+            <a href="login.html" class="account"><i class="rt-user-2"></i></a>
+        </div>
+        <!-- side-mobile-menu end -->
+    </aside>
+    <!--================= Banner Section End Here =================-->
+</header>
+<!--================= Header Section End Here =================-->
+<main>
+    {% block content %}{% endblock %}
+</main>
+<!--================= Footer Start Here =================-->
+<div class="footer footer-2 footer-3">
+    <div class="container">
+        <div class="footer-feature1">
+            <div class="row align-items-center">
+                <div class="col-xl-3">
+                    <div class="wrapper">
+                        <div class="icon">
+                            <svg width="50" height="51" viewBox="0 0 50 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.5 30.6816V38.1816C7.5 42.3241 15.335 45.6816 25 45.6816C34.665 45.6816 42.5 42.3241 42.5 38.1816V30.6816C42.5 34.8241 34.665 38.1816 25 38.1816C15.335 38.1816 7.5 34.8241 7.5 30.6816Z" fill="#FF5656" />
+                                <path d="M7.5 18.1816V25.6816C7.5 29.8241 15.335 33.1816 25 33.1816C34.665 33.1816 42.5 29.8241 42.5 25.6816V18.1816C42.5 22.3241 34.665 25.6816 25 25.6816C15.335 25.6816 7.5 22.3241 7.5 18.1816Z" fill="#FF5656" />
+                                <path d="M42.5 13.1816C42.5 17.3241 34.665 20.6816 25 20.6816C15.335 20.6816 7.5 17.3241 7.5 13.1816C7.5 9.03914 15.335 5.68164 25 5.68164C34.665 5.68164 42.5 9.03914 42.5 13.1816Z" fill="#FF5656" />
+                              </svg>
+                        </div>
+                        <div class="title">
+                            <h1 class="box-title my-0">Работаем без предоплаты</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3">
+                    <div class="wrapper">
+                        <div class="icon">
+                            <svg width="50" height="51" viewBox="0 0 50 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.5 5.68164C21.837 5.68164 21.2011 5.94503 20.7322 6.41387C20.2634 6.88271 20 7.5186 20 8.18164C20 8.84468 20.2634 9.48057 20.7322 9.94941C21.2011 10.4182 21.837 10.6816 22.5 10.6816H27.5C28.163 10.6816 28.7989 10.4182 29.2678 9.94941C29.7366 9.48057 30 8.84468 30 8.18164C30 7.5186 29.7366 6.88271 29.2678 6.41387C28.7989 5.94503 28.163 5.68164 27.5 5.68164H22.5Z" fill="#FF5656" />
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M10 13.1816C10 11.8556 10.5268 10.5838 11.4645 9.64611C12.4021 8.70842 13.6739 8.18164 15 8.18164C15 10.1708 15.7902 12.0784 17.1967 13.4849C18.6032 14.8915 20.5109 15.6816 22.5 15.6816H27.5C29.4891 15.6816 31.3968 14.8915 32.8033 13.4849C34.2098 12.0784 35 10.1708 35 8.18164C36.3261 8.18164 37.5979 8.70842 38.5355 9.64611C39.4732 10.5838 40 11.8556 40 13.1816V40.6816C40 42.0077 39.4732 43.2795 38.5355 44.2172C37.5979 45.1549 36.3261 45.6816 35 45.6816H15C13.6739 45.6816 12.4021 45.1549 11.4645 44.2172C10.5268 43.2795 10 42.0077 10 40.6816V13.1816ZM17.5 23.1816C16.837 23.1816 16.2011 23.445 15.7322 23.9139C15.2634 24.3827 15 25.0186 15 25.6816C15 26.3447 15.2634 26.9806 15.7322 27.4494C16.2011 27.9182 16.837 28.1816 17.5 28.1816H17.525C18.188 28.1816 18.8239 27.9182 19.2928 27.4494C19.7616 26.9806 20.025 26.3447 20.025 25.6816C20.025 25.0186 19.7616 24.3827 19.2928 23.9139C18.8239 23.445 18.188 23.1816 17.525 23.1816H17.5ZM25 23.1816C24.337 23.1816 23.7011 23.445 23.2322 23.9139C22.7634 24.3827 22.5 25.0186 22.5 25.6816C22.5 26.3447 22.7634 26.9806 23.2322 27.4494C23.7011 27.9182 24.337 28.1816 25 28.1816H32.5C33.163 28.1816 33.7989 27.9182 34.2678 27.4494C34.7366 26.9806 35 26.3447 35 25.6816C35 25.0186 34.7366 24.3827 34.2678 23.9139C33.7989 23.445 33.163 23.1816 32.5 23.1816H25ZM17.5 33.1816C16.837 33.1816 16.2011 33.445 15.7322 33.9139C15.2634 34.3827 15 35.0186 15 35.6816C15 36.3447 15.2634 36.9806 15.7322 37.4494C16.2011 37.9182 16.837 38.1816 17.5 38.1816H17.525C18.188 38.1816 18.8239 37.9182 19.2928 37.4494C19.7616 36.9806 20.025 36.3447 20.025 35.6816C20.025 35.0186 19.7616 34.3827 19.2928 33.9139C18.8239 33.445 18.188 33.1816 17.525 33.1816H17.5ZM25 33.1816C24.337 33.1816 23.7011 33.445 23.2322 33.9139C22.7634 34.3827 22.5 35.0186 22.5 35.6816C22.5 36.3447 22.7634 36.9806 23.2322 37.4494C23.7011 37.9182 24.337 38.1816 25 38.1816H32.5C33.163 38.1816 33.7989 37.9182 34.2678 37.4494C34.7366 36.9806 35 36.3447 35 35.6816C35 35.0186 34.7366 34.3827 34.2678 33.9139C33.7989 33.445 33.163 33.1816 32.5 33.1816H25Z" fill="#FF5656" />
+                              </svg>
+                        </div>
+                        <div class="title">
+                            <h1 class="box-title d-inline">Более тысячи </h1>
+                            <p class="d-inline">наименований колбасной продукции и мясных деликатессов</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3">
+                    <div class="wrapper">
+                        <div class="icon">
+                            <svg width="40" height="31" viewBox="0 0 40 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 5.68164C0 4.35556 0.526784 3.08379 1.46447 2.14611C2.40215 1.20842 3.67392 0.681641 5 0.681641H17.5L22.5 5.68164H35C36.3261 5.68164 37.5979 6.20842 38.5355 7.14611C39.4732 8.08379 40 9.35556 40 10.6816V25.6816C40 27.0077 39.4732 28.2795 38.5355 29.2172C37.5979 30.1549 36.3261 30.6816 35 30.6816H5C3.67392 30.6816 2.40215 30.1549 1.46447 29.2172C0.526784 28.2795 0 27.0077 0 25.6816V5.68164Z" fill="#FF5656" />
+                              </svg>
+                        </div>
+                        <div class="title">
+                            <h1 class="box-title my-0">Полный комплект сопроводительных документов</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3">
+                    <div class="wrapper last-child">
+                        <div class="icon">
+                            <svg width="50" height="51" viewBox="0 0 50 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 41.9316C20 42.9262 19.6049 43.88 18.9017 44.5833C18.1984 45.2866 17.2446 45.6816 16.25 45.6816C15.2554 45.6816 14.3016 45.2866 13.5983 44.5833C12.8951 43.88 12.5 42.9262 12.5 41.9316C12.5 40.9371 12.8951 39.9833 13.5983 39.28C14.3016 38.5767 15.2554 38.1816 16.25 38.1816C17.2446 38.1816 18.1984 38.5767 18.9017 39.28C19.6049 39.9833 20 40.9371 20 41.9316ZM37.5 41.9316C37.5 42.9262 37.1049 43.88 36.4017 44.5833C35.6984 45.2866 34.7446 45.6816 33.75 45.6816C32.7554 45.6816 31.8016 45.2866 31.0983 44.5833C30.3951 43.88 30 42.9262 30 41.9316C30 40.9371 30.3951 39.9833 31.0983 39.28C31.8016 38.5767 32.7554 38.1816 33.75 38.1816C34.7446 38.1816 35.6984 38.5767 36.4017 39.28C37.1049 39.9833 37.5 40.9371 37.5 41.9316Z" fill="#FF5656" />
+                                <path d="M7.5 10.6816C6.83696 10.6816 6.20107 10.945 5.73223 11.4139C5.26339 11.8827 5 12.5186 5 13.1816V38.1816C5 38.8447 5.26339 39.4806 5.73223 39.9494C6.20107 40.4182 6.83696 40.6816 7.5 40.6816H10.125C10.4119 39.2688 11.1784 37.9985 12.2947 37.0862C13.4109 36.1738 14.8083 35.6754 16.25 35.6754C17.6917 35.6754 19.0891 36.1738 20.2053 37.0862C21.3216 37.9985 22.0881 39.2688 22.375 40.6816H25C25.663 40.6816 26.2989 40.4182 26.7678 39.9494C27.2366 39.4806 27.5 38.8447 27.5 38.1816V13.1816C27.5 12.5186 27.2366 11.8827 26.7678 11.4139C26.2989 10.945 25.663 10.6816 25 10.6816H7.5ZM35 18.1816C34.337 18.1816 33.7011 18.445 33.2322 18.9139C32.7634 19.3827 32.5 20.0186 32.5 20.6816V35.8066C33.3044 35.6423 34.1332 35.6381 34.9392 35.7942C35.7452 35.9502 36.5126 36.2636 37.1974 36.7163C37.8823 37.169 38.4713 37.7522 38.9307 38.4326C39.3901 39.113 39.711 39.8772 39.875 40.6816H42.5C43.163 40.6816 43.7989 40.4182 44.2678 39.9494C44.7366 39.4806 45 38.8447 45 38.1816V25.6816C44.9999 25.0187 44.7364 24.3829 44.2675 23.9141L39.2675 18.9141C38.7988 18.4453 38.163 18.1818 37.5 18.1816H35Z" fill="#FF5656" />
+                              </svg>
+                        </div>
+                        <div class="title">
+                            <h1 class="box-title my-0">Бесплатная доставка</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-inner">
+            <div class="row justify-content-between">
+                <div class="col-xl-3 col-md-6 col-sm-6 box-widget-col">
+                    <div class="footer-widget footer-box-widget">
+                        <div class="footer-logo"><img src="{% static 'images/logo7.svg' %}" alt="footer-logo"></div>
+                        <p>Работаем для вас!</p>
+                        <div class="quick-contact">
+                            <div class="phone contact-item">
+                                <div class="icon"><img src="{% static 'images/icons/call-icon.svg' %}" alt="chat-icon">
+                                </div>
+                                <div class="contact-info">
+                                    <a href="tel:+7 (903) 840-28-56" class="service-time info">+7 (903) 840-28-56</a>
+                                    <a href="tel:+7 (4872) 701-418" class="service-time info">+7 (4872) 701-418</a>
+                                </div>
+                            </div>
+                            <div class="email contact-item">
+                                <div class="icon"><img src="{% static 'images/icons/mail-icon.svg' %}" alt="phone-icon">
+                                </div>
+                                <div class="contact-info d-flex align-items-center">
+                                    <a href="mailto:info@stokolbas.ru"
+                                        class="email-address info">info@stokolbas.ru</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-sm-6">
+                    <div class="footer-widget">
+                        <h3 class="footer-widget-title">О нас</h3>
+                        <p class="widget-text">СТОКОЛБАС работает по конкурентно устойчивым ценам и может предложить вам более одной тысячи наименований колбасных изделий и мясных деликатесов!</p>
+                        <a href="#0" class="getin-touch">Подробнее <i class="fal fa-long-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-13 col-md-6 col-sm-6">
+                    <h3 class="footer-widget-title">Мясокомбинаты</h3>
+                    <ul class="footer-widget">
+                        <li class="widget-list-item"><a href="#0">Пинский</a></li>
+                        <li class="widget-list-item"><a href="#0">Калинка</a></li>
+                        <li class="widget-list-item"><a href="#0">Березовский</a></li>
+                        <li class="widget-list-item"><a href="#0">Борисовский</a></li>
+                        <li class="widget-list-item"><a href="#0">Остальной</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-25 col-md-6 col-sm-6">
+                    <h3 class="footer-widget-title">Мы перезвоним!</h3>
+                    <div class="footer-widget newsletter-widget">
+                        <div class="input-div">
+                            <input type="email" placeholder="Имя">
+                        </div>
+                        <div class="input-div">
+                            <input type="email" placeholder="Телефон" class="phoneMask">
+                        </div>
+                        <a href="#0" class="subscribe-btn">Отправить <i class="fal fa-long-arrow-right"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</footer>
-
-<!-- bottom Footer -->
-<div class="bottom-footer bg-color-one py-8">
-    <div class="container container-lg">
-        <div class="bottom-footer__inner flex-between flex-wrap gap-16 py-16">
-            <p class="bottom-footer__text ">Marketpro eCommerce &copy; 2024. All Rights Reserved </p>
-            <div class="flex-align gap-8 flex-wrap">
-                <span class="text-heading text-sm">We Are Acepting</span>
-                <img src="{% static 'images/thumbs/payment-method.png' %}" alt="">
+    <div class="footer-bottom-area">
+        <div class="container">
+            <div class="footer-bottom-inner">
+                <span class="copyright">2025</span>
             </div>
         </div>
     </div>
 </div>
-<!-- ==================== Footer End Here ==================== -->
+<!--================= Footer End Here =================-->
+ <!--================= Newsletter Popup Start Here =================-->
+ <div class="rts-newsletter-popup">
+    <div class="newsletter-close-btn"><i class="fal fa-times"></i></div>
+    <div class="newsletter-inner">
+        <h3 class="newsletter-heading">Мы перезвоним для уточнения заказа</h3>
+        <form>
+            <div class="input-area">
+                <div class="input-div">
+                    <input type="text" placeholder="Имя">
+                    <div class="input-icon">
+                        <i class="far fa-user"></i>
+                    </div>
+                </div>
+                <div class="input-div">
+                    <input type="text" placeholder="Номер телефона" class="phoneMask">
+                    <div class="input-icon">
+                        <img src="{% static 'images/icons/call-icon.svg' %}" alt="chat-icon">
+                    </div>
+                </div>
+                <div class="input-div">
+                    <input type="text" placeholder="Почта">
+                    <div class="input-icon">
+                        <img src="{% static 'images/icons/mail-icon.svg' %}" alt="phone-icon">
+                    </div>
+                </div>
+                <div class="input-div">
+                    <input type="text" placeholder="Город">
+                    <div class="input-icon">
+                        <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M30.2409 27.8815L23.1693 34.9532C22.86 35.2628 22.4927 35.5084 22.0885 35.6759C21.6843 35.8435 21.251 35.9297 20.8134 35.9297C20.3758 35.9297 19.9426 35.8435 19.5383 35.6759C19.1341 35.5084 18.7668 35.2628 18.4576 34.9532L11.3843 27.8815C9.51962 26.0168 8.24981 23.641 7.7354 21.0546C7.22099 18.4683 7.48507 15.7874 8.49426 13.3511C9.50345 10.9148 11.2124 8.83244 13.4051 7.36739C15.5977 5.90233 18.1755 5.12036 20.8126 5.12036C23.4496 5.12036 26.0275 5.90233 28.2201 7.36739C30.4128 8.83244 32.1217 10.9148 33.1309 13.3511C34.1401 15.7874 34.4042 18.4683 33.8898 21.0546C33.3754 23.641 32.1056 26.0168 30.2409 27.8815V27.8815Z" stroke="#FF5656" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M24.348 21.9887C25.2857 21.051 25.8125 19.7792 25.8125 18.4531C25.8125 17.127 25.2857 15.8553 24.348 14.9176C23.4104 13.9799 22.1386 13.4531 20.8125 13.4531C19.4864 13.4531 18.2146 13.9799 17.277 14.9176C16.3393 15.8553 15.8125 17.127 15.8125 18.4531C15.8125 19.7792 16.3393 21.051 17.277 21.9887C18.2146 22.9263 19.4864 23.4531 20.8125 23.4531C22.1386 23.4531 23.4104 22.9263 24.348 21.9887Z" stroke="#FF5656" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="subscribe-btn">Отправить <i
+                    class="fal fa-long-arrow-right ml--5"></i></button>
+        </form>
+    </div>
+</div>
+<!--================= Newsletter Popup End Here =================-->
 
-    <!-- Jquery js -->
-    <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
-    <!-- Bootstrap Bundle Js -->
-    <script src="{% static 'js/boostrap.bundle.min.js' %}"></script>
-    <!-- Bootstrap Bundle Js -->
-    <script src="{% static 'js/phosphor-icon.js' %}"></script>
-    <!-- Select 2 -->
-    <script src="{% static 'js/select2.min.js' %}"></script>
-    <!-- Slick js -->
-    <script src="{% static 'js/slick.min.js' %}"></script>
-    <!-- Slick js -->
-    <script src="{% static 'js/count-down.js' %}"></script>
-    <!-- wow js -->
-    <script src="{% static 'js/jquery-ui.js' %}"></script>
-
-    <!-- main js -->
+    <!--================= Jquery latest version =================-->
+    <script src="https://unpkg.com/imask"></script>
+    <script src="{% static 'js/vendors/jquery-3.6.0.min.js' %}"></script>
+    <!--================= Bootstrap latest version =================-->
+    <script src="{% static 'js/vendors/bootstrap.min.js' %}"></script>
+    <!--================= Wow.js =================-->
+    <script src="{% static 'js/vendors/wow.min.js' %}"></script>
+    <!--================= Swiper Slider =================-->
+    <script src="{% static 'js/vendors/swiper-bundle.min.js' %}"></script>
+     <!--================= Nice Select =================-->
+     <script src="{% static 'js/vendors/jquery.nice-select.js' %}"></script>
+     <script src="{% static 'js/vendors/jquery.nstSlider.min.js' %}"></script>
+    <!--================= metisMenu Plugin =================-->
+    <script src="{% static 'js/vendors/metisMenu.min.js' %}"></script>
+    <!--================= Main Menu Plugin =================-->
+    <script src="{% static 'js/vendors/rtsmenu.js' %}"></script>
+    <!--================= Magnefic Popup Plugin =================-->
+    <script src="{% static 'js/vendors/isotope.pkgd.min.js' %}"></script>
+    <!--================= Magnefic Popup Plugin =================-->
+    <script src="{% static 'js/vendors/jquery.magnific-popup.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <!--================= Main Script =================-->
     <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

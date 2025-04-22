@@ -8,15 +8,27 @@ from products.views import (
     ProductDetailView,
     RegionsDetailView,
     ContactsView,
+    AboutView,
     SupplierListView,
-    MainPageView
+    MainPageView,
+    FeedbackCreateView,
+    DeliveryView,
+    KalugaView,
+    SupplierPriceView
 )
 
 urlpatterns = [
     path('',  
         MainPageView.as_view(), 
         name='main-page'),
-        
+
+    path("feedback/", 
+        FeedbackCreateView.as_view(), 
+        name="feedback",
+        ),
+
+    path('', MainPageView.as_view(), name='feedback_success'),
+    
     path('suppliers/', 
         SupplierListView.as_view(), 
         name='supplier-list',
@@ -26,6 +38,12 @@ urlpatterns = [
     path('suppliers/<slug:supplier_slug>/', 
         SupplierDetailView.as_view(), 
         name='supplier-detail',
+        ),
+
+    # Поставщики
+    path('supplier-price/<slug:supplier_slug>/', 
+        SupplierPriceView.as_view(), 
+        name='supplier-price',
         ),
 
     # Категории
@@ -54,7 +72,24 @@ urlpatterns = [
     path('contacts/', 
         ContactsView.as_view(),
         name='contacts',
-        )
+        ),
+
+    # О нас
+    path('about/', 
+        AboutView.as_view(),
+        name='about',
+        ),
+    
+    # О нас
+    path('delivery/', 
+        DeliveryView.as_view(),
+        name='delivery',
+        ),
+    
+    path('kaluga/', 
+        KalugaView.as_view(),
+        name='kaluga',
+        ),
 ]
 
 

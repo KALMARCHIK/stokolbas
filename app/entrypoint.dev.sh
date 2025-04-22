@@ -2,11 +2,15 @@
 
 # Выполняем миграции базы данных
 python manage.py migrate --noinput
+<<<<<<< HEAD
 python manage.py makemigrations
+=======
+python manage.py makemigrations --noinput
+>>>>>>> c28d5b670053cf5a93e27328330c7997ed85c401
 python manage.py migrate
 
 # Собираем статические файлы
-python manage.py collectstatic --noinput
+python manage.py collectstatic --noinput 
 
 # Создаем суперпользователя, если он не существует
 echo "from django.contrib.auth import get_user_model;
