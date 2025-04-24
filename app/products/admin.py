@@ -1,12 +1,20 @@
-from django.contrib import admin
-from products.models import Supplier, Product, Category, Regions
+from asyncio import (
+    run as async_run,
+    gather
+)
+
+from django.contrib import admin, messages
 from django.db import transaction
+
+from products.models import Supplier, Product, Category, Regions, PriceList
+
+from parsers import parse
 
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('slug', 'supplier', 'name', 'category', 'is_new', 'implementation_period', 'variety', 'compound', 'price', 'bulk_price', 'image')  # Показываем имя поставщика в списке товаров
     list_filter = ('name', 'category', 'supplier')
-    actions = ['parse_selected_product_image', 'update_product_new_status']
+    #actions = ['parse_selected_product_image', 'update_product_new_status']
 
     # def update_product_new_status(self, request, queryset):
     #     print([i.category for i in queryset])
@@ -61,28 +69,62 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(Category, CategoryAdmin)
 
 
+class PriceListInline(admin.TabularInline):
+    model = PriceList
+    extra = 1
+
+async def callbyname(_id, fn):
+    return _id, await fn
+
 class SupplierAdmin(admin.ModelAdmin):
-    list_display = ('name', 'website', 'price_list', 'image', 'slug')
-    # list_filter = ('category', 'price')
+    list_display = ('name', 'website', 'image', 'slug')
+    inlines = [PriceListInline]
     actions = ["parse_selected_price_lists"]
 
+    async def __parse_selected_price_list(self, data_to_parse):
+        tasks = [callbyname(dtp['suppl_id'], parse(dtp)) for dtp in data_to_parse]
+        return await gather(*tasks)
+
     def parse_selected_price_lists(self, request, queryset):
-        """Ручной запуск парсинга после полного сохранения всех данных"""
+        """ 
+        Запуск обработчика добавленных excel файлов, парсинг
+        первоисточников, сопоставление данных для всех выбранных поставщиков
+        """
 
-        suppliers_to_process = []
+        #self.message_user(request, "Выполняется обработка данных...", level=messages.WARNING)
 
-        # 🔹 1. Собираем список поставщиков с загруженными файлами
-        for supplier in queryset:
-            if supplier.website:
-                suppliers_to_process.append(supplier)
+        data_to_parse = []
+        for q in queryset:
+            data_to_parse.append({'suppl_id': q.id, 'files': [], 'url': q.website})
+            for f in q.pricelists.all():
+                data_to_parse[-1]['files'].append(f.file.name)
 
-        # 🔹 2. Запускаем обработку ТОЛЬКО после завершения транзакции
-        def process_files():
-            from parsers.web_parser import start_parsing
-            start_parsing(suppliers_to_process)  
-        process_files()
-        # transaction.on_commit(process_files)  # Выполняем после сохранения в БД
-        self.message_user(request, "Данные для поставщика будут обработаны после сохранения данных!")
+        results = async_run(self.__parse_selected_price_list(data_to_parse))
+
+        for suppl_id, result in results:
+            Product.objects.filter(supplier_id=suppl_id).delete()
+            Category.objects.filter(supplier_id=suppl_id).delete()
+            if result is None:
+                continue
+            for row in result:
+                category, _ = Category.objects.get_or_create(
+                    name=row['category'],
+                    supplier_id=suppl_id,
+                    defaults={'image': row['img']}
+                )
+                Product.objects.create(
+                    supplier_id=suppl_id,
+                    name = row['name'],
+                    price = row['price'],
+                    bulk_price = row['price_by_ton'],
+                    category = category,
+                    implementation_period = row['expiration_date'],
+                    variety = '',
+                    compound = row['composition'],
+                    image = row['img']
+                )
+
+        self.message_user(request, "Данные обработаны!", level=messages.INFO)
 
     parse_selected_price_lists.short_description = "Обработать данные"
 

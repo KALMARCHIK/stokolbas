@@ -23,13 +23,19 @@ class Supplier(models.Model):
 
     name = models.CharField(verbose_name='Наименование компании', max_length=255, unique=True)
     website = models.URLField(verbose_name='Сайт компании', blank=True, null=True)
-    price_list = models.FileField(upload_to="price_lists/", blank=True, null=True, verbose_name="Прайс-лист (Excel)")
+    #price_list = models.FileField(upload_to="price_lists/", blank=True, null=True, verbose_name="Прайс-лист (Excel)")
     image = models.CharField(verbose_name='Картинка', max_length=200, blank=True, null=True)
     slug = models.SlugField(unique=True, blank=True)  # Добавляем slug
 
     def __str__(self):
         return self.name
 
+class PriceList(models.Model):
+    supplier = models.ForeignKey(Supplier, related_name='pricelists', on_delete=models.CASCADE)
+    file = models.FileField(upload_to="price_lists/", blank=True, null=True, verbose_name="Прайс-лист №...")
+
+    def __str__(self):
+        return self.file.name
 
 class Category(models.Model):
     class Meta:
