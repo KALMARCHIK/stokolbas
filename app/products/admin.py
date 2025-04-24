@@ -2,13 +2,22 @@ from asyncio import (
     run as async_run,
     gather
 )
+from threading import Thread
 
 from django.contrib import admin, messages
 from django.db import transaction
+from django.http import JsonResponse
+from django.urls import path, reverse as reverse_url_path
+from django.utils.html import format_html
 
 from products.models import Supplier, Product, Category, Regions, PriceList
 
 from parsers import parse
+from .parsepricelist import (
+    parsing_progress_view, 
+    get_parsing_progress,
+    STATE_MESSAGES
+)
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -69,6 +78,7 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(Category, CategoryAdmin)
 
 
+
 class PriceListInline(admin.TabularInline):
     model = PriceList
     extra = 1
@@ -76,14 +86,58 @@ class PriceListInline(admin.TabularInline):
 async def callbyname(_id, fn):
     return _id, await fn
 
+def parse_price_lists_task(data_to_parse):
+    async def __task(data_to_parse):
+        tasks = [callbyname(dtp['suppl_id'], parse(dtp)) for dtp in data_to_parse]
+        return await gather(*tasks)
+
+    STATE_MESSAGES['status'] = True
+    STATE_MESSAGES['messages'] = []
+    STATE_MESSAGES['messages'].append('Парсинг: ' + ', '.join(dtp['suppl_name'] for dtp in data_to_parse) + '.')
+
+    results = async_run(__task(data_to_parse))
+
+    STATE_MESSAGES['messages'].append('Данные получены. Обновление базы данных.')
+
+    for suppl_id, result in results:
+        Product.objects.filter(supplier_id=suppl_id).delete()
+        Category.objects.filter(supplier_id=suppl_id).delete()
+        if result is None:
+            continue
+        for row in result:
+            category, _ = Category.objects.get_or_create(
+                name=row['category'],
+                supplier_id=suppl_id,
+                defaults={'image': row['img']}
+            )
+            Product.objects.create(
+                supplier_id=suppl_id,
+                name = row['name'],
+                price = row['price'],
+                bulk_price = row['price_by_ton'],
+                category = category,
+                implementation_period = row['expiration_date'],
+                variety = '',
+                compound = row['composition'],
+                image = row['img']
+            )
+
+    STATE_MESSAGES['messages'].append('Обновление данных завершено.')
+    STATE_MESSAGES['status'] = False
+    
 class SupplierAdmin(admin.ModelAdmin):
     list_display = ('name', 'website', 'image', 'slug')
     inlines = [PriceListInline]
     actions = ["parse_selected_price_lists"]
 
-    async def __parse_selected_price_list(self, data_to_parse):
-        tasks = [callbyname(dtp['suppl_id'], parse(dtp)) for dtp in data_to_parse]
-        return await gather(*tasks)
+    def get_urls(self):
+        urls = super().get_urls()
+        custom_urls = [
+            path('parse_progress/', self.admin_site.admin_view(parsing_progress_view), name='parse_progress'),
+            path('get_parsing_progress/', self.admin_site.admin_view(get_parsing_progress), name='get_parsing_progress')
+        ]
+
+        return custom_urls + urls
 
     def parse_selected_price_lists(self, request, queryset):
         """ 
@@ -91,40 +145,22 @@ class SupplierAdmin(admin.ModelAdmin):
         первоисточников, сопоставление данных для всех выбранных поставщиков
         """
 
-        #self.message_user(request, "Выполняется обработка данных...", level=messages.WARNING)
+        self.message_user(
+            request, 
+            format_html(
+                "Обработка данных выполняется в фоновом режиме.<br>Отследить процесс можно <a href='{}' target='_blank'>по этой ссылке</a>.",
+                f'/admin/{self.model._meta.app_label}/{self.model._meta.model_name}/parse_progress',
+            )
+        )
 
         data_to_parse = []
         for q in queryset:
-            data_to_parse.append({'suppl_id': q.id, 'files': [], 'url': q.website})
+            data_to_parse.append({'suppl_id': q.id, 'suppl_name': q.name, 'files': [], 'url': q.website})
             for f in q.pricelists.all():
                 data_to_parse[-1]['files'].append(f.file.name)
 
-        results = async_run(self.__parse_selected_price_list(data_to_parse))
-
-        for suppl_id, result in results:
-            Product.objects.filter(supplier_id=suppl_id).delete()
-            Category.objects.filter(supplier_id=suppl_id).delete()
-            if result is None:
-                continue
-            for row in result:
-                category, _ = Category.objects.get_or_create(
-                    name=row['category'],
-                    supplier_id=suppl_id,
-                    defaults={'image': row['img']}
-                )
-                Product.objects.create(
-                    supplier_id=suppl_id,
-                    name = row['name'],
-                    price = row['price'],
-                    bulk_price = row['price_by_ton'],
-                    category = category,
-                    implementation_period = row['expiration_date'],
-                    variety = '',
-                    compound = row['composition'],
-                    image = row['img']
-                )
-
-        self.message_user(request, "Данные обработаны!", level=messages.INFO)
+        thread = Thread(target=parse_price_lists_task, args=(data_to_parse,))
+        thread.start()
 
     parse_selected_price_lists.short_description = "Обработать данные"
 

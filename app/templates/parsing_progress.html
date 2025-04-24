@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Парсинг прайс-листов</title>
+        <style>
+        #container {
+            margin: 40px auto;
+            width: 500px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+        }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <h2>Прогресс:</h2>
+
+            <div id="progress-messages">
+            </div>
+        </div>
+
+        <script>
+            'use strict';
+
+            var container = null;
+
+            var checkProgress = async () => {
+                if (container == null) {
+                    container = document.getElementById('progress-messages');
+                }
+                let resp = await fetch('/admin/products/supplier/get_parsing_progress');
+                if (resp.ok) {
+                    let data = await resp.json();
+                    container.innerHTML = '';
+                    data.messages.forEach(item => {
+                        let div = document.createElement('div');
+                        div.innerText = '➜ ' + item;
+                        container.append(div);
+                    });
+                    if (data.status) {
+                        setTimeout(checkProgress, 2000)
+                    }
+                }
+            }
+
+            window.addEventListener('load', checkProgress);
+        </script>
+    </body>
+</html>
