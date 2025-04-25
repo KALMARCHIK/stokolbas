@@ -145,7 +145,7 @@
                             <div class="product-item product-item2 element-item3 product-details-popup-btn" data-popup-id="#popup{{product.id}}">
                                 <div href="product-details.html" class="product-image">
                                     {% if product.image %}
-                                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                        <img src="{{ product.image }}" alt="{{ product.name }}">
                                     {% else %}
                                         <img src="{% static 'images/products/home3/1.jpg' %}" alt="No image available">
                                     {% endif %}
