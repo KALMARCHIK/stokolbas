@@ -196,7 +196,7 @@
                     <div class="cursor"></div>
                     <div class="thumb-wrapper one filterd-items figure">
                         {% if product.image %}
-                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                            <img src="{{ product.image }}" alt="{{ product.name }}">
                         {% else %}
                             <img src="{% static 'images/products/home3/1.jpg' %}" alt="No image available">
                         {% endif %}
