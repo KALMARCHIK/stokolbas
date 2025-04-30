@@ -7,7 +7,13 @@
 <div class="page-path">
   <div class="container">
       <div class="breadcrumbs-inner">
+          {% if region.slug == 'kaluga' %}
           <h1 class="path-title">Мы работаем в Калуге!</h1>
+          {% elif region.slug == 'tula' %}
+          <h1 class="path-title">Мы работаем в Туле!</h1>
+          {% elif region.slug == 'sankt-peterburg' %}
+          <h1 class="path-title">Мы работаем в Санкт-Петербург!</h1>
+          {% endif %}
           <div>
             <button class="breadcrumbs-btn">
               Прайс-листы
@@ -23,11 +29,28 @@
 <div class="newsletter-banner newsletter-banner3 mb-0 region-callback">
   <div class="container">
       <div class="newsletter-contents">
+          {% if region.slug == 'kaluga' %}
           <span class="section-title-2 mb--5">Компания СТОКОЛБАС осуществляет продажу Белорусских колбас оптом в городе <span>Калуга</span>, а так же по <span>Калужской области</span></span>
+          {% elif region.slug == 'tula' %}
+          <span class="section-title-2 mb--5">Компания СТОКОЛБАС осуществляет продажу Белорусских колбас оптом в городе <span>Тула</span>, а так же по <span>Тульской области</span></span>
+          {% elif region.slug == 'sankt-peterburg' %}
+          <span class="section-title-2 mb--5">Компания СТОКОЛБАС осуществляет продажу Белорусских колбас оптом в городе <span>Санкт-Петербург</span></span>
+          {% endif %}
           <div class="section-line mb--20"><img src="{% static 'images/items/curlyline.svg' %}" alt="line"></div>
+
+          {% if region.slug == 'kaluga' %}
           <p class="main-form-text">
             Мы можем предложить Вам бесплатную доставку нашей продукции до Калуги и до городов Калужской области (Боровск, Кондрово, Жиздра, Киров, Жуков и т.д.). Вся доставка осуществляется собственным специально оборудованным транспортом!
           </p>
+          {% elif region.slug == 'tula' %}
+          <p class="main-form-text">
+            Мы можем предложить Вам бесплатную доставку нашей продукции до Тулы и до городов Тульской области. Вся доставка осуществляется собственным специально оборудованным транспортом!
+          </p>
+          {% elif region.slug == 'sankt-peterburg' %}
+          <p class="main-form-text">
+            Мы можем предложить Вам бесплатную доставку нашей продукции до Санкт-Петербурга. Вся доставка осуществляется собственным специально оборудованным транспортом!
+          </p>
+          {% endif %}
 
           <div class="newsletter-input">
               <input type="text" placeholder="Имя">

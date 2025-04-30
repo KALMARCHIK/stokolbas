@@ -123,9 +123,9 @@
                                         <li class="dropdown-li"><a class="dropdown-link" href="{% url 'regions-detail' 'kaluga' %}">Калуга</a>
                                         </li>
                                         <li class="dropdown-li"><a class="dropdown-link"
-                                                href="faq.html">Тула</a></li>
+                                                href="{% url 'regions-detail' 'tula' %}">Тула</a></li>
                                         <li class="dropdown-li"><a class="dropdown-link"
-                                                href="error.html">Санкт-Петербург</a></li>
+                                                href="{% url 'regions-detail' 'sankt-peterburg' %}">Санкт-Петербург</a></li>
                                     </ul>
                                 </li>
                                 <li><a class="menu-item" href="{% url 'delivery' %}">Доставка</a></li>
@@ -443,7 +443,6 @@
                         <li class="widget-list-item"><a href="#0">Калинка</a></li>
                         <li class="widget-list-item"><a href="#0">Березовский</a></li>
                         <li class="widget-list-item"><a href="#0">Борисовский</a></li>
-                        <li class="widget-list-item"><a href="#0">Остальной</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-25 col-md-6 col-sm-6">

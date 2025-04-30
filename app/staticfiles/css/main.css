@@ -17059,7 +17059,7 @@ tr:first-child {
   margin-bottom: 25px;
 }
 .banner.banner-3 .banner-single .contents .banner-heading {
-  font-size: 80px;
+  font-size: 76px;
   line-height: 90px;
   margin-bottom: 35px;
 }
@@ -25180,7 +25180,6 @@ tr:first-child {
   color: #031424;
   font-size: 18px;
   font-weight: 600;
-  text-transform: uppercase;
   margin-bottom: 10px;
 }
 @media (max-width: 1400px) and (min-width: 1201px) {

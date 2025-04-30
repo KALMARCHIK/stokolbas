@@ -64,7 +64,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.CASCADE, related_name='products')
     implementation_period = models.CharField(verbose_name='Срок реализации', max_length=1000)
     variety = models.CharField(verbose_name='Сорт', max_length=1000)
-    compound = models.TextField(verbose_name='Состав')
+    compound = models.CharField(max_length=100, default="default value")
     is_new = models.BooleanField(verbose_name='Новинка', default=False)
     image = models.CharField(verbose_name='Картинка товара', max_length=200, blank=True, null=True)
     slug = models.SlugField(unique=True, blank=True, max_length=255)  # Добавляем slug
