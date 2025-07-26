@@ -3,7 +3,7 @@
 - Клонируем репозиторий:
 
 ```
-git clone https://github.com/cookie-rf/stokolbas.git
+git clone https://github.com/KALMARCHIK/stokolbas.git
 ```
 
 ---
